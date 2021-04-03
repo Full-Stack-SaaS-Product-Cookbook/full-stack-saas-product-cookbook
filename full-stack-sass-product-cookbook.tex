@@ -1,0 +1,291 @@
+% set to 'oneside' for web style, 'twoside' for book print
+\documentclass[a4paper,
+                             oneside,
+                             BCOR1.0cm,
+                             DIV11,
+                             parskip=full,
+                             11pt]{scrbook}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xspace}
+\usepackage{bera}
+\usepackage{pifont}
+\usepackage{amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage{color}
+
+% for highlighting keywords inline
+\usepackage{listings}
+
+\usepackage{xparse}
+
+\NewDocumentCommand{\codeword}{v}{%
+\texttt{\textcolor{blue}{#1}}%
+}
+
+\lstset{language=bash,keywordstyle={\bfseries \color{gray}}}
+
+%%%%%%%%%%%%
+
+\DeclareFixedFont{\numcap}{T1}{phv}{bx}{n}{3cm}
+\DeclareFixedFont{\textcap}{T1}{phv}{bx}{n}{1.5cm}
+\DeclareFixedFont{\textaut}{T1}{phv}{bx}{n}{0.8cm} 
+
+\addtokomafont{chapter}{\color{gray}\textcap}
+\addtokomafont{section}{\color{white}}
+\addtokomafont{subsection}{\color{white}}
+\setkomafont{pagehead}{\sffamily\small}
+\setkomafont{captionlabel}{\sffamily\small\bfseries}
+\setkomafont{caption}{\sffamily\small}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetikzlibrary{calc,trees,positioning,arrows,chains,shapes.geometric,
+    decorations.pathreplacing,decorations.pathmorphing,shapes,
+    matrix,shapes.symbols}
+
+\tikzset{
+  punktchain/.style={
+    rectangle, 
+    rounded corners, 
+    draw=black!20, thin,
+    minimum height=3em, 
+    text centered},
+  peu/.style={
+    rectangle,
+    fill opacity=1,
+    %rounded corners, 
+    fill=white,
+    top color=white,
+    draw=black!20, thin,
+    %text width=10em, 
+    %minimum height=3em, 
+    text centered},
+  line/.style={draw, thin, <-},
+  element/.style={
+    tape,
+    top color=white,
+    bottom color=blue!50!black!60!,
+    minimum width=8em,
+    draw=blue!40!black!90, very thick,
+    text width=10em, 
+    minimum height=3.5em, 
+    text centered, 
+    on chain},
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{scrpage2}
+\setlength{\headheight}{25pt}
+\pagestyle{scrheadings}
+\setheadwidth{textwithmarginpar}
+\setheadsepline{.4pt}
+\addtokomafont{headsepline}{\color{lightgray}}
+
+\lefoot{\color{black!40}{\hrulefill}}
+\cefoot{\parbox[c][.5in][c]{1cm}{\fcolorbox{black!40}{white}{\thepage}}}
+\refoot{}
+
+\lofoot{\color{black!40}{\hrulefill}}
+\cofoot[{\color{black!40}{---}} {\thepage} {\color{black!40}{---}}]{\parbox[c][.5in][c]{1cm}{\fcolorbox{black!40}{white}{\thepage}}}
+\rofoot[]{}
+
+\usepackage[pdftex,             
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    citecolor=blue,
+    pdftitle={Full Stack SaaS Product Cookbook},
+    pdfauthor={Christopher J. Frewin},
+    pdfsubject={SaaS Products},
+    pdfkeywords={Keyword1, Keyword 2},
+    bookmarks, bookmarksnumbered=true]{hyperref}
+
+\tolerance=4000
+\emergencystretch=20pt
+
+\setcounter{secnumdepth}{3}
+\usepackage{titlesec}
+
+\titleformat{\chapter}[display]
+    {\usekomafont{sectioning} \usekomafont{chapter}\filleft}
+    {\numcap\textcolor[named]{gray}\thechapter}
+    {1em}
+    {}
+
+\titleformat{\section}[block]
+    {\usekomafont{sectioning}\usekomafont{section}
+     \tikz[overlay]  \fill[color=black,rounded corners=.2ex] (0,-1ex) rectangle (\textwidth-2cm,1em);}
+    { \thesection}
+    {1em}
+    {}
+
+\titleformat{\subsection}[block]
+    {\usekomafont{sectioning}\usekomafont{subsection}
+       \tikz[overlay] \fill[color=black!60] (0,-1ex) rectangle (\textwidth-2cm,1em);}
+    { \thesubsection}
+    {1em}
+    {}
+
+\usepackage{lipsum}
+%%%%%%%%%%%%%%%%%%%%
+\usepackage{enumitem}
+
+\newlist{steps}{enumerate}{4}
+\setlist[steps]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[steps,1]{label*=\arabic*.}
+\setlist[steps,2]{label*=\arabic*.}
+\setlist[steps,3]{label*=\arabic*.}
+\setlist[steps,4]{label*=\arabic*.}
+
+\newlist{points}{itemize}{4}
+\setlist[points]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[points,1]{label=\tiny\ding{110}}
+\setlist[points,2]{label=\tiny\ding{108}}
+\setlist[points,3]{label=\tiny\ding{72}}
+\setlist[points,4]{label=\tiny\ding{117}}
+
+\newlist{objectives}{itemize}{1}
+\setlist[objectives]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[objectives,1]{label=\tiny$\blacktriangleright$}
+
+\newlist{attention}{itemize}{1}
+\setlist[attention]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[attention,1]{label=\ding{224}}
+
+
+\newlist{arrows}{itemize}{4}
+\setlist[arrows]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[arrows,1]{label=\tiny\ding{252}}
+\setlist[arrows,2]{label=\tiny\ding{212}}
+\setlist[arrows,3]{label=\tiny\ding{232}}
+\setlist[arrows,4]{label=\tiny\ding{217}}
+%%%%%%%%%%%%%%%%%%%%
+\usepackage[tikz]{bclogo}
+\newcommand\novaimatge{\includegraphics[width=14pt]{write}}
+\renewcommand\logowidth{14pt}
+
+\usepackage{colortbl}
+\arrayrulecolor{gray}
+\let\shline\hline
+\def\hline{\noalign{\vskip3pt}\shline\noalign{\vskip4pt}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%% First Page
+\title{\textcap{Full Stack SaaS Product Cookbook}\\\small{From Soup 🍜 to Nuts 🥜 - Creating a Profitable SaaS Product as a Solo Developer}}
+\author{
+    \textaut{Christopher J. Frewin}\\https://chrisfrew.in
+}
+\date{\today}
+
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+%*************************************************************************
+\chapter*{Prologue}\label{cap:primer}
+%*************************************************************************
+\dictum%
+[Isaac Newtown, 1675]
+{If I have seen further it is by standing on the shoulders of Giants.
+}
+
+\minisec{Book Introduction}
+
+SaaS Products. Such a massively overused buzzword in today's internet culture. 
+
+Everyone seems to \textit{want} a profitable SaaS product, but rarely is a complete in-depth discussion taken on what exactly that entails. Typically, the bear minimum for today's SaaS product includes the following:
+
+\begin{arrows}
+\item User authentication, authorization, and management
+\item A custom backend API
+\item A nice looking and easy-to-use UI
+\item Email flow and service for welcome emails, password resets, etc.
+\item Logging and alerts throughout the entire stack
+\item Last and most importantly, \textit{the value of the product itself}. 
+\end{arrows}
+
+These design minutia and decisions don't fit into our 280 character Tweet world. A huge majority of the resulting noise online surround SaaS development therefore devolves into the incessant framework vs. framework or language vs. language battles - or worse - paraphrased guru or meme-like cache phrases that have nothing to do with actually putting in the hard work to build the product itself.
+
+In this book, I cut through all that noise, describing in extreme detail, step-by-step, from backend to frontend, with all configuration in between, how to build all parts of your next profitable SaaS Product. The final product will be highly maintainable while at the same time highly customizable.  After 10+ years of building my own solo side products, wasting literally \textit{thousands} of hours making countless of mistakes, I've finally arrived at an extensively reusable, fast, and very lean stack that works for solo developers. This book is the refined culmination and best practices of my decade long experience.
+
+\minisec{Who this Book is For}
+
+This book is targeted at solo developers, creators, and makers who want to have full control over their own SaaS Products and know the inner workings at all parts of the stack. It's for those who want to ultimately automate nearly all aspects their product or service with small exceptions like communicating with customers, or personal interactions promoting the product (all of which are \textit{extremely} important, as I'll get to in a later section of the book.)
+
+If you are a solo software developer looking to move into the SaaS landscape and not waste time asking yourself and answering complex questions like:
+
+\begin{arrows}
+\item What database to use
+\item What authentication or authorization service to use
+\item What type of API to use
+\item How to implement full stack logging, monitoring, and alerts through the entire application
+\item How to create and automate frontend and backend builds with CI and CD
+\end{arrows}
+
+Then look no further. This book will cover all those questions and more with full code solutions. Note that this book \textit{is} highly opinionated. I do use specific frameworks and services throughout the entirety of the book. But, like I've said, after searching for 10 years of the holy grail of SaaS product generators, I believe I've found it, at least for Web based SaaS products. If you are looking for more theoretical or fundamental minded books on building apps, this book is not for you, and there are plenty of those out there.
+
+\minisec{Are You Ready?}
+
+I'm proud of how this book came out, and I've happy to use it myself for each new SaaS product I've built using this stack in this book. I hope that I've piqued your interest, and that you'll join me on this full stack adventure!
+
+- Christopher Frewin
+
+\textit{Feldkirch, Austria, April 2021}
+
+%*************************************************************************
+\chapter{The Product}\label{cap:primer}
+%*************************************************************************
+\dictum%
+[Marc Andreessen]%author
+{It's really rare for people to have a successful start-up in this industry without a breakthrough product. I'll take it a step further. It has to be a radical product. It has to be something where, when people look at it, at first they say, 'I don't get it, I don't understand it. I think it's too weird, I think it's too unusual.
+} %text
+
+\section{The Product You'll Be Building}\label{sec:titles}
+
+The product you'll be making in this book is a product I call 'ReduxPlate'. It's currently live at https://reduxplate.com. It's a simple \$5 / year subscription service that builds your entire Redux code boilerplate from the state of your application alone! 
+
+For those who use Redux with TypeScript, you may know how much code needs to be written after adding just one new part of state. (Hint: it's even more than the boilerplate required with vanilla JavaScript!) I had long wanted to build a SaaS product like this, and the motivation to write the book finally spurred me to build it, at it is a good example for a full stack SaaS product. 
+
+\minisec{The Challenge}
+
+If you're motivated, you try to copy only the \textit{nature} of each of the tutorials throughout the book, modifying code where it is needed, ultimately coming out with your own SaaS product by the end of the book. Otherwise, it's also of course completely acceptable to work through the tutorials exactly step-for-step with this book - you'll come out with an exact clone of reduxplate.com! And at the end - you'll still have this book as a reference and can do it all again, already knowing all the steps, for your next profitable SaaS product!
+
+%*************************************************************************
+\chapter{The Frontend}\label{cap:primer}
+%*************************************************************************
+\dictum%
+[Steve Jobs, 1997]%author
+{You've got to start with the customer experience and work backwards to the technology.
+} %text
+
+\section{Creating a Repository for the UI}\label{sec:titles}
+
+\begin{bclogo}[logo=\novaimatge,couleur=gray!30,barre=none,noborder=true,marge=10,ombre=true,couleurOmbre=black!60,blur]%
+    {\sffamily{  Objectives}}
+    \sffamily\scriptsize
+    \begin{arrows}
+    \item Creating a BitBucket \codeword{git} repository for the SaaS app's web UI.
+    \item Using Netlify and the Netlify CLI to build and deploy our site whenever we push to the \codeword{master} branch
+    \item Buying a domain via Namecheap, and setting that as our primary domain on Netlify
+    \end{arrows}
+    \end{bclogo}
+
+Let's hop right in. We're going to start off building the frontend, as that side of the stack gives us some immediate visual feedback, and as Steve's quote above touts, we can then work backwards to figure out what sort of technology's we'll need to complete our SaaS product. 
+
+Since this will be a private SaaS product, I will start with a BitBucket repository - but feel free to start yours in a more open-source minded git service like GitHub. Just keep in mind that further on in this book you will have to take more care with things like API secrets and keys in an environment like GitHub - but it's still possible.
+
+\minisec{A Word On Naming Conventions}
+
+In this book I'll be going step by step through what I did to build ReduxPlate (https://reduxplate.com) Indeed, this book was written \textit{while} I built ReduxPlate! In fact, the only two repositories we'll need for our entire complete SaaS product will have the following names:
+
+\codeword{redux-plate-client} (For the client, AKA the frontend)
+
+\codeword{redux-plate-api} (For the api, AKA the backend)
+
+So, this \codeword{} moniker we will see over and over again in this book. In the case of things like secrets and constants, we will see this moniker in the form of \codeword{REDUX_PLATE} Typically I pick names that are an easy to read and easiest to remember format as possible - ReduxPlate is really only the stylized form of the product's name. An easier to read version code-friendly of that name is redux-plate.
+
+\end{document}

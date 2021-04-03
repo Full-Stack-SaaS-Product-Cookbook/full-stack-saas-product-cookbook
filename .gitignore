@@ -1,0 +1,9 @@
+# ignore this latex nonesense - even the pdf is technically a build!!!
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.fls
+*.fdb_latexmk
+*.pdf
