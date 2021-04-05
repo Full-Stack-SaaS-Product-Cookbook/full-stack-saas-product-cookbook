@@ -18,17 +18,26 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes}
 \usepackage{color}
+\usepackage{textcomp}
 
-% for highlighting keywords inline
+% for emojis :)
+% \usepackage{twemoji}
+
+% for advanced code highlighting
+\usepackage{minted}
+\usemintedstyle{monokai}
+
+
+
+% custom command for NPM like red code snippets
 \usepackage{listings}
 
 \usepackage{xparse}
 
+\definecolor{npmred}{HTML}{BB2E3E}
 \NewDocumentCommand{\codeword}{v}{%
-\texttt{\textcolor{blue}{#1}}%
+\texttt{\textbf{\textcolor{npmred}{#1}}}%
 }
-
-\lstset{language=bash,keywordstyle={\bfseries \color{gray}}}
 
 %%%%%%%%%%%%
 
@@ -77,11 +86,11 @@
     on chain},
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{scrpage2}
+\usepackage{scrlayer-scrpage}
 \setlength{\headheight}{25pt}
 \pagestyle{scrheadings}
 \setheadwidth{textwithmarginpar}
-\setheadsepline{.4pt}
+% \setheadsepline{.4pt}
 \addtokomafont{headsepline}{\color{lightgray}}
 
 \lefoot{\color{black!40}{\hrulefill}}
@@ -164,7 +173,6 @@
 \setlist[arrows,4]{label=\tiny\ding{217}}
 %%%%%%%%%%%%%%%%%%%%
 \usepackage[tikz]{bclogo}
-\newcommand\novaimatge{\includegraphics[width=14pt]{write}}
 \renewcommand\logowidth{14pt}
 
 \usepackage{colortbl}
@@ -175,7 +183,7 @@
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%% First Page
-\title{\textcap{Full Stack SaaS Product Cookbook}\\\small{From Soup 🍜 to Nuts 🥜 - Creating a Profitable SaaS Product as a Solo Developer}}
+\title{\textcap{Full Stack SaaS Product Cookbook}\\\small{From Soup to Nuts - Create a Profitable SaaS Product as a Solo Developer}}
 \author{
     \textaut{Christopher J. Frewin}\\https://chrisfrew.in
 }
@@ -186,7 +194,8 @@
 \tableofcontents
 
 %*************************************************************************
-\chapter*{Prologue}\label{cap:primer}
+\chapter*{Foreword}\label{cap:primer}
+\addcontentsline{toc}{chapter}{Foreword}
 %*************************************************************************
 \dictum%
 [Isaac Newtown, 1675]
@@ -252,40 +261,159 @@ For those who use Redux with TypeScript, you may know how much code needs to be 
 
 \minisec{The Challenge}
 
-If you're motivated, you try to copy only the \textit{nature} of each of the tutorials throughout the book, modifying code where it is needed, ultimately coming out with your own SaaS product by the end of the book. Otherwise, it's also of course completely acceptable to work through the tutorials exactly step-for-step with this book - you'll come out with an exact clone of reduxplate.com! And at the end - you'll still have this book as a reference and can do it all again, already knowing all the steps, for your next profitable SaaS product!
+If you're motivated, I suggest to copying only the \textit{nature} of each of the tutorials throughout the book, modifying code where it is needed, ultimately coming out with your own SaaS product by the end of the book. Otherwise, it's also of course completely acceptable to work through the tutorials exactly step-for-step with this book - you'll come out with an exact clone of reduxplate.com! And at the end - you'll still have this book as a reference and can do it all again, already knowing all the steps, for your next profitable SaaS product!
 
 %*************************************************************************
-\chapter{The Frontend}\label{cap:primer}
+\chapter{Starting Off: The Frontend}\label{cap:primer}
 %*************************************************************************
 \dictum%
 [Steve Jobs, 1997]%author
 {You've got to start with the customer experience and work backwards to the technology.
 } %text
 
-\section{Creating a Repository for the UI}\label{sec:titles}
+\section{Introduction to the Frontend}\label{sec:titles}
+\minisec{Objectives}
+\begin{arrows}
+\item Some notes on naming conventions you'll see throughout the book
+\item A few of my own personal style techniques when writing frontend code with React and TypeScript
+\item Define various framework Versions
+\end{arrows}
 
-\begin{bclogo}[logo=\novaimatge,couleur=gray!30,barre=none,noborder=true,marge=10,ombre=true,couleurOmbre=black!60,blur]%
-    {\sffamily{  Objectives}}
-    \sffamily\scriptsize
-    \begin{arrows}
-    \item Creating a BitBucket \codeword{git} repository for the SaaS app's web UI.
-    \item Using Netlify and the Netlify CLI to build and deploy our site whenever we push to the \codeword{master} branch
-    \item Buying a domain via Namecheap, and setting that as our primary domain on Netlify
-    \end{arrows}
-    \end{bclogo}
-
-Let's hop right in. We're going to start off building the frontend, as that side of the stack gives us some immediate visual feedback, and as Steve's quote above touts, we can then work backwards to figure out what sort of technology's we'll need to complete our SaaS product. 
-
-Since this will be a private SaaS product, I will start with a BitBucket repository - but feel free to start yours in a more open-source minded git service like GitHub. Just keep in mind that further on in this book you will have to take more care with things like API secrets and keys in an environment like GitHub - but it's still possible.
+We're going to start off building the frontend, as that side of the stack gives us some immediate visual feedback, and as Steve's quote above touts, we can then work backwards to figure out what sort of technology's we'll need to complete our SaaS product. 
 
 \minisec{A Word On Naming Conventions}
 
-In this book I'll be going step by step through what I did to build ReduxPlate (https://reduxplate.com) Indeed, this book was written \textit{while} I built ReduxPlate! In fact, the only two repositories we'll need for our entire complete SaaS product will have the following names:
+In this book I'll be going step by step through what I did to build ReduxPlate (https://reduxplate.com) Indeed, this book was written \textit{while} I built ReduxPlate! The repositories we'll create for the project will key into the naming convention I will use throughout the book. In fact, the only two repositories we'll need for our entire complete SaaS product will have the following names:
 
-\codeword{redux-plate-client} (For the client, AKA the frontend)
+\codeword{redux-plate-frontend} (For the frontend, AKA the client)
 
-\codeword{redux-plate-api} (For the api, AKA the backend)
+\codeword{redux-plate-backend} (For the backend, AKA the api)
 
-So, this \codeword{} moniker we will see over and over again in this book. In the case of things like secrets and constants, we will see this moniker in the form of \codeword{REDUX_PLATE} Typically I pick names that are an easy to read and easiest to remember format as possible - ReduxPlate is really only the stylized form of the product's name. An easier to read version code-friendly of that name is redux-plate.
+So, we will see this \codeword{redux-plate} moniker over and over again throughout this book. In the case of things like secrets and constants, we will see this moniker used instead in all caps, in the form of \codeword{REDUX\_PLATE}. Typically, I pick names that are an easy to read and easiest to remember format as possible. "ReduxPlate" is really only the stylized form of the product's name. An easier to read, code-friendly version of that name is simply \codeword{redux-plate}.
+
+If you are going the option of tailoring each step in this book to your own project, whenever you see \codeword{redux-plate} or \codeword{ReduxPlate}, take it as a signal to rename variables with those monikers to your own product's name. Take a deep breath, there's going to be \textbf{a lot} of them.
+
+\minisec{Some Notes on My Frontend Style}
+
+I also have a specific code style . Some of my most important rules, though not all of them include:
+
+\begin{arrows}
+\item Avoid \codeword{var} and \codeword{let} wherever possible, almost always.
+\item Always de-structure \codeword{props}
+\item Keep as much logic out of components as possible - components should generally be only for rendering jsx- style markup
+\item Use Redux
+\end{arrows}
+
+\minisec{Framework Versions}
+
+For the duration of this book, I will be using the following versions of the following
+
+\begin{arrows}
+\item .NET 5.0
+\item npm 
+\item Node 14.16.0
+\item React (and React DOM) 17.0.2
+\item Gatsby 3.0.0
+\item PostgreSQL 13.2
+\item Nginx 1.17
+\item Ubuntu 20.04 (Focal Fossa)
+\end{arrows}
+
+Installation and setup of all these frameworks, including code editor plugins and so on are outside of the scope of the book (excluding Ubuntu 20.04 - I will be going over in detail how to start a Ubuntu 20.04 box with Digital Ocean). There are plenty of awesome resources online for everything else, and for the packages themselves, \textbf{it's always best to start with their respective documentation first.}
+
+
+Everything still okay? Let's finally start building this product!
+
+\section{Bootstrap the Frontend With Gatsby V3}\label{sec:titles}
+\minisec{Objectives}
+\begin{arrows}
+\item Bootstrap the frontend with Gatsby's official starter, \codeword{gatsby-starter-default}
+\item Creating a BitBucket \codeword{git} repository for the SaaS app's web UI.
+\end{arrows}
+
+With some housekeeping done, let's jump right into code. We'll start by cloning one of the official Gatsby starters, \codeword{gatsby-starter-blog}.
+
+Again, because we are building ReduxPlate, I'll immediately rename what we just cloned.
+
+Since this will be a private SaaS product, I will start with a BitBucket repository - but feel free to start yours in a more open-source minded git service like GitHub. Just keep in mind that further on in this book you will have to take more care with things like API secrets and keys in an environment like GitHub - but it's still possible.
+
+
+\section{Use Netlify for the DevOps Framework}\label{sec:titles}
+\minisec{Objectives}
+\begin{arrows}
+\item Using Netlify and the Netlify CLI to build and deploy our site whenever we push to the \codeword{master} branch
+\end{arrows}
+
+\section{Add a Primary Domain to Netlify}\label{sec:titles}
+\minisec{Objectives}
+\begin{arrows}
+\item Buying a domain via Namecheap, and setting that as our primary domain on Netlify
+\end{arrows}
+
+
+
+
+
+Here's an example TypeScript snippet:
+
+\begin{minted}{typescript}
+
+import { AnimationType } from '../enums/AnimationType';
+
+export type UsePleaseStayOptions = {
+  messages: Array<string>;
+  animationType?: AnimationType;
+  delay?: number;
+  faviconHref?: string;
+}
+
+\end{minted}
+
+\chapter{Starting The Backend}\label{cap:primer}
+
+\chapter{Continuous Integration}\label{cap:primer}
+
+
+\chapter{Building a Staging (or Testing) Environment}\label{cap:primer}
+
+
+So far we've focused on building out the frontend and custom backend API for ReduxPlate. We write code in our \codeword{develop} git branch, but every time we merge to the \codeword{master} branch in either our \codeword{-frontend} or \codeword{-backend} repositories, the continuous integration process is fired off and shipped to our live SaaS product immedately. That's been great so far, but is fairly risky once we start having customers.
+
+In this section of the book, we'll get into building out what is known as a staging environment. With all of the tooling available in netlify on the frontend side, and .NET on the backend side, the challenge is not too great, but there will be some important considerations and distinctions which we'll look at in detail.
+
+\section{A Testing Environment is Essential!}\label{sec:titles}
+
+A staging environment is so important, because it mimics your live product almost exactly. As we'll see in this section, only small configurations change, and perhaps the exact quality of what certain API endpoints return may differ, but other than that, your staging site is essentially a production-like, risk-free playground where you can test new features, or catch bugs before they ship to production.
+
+\section{Staging CI / CD for the Frontend}\label{sec:titles}
+
+We'll get the client side of things out of the way first. Again, Netlify's powers come to the rescue and setting up a staging version of the frontend is absolute peanuts. 
+
+\section{Create a Staging Branch for the Frontend}\label{sec:titles}
+
+To get started, we'll branch off our develop branch into a new:
+
+\section{Configure Netlify to Build According to the Staging Branch}\label{sec:titles}
+
+On Netlify, head to your product's DNS.
+
+The staging site is up and running! We've got the correct staging environment variables up, builds are firing when we merge to staging; all is well. But if we open a console while looking - we can see . We're getting a bunch of 404 errors when we try to call the staging API endpoint we defined at staging.api.reduxplate.com. Let's switch gears into backend mode and rectify this issue.
+
+\section{Staging CI / CD for the Backend}\label{sec:titles}
+
+Our .NET application will unfortunately be a bit more involved than what it took with Netlify due to it's custom nature. But, .NET and BitBucket offer a lot of powerful features which make the process not too difficult.
+
+\section{Create a Staging Branch for the Backend}\label{sec:titles}
+
+As we did with the frontend, branch of of the development repository for the backend:
+
+
+
+\chapter*{Afterword}\label{cap:primer}
+\addcontentsline{toc}{chapter}{Afterword}
+
+\section{You've Done It!}\label{sec:titles}
+
+Well, that was quite an adventure. We've both made it out alive! I hope you've found this book immensely useful, and that you're ready to refine your SaaS building skills even further.
 
 \end{document}

@@ -1,0 +1,55 @@
+\documentclass[a4paper, oneside]{article}
+
+\usepackage{lmodern}         % for the looks
+\usepackage[T1]{fontenc}     % to hypenate accented characters correctly
+\usepackage[utf8]{inputenc}  % just in case we go for non-ascii
+\usepackage{tikz}            % the graphics
+\usepackage{textcomp}        % for \textregistered
+
+\definecolor{specialred}{HTML}{E11202}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{tikzpicture}[remember picture,overlay]
+
+\node [align=center] at (current page.north) % upper
+      {\begin{tikzpicture}[remember picture, overlay]
+	  \fill[fill=specialred] (-10,0) rectangle (10,-0.5);
+	  \node[anchor=north] at (0,-0.5) {\Large\textit{Build your own full stack SaaS product in days!}};
+      \end{tikzpicture}};
+      
+\node [align=center] at (current page.center) % dragon
+      {\begin{tikzpicture}[remember picture, overlay]
+          \node[anchor=center,align=center] at (0,5)
+               {\includegraphics[width=1.5\textwidth]{polarbear_clean.png}};
+      \end{tikzpicture}};
+
+\node [yshift=-5cm] at (current page.center) % title
+      {\begin{tikzpicture}[remember picture, overlay]
+          \fill[fill=specialred] (-10,-5) rectangle (10 ,1);
+          \node[align=center] at (0,-1)
+               {\resizebox{1.57\linewidth}{!}{\Huge\color{white}\textbf{Full Stack SaaS}}};
+        \node[align=center] at (0,-3)
+               {\resizebox{1.57\linewidth}{!}{\Huge\color{white}\textbf{Product Cookbook}}};
+	       \node[anchor=east,align=right] at (10,-5.5) {\Huge\color{black}\textit{From Soup to Nuts}};
+      \end{tikzpicture}};
+
+% \node [shift={(-5cm,-5cm)}] at (current page.north east) % Revision 2
+%       {\begin{tikzpicture}[remember picture, overlay]
+%           \draw[fill=black] (0,5) -- (1.5,5) -- (5,1.5) -- (5,0) -- cycle ;
+%           \node[inner sep=0pt,rotate=-45] (rev) at (2.9,2.9) {\huge\color{white}\textbf{Revision 2}};
+%       \end{tikzpicture}};
+
+\node [align=center] at (current page.south) % bottom
+      {\begin{tikzpicture}[remember picture, overlay]
+          \node[anchor=south west, align=left] at (-10,0.5)
+               {\resizebox{.3\linewidth}{!}
+                 {\Huge\color{black}
+                   \textbf{Full Stack Craft LLC\textsuperscript{\large{\texttrademark}}}}};
+               \node[anchor=south east, align=right] at (10,0.5) {\Huge\color{black}\textit{Christopher J. Frewin}};
+      \end{tikzpicture}};
+
+\end{tikzpicture}
+
+\end{document}
