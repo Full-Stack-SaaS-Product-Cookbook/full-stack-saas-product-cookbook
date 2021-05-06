@@ -20,12 +20,16 @@
 \usetikzlibrary{shapes}
 \usepackage{color}
 \usepackage{textcomp}
+\usepackage{float}
 
 % for emojis :)
 % \usepackage{twemoji}
 
 % for advanced code highlighting
 \usepackage{minted}
+
+% for sizing emoji png's to font height
+\usepackage{scalerel}
 
 % custom command for NPM-like red code snippets
 \usepackage{listings}
@@ -178,16 +182,53 @@
 
 \definecolor{monokaiPink}{HTML}{F92771}
 \definecolor{npmred}{HTML}{BB2E3E}
-\definecolor{terminalbackground}{HTML}{E5E5E5}
+\definecolor{codebackground}{HTML}{F2F2F2}
 
 \usemintedstyle{default}
 
 %%% Custom Commands %%%
 \newcommand{\link}[2]{\textbf{\textcolor{monokaiPink}{\href{#2}{#1}}}}
 
-\newcommand{\standardfigure}[3]{\begin{figure}\begin{center}\includegraphics[width=#1]{#2}\caption{#3}\end{center}\end{figure}}
+\newcommand{\standardfigure}[3]{\begin{figure}[H]\begin{center}\includegraphics[width=#1]{#2}\caption{#3}\end{center}\end{figure}}
+
+\newenvironment{code}[1]
+  {\VerbatimEnvironment\begin{minted}[breaklines=true, bgcolor=codebackground, breaksymbolleft=]{#1}}
+  {\end{minted}}
 
 \NewDocumentCommand{\codeword}{v}{\texttt{\textbf{\textcolor{npmred}{#1}}}}
+
+% emoji Commands
+\NewDocumentCommand\warning{}{
+  \includegraphics[width=0.5cm, height=0.5cm]{images/emojis/u26A0.png}
+}
+
+\NewDocumentCommand\information{}{
+  \includegraphics[width=0.5cm, height=0.5cm]{images/emojis/u2139.png}
+}
+
+\NewDocumentCommand\greenCheck{}{
+  \includegraphics[width=0.5cm, height=0.5cm]{images/emojis/u2705.png}
+}
+
+\NewDocumentCommand\wink{}{
+  \includegraphics[scale=0.05]{emojis/u1F609.png}
+}
+
+\NewDocumentCommand\thumbsup{}{
+  \includegraphics[scale=0.05]{emojis/u1F44D.0.png}
+}
+
+\NewDocumentCommand\rocket{}{
+  \includegraphics[scale=0.05]{emojis/u1F680.png}
+}
+
+\NewDocumentCommand\beers{}{
+  \includegraphics[scale=0.05]{emojis/u1F37B.png}
+}
+
+\NewDocumentCommand\joy{}{
+  \includegraphics[scale=0.05]{emojis/u1F602.png}
+}
 
 % for the tree outputs
 \DeclareUnicodeCharacter{251C}{\mbox{\kern.23em
@@ -197,25 +238,25 @@
   \vrule height2.2exdepth-1.8ptwidth.4pt\vrule height2.2ptdepth-1.8ptwidth.23em}}
 \DeclareUnicodeCharacter{2502}{|}
 
-\newtcolorbox{highlightBox}[3][]{%
+\newtcolorbox{highlightBox}[4][]{%
   enhanced jigsaw,
   colback=#3!10!white,%
   colframe=black!80!black,
   size=small,
   boxrule=1pt,
-  title=\textbf{#2},
+  title=\raisebox{-3pt}{#4} \textbf{#2} \raisebox{-3pt}{#4},
   halign title=flush center,
   coltitle=black,
   breakable,
   drop shadow=#3!50!white,
   attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
-  minipage boxed title=5cm,
+  minipage boxed title=7cm,
   boxed title style={%
-    colback=white,
+    colback=#3!10!white,
     size=fbox,
     boxrule=1pt,
     boxsep=2pt,
-    underlay={%
+    underlay={
       \coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
       \coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
     },
@@ -279,11 +320,35 @@ If you are a solo software developer looking to move into the SaaS landscape and
 \item How to create and automate frontend and backend builds with CI and CD
 \end{arrows}
 
-Then look no further. This book will provide answers to all those questions and more with full code solutions. Note that this book \textit{is} highly opinionated. I do use specific frameworks and services throughout the entirety of the book. But, like I've said, after searching for 10 years for the holy grail of SaaS product generators, I believe I've found it, at least for Web-based SaaS products. If you are looking for more theoretical or fundamental-minded books on building apps, this book is not for you, and there are plenty of those out there.
+Then look no further. This book will provide answers to all those questions and more with full code solutions. Note that this book \textit{is} highly opinionated. I do use specific frameworks and services throughout the entirety of the book. But, like I've said, after searching for 10 years for the holy grail of SaaS product generators, I believe I've found it, at least for web-based SaaS products. If you are looking for more theoretical or fundamental-minded books on building apps, this book is not for you, and there are plenty of those out there.
+
+\minisec{Book GitHub Organization and Repository}
+
+\begin{highlightBox}{Book Code and Source}{green}{\greenCheck}
+I have created an \link{entire GitHub Organization for this book}{https://github.com/Full-Stack-SaaS-Product-Cookbook}. It includes all milestone repositories as well as \link{the repository for this book's source}{https://github.com/Full-Stack-SaaS-Product-Cookbook/full-stack-saas-product-cookbook}! (Too meta, right?). While I encourage you to understand and write your own code as you follow along, I also totally understand if you've missed a section or something small and clone the code just to see how it works. Enjoy!
+\end{highlightBox}
+
+\minisec{Highlight Boxes}
+
+Throughout this book, you'll encounter a variety of highlighted boxes, which are colored coded to provide specific types of information. Examples are as follows:
+
+\begin{highlightBox}{Green Highlight Boxes}{green}{\greenCheck}
+Green highlight boxes have green check emojis and will offer links to various repositories which act as milestones in time of the code base we will be building together. In fact, you've already seen one, just in the above section.
+\end{highlightBox}
+
+\begin{highlightBox}{Blue Highlight Boxes}{blue}{\information}
+Blue highlight boxes have blue information emojis and are more of aside details about my software opinions. They aren't essentially to the workflow of building the product, but offer some nice insights (in my opinion) into the careful thought process I put into my stack.
+\end{highlightBox}
+
+\begin{highlightBox}{Yellow Highlight Boxes}{yellow}{\warning}
+Yellow highlight boxes have yellow warning emojis are warnings of what could go wrong with a particular piece of code, the stack, or a methodology. Take note of these far and few between warning highlights!
+\end{highlightBox}
 
 \minisec{Are You Ready?}
 
-I'm proud of how this book came out, and I frequently reap the rewards of my own labor, using it as a handbook myself for each new SaaS product I build using this stack. I hope that I've piqued your interest, and that you'll join me on this full stack adventure!
+That should be all you need to know before diving into this book.
+
+I'm proud of how this book came out, and I frequently reap the rewards of my own labor, using it as a handbook myself for each new SaaS product I build. I hope that I've piqued your interest, and that you'll join me on this full stack adventure!
 
 - Christopher Frewin
 
@@ -299,16 +364,20 @@ I'm proud of how this book came out, and I frequently reap the rewards of my own
 
 \section{The Product You'll Be Building}\label{sec:titles}
 
-The product you'll be making in this book is a product I call 'ReduxPlate'. It's a real, full fledged, profit generating product I own, currently live at https://reduxplate.com. It's a \$50 / year subscription service that builds your entire Redux code boilerplate from the state of your application alone!
+The product you'll be making in this book is a product I call 'ReduxPlate'. It's a real, full fledged, profit generating product I own, currently live at \link{https://reduxplate.com}{https://reduxplate.com}. It's a \$60 / year subscription service that builds your entire Redux code boilerplate from the state of your application alone!
 
-For those who use Redux with TypeScript, you may know how much code needs to be written after adding just one new part of state. (Hint: it's even more than the boilerplate required with vanilla JavaScript!) I had long wanted to build a SaaS product like this, and the motivation to write the book finally spurred me to build it, at it is a good example for a full stack SaaS product. 
+For those who use Redux with TypeScript, you may know how much code needs to be written after adding just one new part of state. (Hint: it's even more than the boilerplate required with vanilla JavaScript!) I had long wanted to build a SaaS product like this, and the motivation to write the book finally spurred me to build it, since it is a good example for a full stack SaaS product. 
+
+Don't worry, we'll get into the nitty-gritty of how it actually works, writing all the code step-by-step throughout this book. But more on those details will come later.
 
 \minisec{My Challenge to You}
 
-If you're motivated, I suggest to copying only the \textit{nature} of each of the tutorials throughout the book, modifying code where it is needed, ultimately coming out with your own SaaS product by the end of the book. Otherwise, it's also of course completely acceptable to work through the tutorials exactly step-for-step with this book - you'll come out with an exact clone of what ReduxPlate looks like today! Even if you take this mimicry style of workflow, at the end, you'll still have this book as a reference and can do it all again, already knowing all the steps, for your next profitable SaaS product!
+If you're motivated, I suggest to copying only the \textit{nature} of each of the tutorials throughout the book, modifying code where it is needed, ultimately coming out with your own SaaS product by the end of the book. This is especially useful in the "recipe" sections in the second half of the book - they are actually product agnostic, and should be able to be included for \textit{any} type of SaaS Product. 
+
+It's also of course completely acceptable to work through the tutorials exactly step-by-step - you'll come out with an exact clone of what ReduxPlate looks like today! Even if you take this mimicry style of workflow, at the end, you'll still have this book as a reference and can do it all again, already knowing all the steps, for your next profitable SaaS product!
 
 %*************************************************************************
-\chapter{The Frontend}\label{cap:primer}
+\chapter{The Frontend - Getting Started}\label{cap:primer}
 %*************************************************************************
 \dictum%
 [Steve Jobs, 1997]%author
@@ -320,13 +389,13 @@ If you're motivated, I suggest to copying only the \textit{nature} of each of th
 \begin{arrows}
 \item Some notes on naming conventions you'll see throughout the book
 \item A few of my own personal style techniques when writing frontend code with React and TypeScript
-\item Define various framework versions
+\item Define the framework and tool versions used on the frontend
 \end{arrows}
 
 We're going to start off building the frontend, as that side of the stack gives us some immediate visual feedback, and as Steve's quote above touts, we can then work backwards to figure out what sort of technologies  we'll need to complete our SaaS product. 
 
-\begin{highlightBox}{A Word On Naming Conventions}{blue}
-As mentioned in Section I, I'll be going step by step through what I did to build ReduxPlate (https://reduxplate.com) Indeed, this book was written \textit{while} I built ReduxPlate! The repositories we'll create for the project will key into the naming convention I will use throughout the book. In fact, the only two repositories we'll need for our entire complete SaaS product will have the following names:
+\begin{highlightBox}{A Word On Naming Conventions}{blue}{\information}
+As mentioned in Section I, I'll be going step by step through what I did to build ReduxPlate (\link{https://reduxplate.com}{https://reduxplate.com}) Indeed, this book was written \textit{while} I built ReduxPlate! The repositories we'll create for the project will key into the naming convention I will use throughout the book. In fact, the only two repositories we'll need for our entire complete SaaS product will have the following names:
 \newline\newline
 \codeword{reduxplate.com} (For the frontend repository, AKA the client. In the case of a web app, which ReduxPlate is, I typically choose the root domain name for the the name of the repository.)
 \newline\newline
@@ -349,19 +418,17 @@ I also have developed my own specific code style. Some of my most important rule
 \item Use \link{Redux}{https://redux.js.org/} with \link{Redux Toolkit}{https://redux-toolkit.js.org/}
 \end{arrows}
 
-\minisec{Framework Versions}
+\minisec{Frontend Frameworks and Tools Versioning}
 
-For the duration of this book, I will be using the following versions of the following tools and frameworks:
+On the frontend, I will be using these versions of the following tools and frameworks:
 
 \begin{arrows}
-\item .NET 5.0
-\item npm 
+\item npm 7.6.13
 \item Node 14.16.0
-\item React (and React DOM) 17.0.2
 \item Gatsby 3.0.0
-\item PostgreSQL 13.2
-\item Nginx 1.17
-\item Ubuntu 20.04 (Focal Fossa)
+\item React (and React DOM) 17.0.2
+\item Bootstrap 5.0
+\item TypeScript 4.2
 \end{arrows}
 
 Installation and setup of all these frameworks, including code editor plugins and so on are outside of the scope of the book (excluding Ubuntu 20.04 - I will be going over in detail how to start a Ubuntu 20.04 box with Digital Ocean). There are plenty of awesome resources online for everything else, and for the packages themselves, \textbf{it's always best to start with their respective documentation first.}
@@ -378,27 +445,27 @@ With some housekeeping done, let's jump right into code. We'll start by cloning 
 
 So, you'll also need to install Gatsby if you don't have it installed yet:
 
-\begin{minted}[breaklines=true, bgcolor=terminalbackground]{bash}
+\begin{code}{bash}
 npm install gatsby
-\end{minted}
+\end{code}
 
-All together, the command to create our frontend Gatsby project is:
+Then, the command to create our frontend Gatsby project is:
 
-\begin{minted}[breaklines=true, bgcolor=terminalbackground]{bash}
+\begin{code}{bash}
 gatsby new reduxplate.com https://github.com/gatsbyjs/gatsby-starter-default
-\end{minted}
+\end{code}
 
-We'll cd right into the directory:
+We'll cd into the directory:
 
-\begin{minted}[breaklines=true, bgcolor=terminalbackground]{bash}
+\begin{code}{bash}
 cd reduxplate.com
-\end{minted}
+\end{code}
 
 and get started with the \codeword{develop} command:
 
-\begin{minted}[breaklines=true, bgcolor=terminalbackground]{bash}
+\begin{code}{bash}
 npm run develop
-\end{minted}
+\end{code}
 
 You should see the Gatsby starter spool up at \codeword{localhost:8000} in your browser, or a different port if you already had something running at 8000:
 
@@ -406,45 +473,33 @@ You should see the Gatsby starter spool up at \codeword{localhost:8000} in your 
 
 \section{Clean Up the Gatsby Default Starter}
 
-Let's now do some simple house cleaning on this project Gatsby has just scaffolded for us. All the while you should be able to be running the site in development mode, and see the warnings provided in the terminal. The step by step process to get down to a no-fluff skeleton is as follows:
+Let's now do some simple house cleaning on this project Gatsby has just scaffolded for us. While doing all of these steps, you should be able to keep running the site in development mode, and see the warnings provided in the terminal. The step by step process to get down to a no-fluff skeleton is as follows:
 
 \begin{arrows}
 \item hop into \codeword{package.json} and modify all the values to fit your project. This likely includes the \codeword{"name"}, \codeword{"description"}, \codeword{"author"}, and \codeword{"keywords"} fields. 
-\item Then take a look in \codeword{gatsby-config.js}, and follow a similar pattern, modifying the \codeword{"title"}, \codeword{"description"}, and \codeword{"author"} fields.
-\item In the \codeword{src/} folder, within \codeword{pages/}, delete the \codeword{page-2.js} and \codeword{using-typescript.tsx} files. You can then delete the two \codeword{<Link>} components to each of those pages from \codeword{index.js}.
+\item Then take a look in \codeword{gatsby-config.js}, and follow a similar pattern, modifying the \codeword{"title"}, \codeword{"description"}, and \codeword{"author"} fields. You can also scroll down and active the \codeword{gatsby-plugin-offline} plugin and delete the comments about it.
+\item In the \codeword{src/} folder, within \codeword{pages/}, delete the \codeword{page-2.js} and \codeword{using-typescript.tsx} files. You can then delete the two \codeword{<Link>} components to each of those pages from \codeword{index.js}, as well as the \codeword{Link} import there.
+\item Delete the comments in \codeword{gatsby-browser.js}, \codeword{gatsby-node.js}, and \codeword{gatsby-ssr.js}.
 \item In the \codeword{components} folder, delete \codeword{layout.css} (and where it is imported in \codeword{layout.js}).
-\item You can also delete all images in the \codeword{images/} folder and delete the \codeword{<StaticImage>} component from \codeword{index.js}.
-\item Also feel free to delete the comment fluff on the top of each of the remaining components \codeword{header.js}, \codeword{layout.js}, and \codeword{seo.js}
-\item Convert all the remaining component files to \codeword{.tsx} files, since they are all React components.
+\item Delete the \codeword{gatsby-astronaut.png} image in the \codeword{images/} folder and delete the \codeword{<StaticImage>} component from \codeword{index.js}.
+\item Delete the comment fluff on the top of each of the remaining components \codeword{header.js}, \codeword{layout.js}, and \codeword{seo.js}
+\item Convert all the remaining component files to \codeword{.tsx} files, since they are all React components. Also capitalize all the files in the \codeword{components/} folder, i.e. \codeword{Header}, \codeword{Layout}, and \codeword{Seo} - we do this as the standard TypeScript pattern for files to match their export names. We won't capitalize the names of the files within the \codeword{pages/} folder, since these file names will reflect the actual URL of the page that is produced.
 \item Remove all references to \codeword{propTypes} and \codeword{defaultProps} in the codebase.
-\item After doing that, you'll need to clean up the now \codeword{Seo.tsx} file. We'll create an \codeword{ISeoProps} to use as our props instead. The full resulting component that makes TypeScript happy looks like this:
+\item After doing that, you'll need to clean up what is now the \codeword{Seo.tsx} file. We'll create an \codeword{ISeoProps} to use as our props instead. The full resulting component that makes TypeScript happy looks like this:
 
-\begin{minted}[breaklines=true, bgcolor=terminalbackground]{jsx}
+\begin{code}{jsx}
 import * as React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { siteMetadata } from "../../gatsby-config"
 
 export interface ISeoProps {
   title: string
-  lang: string
   description?: string
-  meta?: Array<
-    | {
-        name: string
-        content: any
-        property?: undefined
-      }
-    | {
-        property: string
-        content: any
-        name?: undefined
-      }
-  >
-  
 }
 
 function Seo(props: ISeoProps) {
-  const { description, lang, meta, title } = props
+  const { description, title } = props
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -459,90 +514,84 @@ function Seo(props: ISeoProps) {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
-
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
+    <Helmet>
+      {/* General tags */}
+      <title>{title}</title>
+      <meta
+        name="description"
+        content={description || siteMetadata.description || ""}
+      />
+      <meta property="og:title" content={title} />
+      <meta
+        property="og:description"
+        content={description || siteMetadata.description || ""}
+      />
+
+      {/* Twitter Card tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:creator" content={site.siteMetadata?.author || ""} />
+      <meta name="twitter:title" content={title} />
+      <meta
+        name="twitter:description"
+        content={description || siteMetadata.description || ""}
+      />
+    </Helmet>
   )
 }
 
-export default Seo
-\end{minted}
+export default Seo  
+\end{code}
 
-it's quite long, but we'll be boosting the Seo component later in the book.
+it's not as detailed as an SEO component could be, but we'll be revisiting and boosting the \codeword{Seo} component later in the book.
 
-\item You will then have to add a \codeword{lang} attribute in both the \codeword{404.tsx} and \codeword{index.tsx} pages. For example for \codeword{index.tsx}:
+\item Also update the \codeword{README.md}. I typically set the title of the README as the name of the repository itself, and then add a small description, something like this:
 
-\begin{minted}[breaklines=true, bgcolor=terminalbackground]{jsx}
-import * as React from "react"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+\begin{code}{markdown}
+# reduxplate.com
 
-const IndexPage = () => (
-  <Layout>
-    <Seo title="Home" lang="en-US" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-  </Layout>
-)
+The website source for ReduxPlate - never write a line of Redux again.
+\end{code}
 
-export default IndexPage
-\end{minted}
+Since this repository is private, we won't be adding any more information to the README. If you are open-sourcing your project of course, it's wise to include things like install steps, environment variables, and any other examples or requirements to get the product running.
+
+\item Finally, update the LICENSE file. You can keep the BSD license, but be sure to change the company name to your company or your own name. I prefer the MIT license. When formatted for my own company, Full Stack Craft LLC, the MIT license looks like this: 
+
+\begin{code}{markdown}
+MIT License
+
+Copyright (c) Full Stack Craft LLC and its affiliates.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+\end{code}
+
+Also remember to update the \codeword{"license"} key in \codeword{package.json} appropriately if you choose also to switch to a different license, here following my MIT license example:
+
+\begin{code}{json}
+"license": "MIT",
+\end{code}
 
 \end{arrows}
 
-\begin{highlightBox}{A Word On Typescript}{blue}
-For a Full Stack SaaS Product, I would argue that TypeScript is nearly a necessity. It speeds up development, maintainability, and will help you catch any type errors before you even run your code. We will be using it all across the frontend, including our serverless functions as we'll see later.
-\newline
-\newline
-For the Gatsby project, every JavaScript file within the \codeword{src} directory will have either a \codeword{.tsx} extension, when JSX syntax is needed for React, or a \codeword{.ts} extension, for any other non-React JavaScript. Luckily, Gatsby supports TypeScript out of the box, so all we need to do is convert the existing pages to their respective \codeword{.ts} and \codeword{.tsx} extensions, and we are all set.
-\end{highlightBox}
+So far so good. Right now, the folder structure of the skeleton of the Gatsby default starter should look like this:
 
-So far so good. Right now, the folder structure of the skeleton of the gatsby default starter should look like this:
-
-\begin{minted}[breaklines=true, bgcolor=terminalbackground]{bash}
+\begin{code}{bash}
   .
   ├── LICENSE
   ├── README.md
@@ -561,25 +610,40 @@ So far so good. Right now, the folder structure of the skeleton of the gatsby de
       └── pages
           ├── 404.tsx
           └── index.tsx
-\end{minted}
+\end{code}
 
-\minisec{Recap}
+We've got only two pages, the home page (\codeword{index.tsx}) and a 404 (\codeword{404.tsx}) page, and a handful of components: a layout, a header, and an seo utility component.
 
-We're nearly reading to start actually coding and building our frontend. We've edited our \codeword{package.json} and \codeword{gatsby-config.js} to reflect our project, converted all components to \codeword{.tsx} files, and removed any fluff from all files and code. All that is left to get started is creating a proper git repository so we can start pushing our changes!
+\begin{highlightBox}{A Word On Typescript}{blue}{\information}
+For a Full Stack SaaS Product, I would argue that using TypeScript is nearly a necessity. It speeds up development, maintainability, and will help you catch any type errors before you even run your code. We will be using it all across the frontend, including our serverless functions, as we'll see later.
+\newline
+\newline
+For the Gatsby project, every file we write within the \codeword{src} directory will have either a \codeword{.tsx} extension, when JSX syntax is needed for React, or a \codeword{.ts} extension, for any other non-React code. Luckily, Gatsby supports TypeScript out of the box, so all we need to do is convert the existing files to their respective \codeword{.ts} and \codeword{.tsx} extensions, and we are all set.
+\end{highlightBox}
 
-\section{Setup a Bitbucket Repository}\label{sec:titles}
+\minisec{Recap of the Frontend Bootstrapping}
+
+We're nearly reading to start actually coding and building our frontend. We've bootstrapped our project with the Gatsby CLI. We've edited our \codeword{package.json} and \codeword{gatsby-config.js} to reflect our project, converted all components to \codeword{.tsx} files, and removed all fluff from all files and code. We also made a few changes to get the codebase to jive nicely with TypeScript. All that is left to get started is to creating a proper git repository so we can start pushing our changes!
+
+\begin{highlightBox}{Milestone Code}{green}{\greenCheck}
+We've reached the first milestone repository of this book: \link{the skeleton Gatsby repository which we've just finished crafting}{https://github.com/Full-Stack-SaaS-Product-Cookbook/milestone-1-gatsby-skeleton-project}! There's not much in it, but it is a perfect minimalist and TypeScript-minded Gatsby boilerplate to start your future SaaS products with.
+\end{highlightBox}
+
+\section{Setup a Bitbucket Repository for the Frontend}\label{sec:titles}
 \minisec{Chapter Objectives}
 \begin{arrows}
-\item Creating a BitBucket repository for the SaaS app's web UI.
+\item Creating a BitBucket repository for the SaaS app's frontend.
 \end{arrows}
 
-Since this will be a private SaaS product, I will start with a Bitbucket repository - but feel free to start yours in a private (or even public!) repository on GitHub. Just keep in mind that further on in this book you will have to take care of things like API secrets and keys in an environment like GitHub by yourself - but it's still possible and very similar to the Bitbucket workflow. This book will only cover how the workflow in done with Bitbucket.
+Since this will be a private SaaS product, I will be creating a Bitbucket repository for it. Feel free to start yours in a private (or even public!) repository on GitHub. Just keep in mind that further on in this book you will have to take care of things like API secrets and keys in an environment like GitHub by yourself. This is still possible and the workflow is very similar to Bitbucket.
 
-Create an account on BitBucket if you don't have one already. Then, from your overview dashboard, click the '+' icon in the top left of the screen:
+\minisec{Create the Repository}
+
+Create an account on BitBucket if you don't have one already. Then, from your overview dashboard, click the `+' icon in the top left of the screen:
 
 \standardfigure{\textwidth/2}{frontend/add-repository}{Screenshot of adding a repository on Bitbucket.}
 
-then select 'Create' > 'Repository':
+then select `Create' > `Repository':
 
 \standardfigure{\textwidth/2}{frontend/create-repository}{Screenshot of the 'create repository' on Bitbucket.}
 
@@ -587,7 +651,7 @@ On the resulting page, apply the following:
 
 \begin{arrows}
 \item Workspace: can just be your workspace, or your team's if you have one.
-\item Project: I created a new project called 'ReduxPlate', you can choose whatever project you'd like here
+\item Project: I created a new project called `ReduxPlate', you can choose whatever project you'd like here
 \item Repository name: should match the folder name that Gatsby made for us, in my case \codeword{reduxplate.com}
 \item Include a README? > No
 \item Default branch name > Leave blank
@@ -598,20 +662,158 @@ All configured, the repository you are about to create should look something lik
 
 \standardfigure{\textwidth}{frontend/repository-fields}{Screenshot of repository fields for your SaaS product.}
 
-Go ahead and click the blue 'Create repository' button.
+Go ahead and click the blue `Create repository' button. You should be redirected to your repository's homepage.
 
-Nice, so we've successfully created out Bitbucket repository. Let's do the signature 'initial commit' with our current scaffolded project as a sanity check to make sure things are working.
+\minisec{Add the Repository URL to Project and Push the Code}
 
-First, make sure your \codeword{package.json} reflects the new repository you've just created:
+Nice, so we've successfully created out Bitbucket repository. Let's do the signature `initial commit' with our current scaffolded project as a sanity check to make sure things are working.
 
+To achieve this, first make sure your \codeword{package.json} reflects the new repository you've just created. As an example, here is the \codeword{"url"} key with my own Bitbucket git URL:
 
+\begin{code}{json}
+"repository": {
+  "type": "git",
+  "url": "https://princefishthrower@bitbucket.org/princefishthrower/reduxplate.com.git"
+},
+\end{code}
 
-The homepage of your repository should now look like this:
+We also need to update the git origin url from the Gatsby starter to our new repository:
 
-\section{Use Netlify for the DevOps Framework}\label{sec:titles}
+\begin{code}{bash}
+git remote set-url origin https://princefishthrower@bitbucket.org/princefishthrower/reduxplate.com.git
+\end{code}
+
+We are ready to push. Do that with:
+
+\begin{code}{bash}
+git add .
+git commit -m "initial commit"
+git push
+\end{code}
+
+Don't worry about adding files or patterns to the \codeword{.gitignore} file, the Gatsby starter has already included one for us!
+
+\section{Use Netlify for the Frontend DevOps Framework}\label{sec:titles}
 \minisec{Chapter Objectives}
 \begin{arrows}
-\item Using Netlify and the Netlify CLI to build and deploy our site whenever we push to the \codeword{master} branch
+\item Using Netlify and the Netlify CLI to build and deploy our site to a live URL whenever we push to the \codeword{master} branch
+\end{arrows}
+
+Alright. So we've got our skeleton Gatsby project and a Bitbucket git repository to track our changes as we build the project. Let's connect Netlify now for automatic builds and publishes to master.
+
+\minisec{Log In or Create an Account for Netlify}
+
+Like Bitbucket, Netlify accounts are free for individuals on the most basic plan. From you dashboard, navigate to the `Sites' section and click the green button `New site from Git':
+
+\standardfigure{\textwidth}{frontend/netlify-new-site}{Screenshot of the `New site from Git' button.}
+
+On the resulting page, click the `Bitbucket' button:
+
+\standardfigure{\textwidth}{frontend/netlify-bitbucket-button}{Screenshot of the `Bitbucket' button.}
+
+You'll then be guided through the OAuth process to connect your Bitbucket account to Netlify. After authenticating, you'll be redirected back to Netlify, where you should see a list of all your Bitbucket repositories. You can scroll through or search for the repository you want to connect. In my case that is `reduxplate.com'. Then click that repository.
+
+Netlify is so smart that it detects we are using the Gatbsy framework and suggests the build command as \codeword{npm run build} and the resulting build directory as \codeword{} (which indeed are both correct!) Click `OK' to confirm these two variables and feast your eyes as your first build takes off!
+
+\begin{highlightBox}{A Word On Netlify}{blue}{\information}
+I've only been using Netlify since February 2021, but I am already hooked on it as a service, and it deserves it's own section here. I find the tiers of their service so generous, that sometimes, it almost feels like \textit{stealing}. On the free plan, you immediately receive 100 GB of bandwidth, 300 build minutes, \textit{and both quotas complete reset each month}. \. It truly is an incredible service. 
+\newline\newline
+As we'll see later, even with their authentication / authorization service, known as Netlify Identity, you don't pay until you have over \textit{1000 active users}, and if we get that many users on our SaaS product, we don't have to worry about a few additional service fees that'll we'll be more than happy to pay Netlify for! \wink
+\newline\newline
+So, hats off to you, Netlify team, your service is awesome! \thumbsup
+\end{highlightBox}
+
+\minisec{Rename the Assigned Netlify Domain Name}
+
+Netlify supplies us with a random name for our subdomain, but we can rename this to whatever we'd like! If you've picked a unique enough name for your product, chances are it will be available for your Netlify site domain. If it's already taken, consider adding an hyphen or other small changes so it is a human readable reminder of what the product or project name is. In my case, \codeword{reduxplate} was available. 
+
+\section{Add a Primary Domain to Netlify via Namecheap}\label{sec:titles}
+\minisec{Chapter Objectives}
+\begin{arrows}
+\item Buying a domain via Namecheap, and setting that as our primary domain on Netlify
+\end{arrows}
+
+It's great that Netlify right away gives us a live domain (now \codeword{reduxplate.netlify.app} in my case), but a custom domain is always better, right? Luckily, Netlify shines through once again, allowing us to point a primary domain.
+
+I've already purchased \codeword{reduxplate.com} as my primary domain, so I'll use that as an example here.
+
+\begin{highlightBox}{A Word on Namecheap}{blue}{\information}
+While Namecheap does not have perhaps the best UI or services, they are true to their word in that they are \textit{cheap}. For DNS setups outside of what we will need for Netlify, their DNS manager UI has a few quirks that takes some getting used to, but that is outside of the scope of this book. As an overall rule of thumb I \textit{do} recommend Namecheap, as their domain prices are quite competitive.
+\end{highlightBox}
+
+\begin{highlightBox}{Domain Name Shopping}{yellow}{\warning}
+Choosing and purchasing a domain is an important step to consider \textit{before} you even start writing code for your product - you don't want to get in the classic trap of building out a brand and logo without an applicable domain to use first! Nowadays you can always find a \codeword{.app}, \codeword{.us} or similar top level domains for whatever domain name you are looking for, but the classic top level domain \codeword{.com} is what I recommend you try and get a hold of. Also realize that this may take some compromising and / or creativity, and that shorter domain names can be rather expensive!
+\end{highlightBox}
+
+\minisec{Adding Netlify DNS}
+
+To do this, you will have to go to the domain provider . As previously stated, mine is Namecheap, so I can go to my site's dashboard on Namecheap, and click the dropdown for the `Nameservers' tab, and click the `Custom DNS' option:
+
+\standardfigure{\textwidth}{frontend/namecheap-custom-dns}{Screenshot of the nameservers dropdown on the Namecheap site dashboard.}
+
+In the fields that appear, simply apply the handful of values that Netlify provided us with:
+
+\standardfigure{\textwidth}{frontend/namecheap-custom-dns}{Screenshot of the Netlify nameservers applied to the custom DNS configuration on Namecheap.}
+
+\begin{highlightBox}{Domain Name Shopping}{yellow}{\warning}
+Depending on a variety of factors, like your domain name, your provider, and the nameservers that Netlify gives you, this custom DNS setup could unfortunately take \textit{days} to propagate around the world. As an anecdotal story, when I published my product \link{The Wheel Screener}{https://wheelscreener.com}, my friends in the United States were able to see the live site within a few hours of me setting up the custom DNS on Namecheap. Here on my internet in Austria, it took about \textit{two days}, and even a bit longer to show up on the cellular network here. So just be prepared for a definitely non-zero lag time for the DNS propagation. It shouldn't be a problem, you'll have plenty to build in the meantime. \wink
+\end{highlightBox}
+
+\minisec{Redirect the www Subdomain}
+
+We'll also add an automatic redirect from \codeword{www.reduxplate.com} to \codeword{reduxplate.com}.
+
+\chapter{The Frontend - Implementation}\label{cap:primer}
+
+\section{Adding SCSS and Bootstrap as the Styling Framework}\label{sec:titles}
+\minisec{Chapter Objectives}
+\begin{arrows}
+\item Use scss as our main styling language.
+\item Add the \codeword{gatsby-plugin-sass} plugin, which allows us to import our .scss files directly and will compile our styles inline during the build process.
+\item Add Bootstrap as our main styling framework.
+\end{arrows}
+
+Following the official Gatsby documentation on \link{how to add SASS to Gatsby}{https://www.gatsbyjs.com/plugins/gatsby-plugin-sass/}, first install both the \codeword{sass} package and the \codeword{gatsby-plugin-sass} plugin:
+
+\begin{code}{bash}
+npm install sass gatsby-plugin-sass
+\end{code}
+
+also include the \codeword{gatsby-plugin-sass} plugin in your \codeword{gatsby-config.js}:
+
+\begin{code}{js}
+plugins: [
+...  
+`gatsby-plugin-sass`
+]
+\end{code}
+
+We can now install bootstrap:
+
+\begin{code}{bash}
+npm install bootstrap@next
+\end{code}
+
+Go ahead and create a \codeword{styles/} folder within the \codeword{src/} folder, and then add a file simply called \codeword{styles.scss}. This will be our root SASS file, and we'll import all custom modules we write into it, including Bootstrap.
+
+\minisec{Installing and Including Bootstrap}
+
+We will follow \link{the Bootstrap official documentation on how to add Bootstrap to our SASS styles}{https://getbootstrap.com/docs/5.0/customize/sass/}. For now, we can import the Bootstrap SASS directly in our \codeword{styles.scss} file:
+
+\begin{code}{scss}
+@import "../node_modules/bootstrap/scss/bootstrap";
+\end{code}
+
+As the official docs state, this import should be the first one. All other imports should follow it. In a later section we will work on tree shaking out only the CSS classes which are used in our project to keep our CSS footprint low.
+
+\minisec{Theming For Bootstrap}
+
+Again, following the official documentation, 
+
+\section{Add Netlify Identity as the Authentication and Authorization Platform}\label{sec:titles}
+\minisec{Chapter Objectives}
+\begin{arrows}
+\item Setting up Stripe to accept subscriptions
 \end{arrows}
 
 \section{Use Stripe for the First Payments Platform}\label{sec:titles}
@@ -620,68 +822,74 @@ The homepage of your repository should now look like this:
 \item Setting up Stripe to accept subscriptions
 \end{arrows}
 
-\section{Add a Primary Domain to Netlify via Namecheap}\label{sec:titles}
-\minisec{Chapter Objectives}
-\begin{arrows}
-\item Buying a domain via Namecheap, and setting that as our primary domain on Netlify
-\end{arrows}
-
 \section{Resolving User Roles}\label{sec:titles}
 \minisec{Chapter Objectives}
 \begin{arrows}
 \item Buying a domain via Namecheap, and setting that as our primary domain on Netlify
 \end{arrows}
 
-Note that this style of solution is future proof as well: it doesn't matter if we add additional roles later, for example a 'deluxe' or 'corporate' plan. To achieve this future-proofing, we don't use any \codeword{switch}, \codeword{if}, or \codeword{else if} logic on the user's role. Instead we opting for the \codeword{Object.values()} of the available roles, and compare them against every role with \codeword{roles.find()}.
+Note that this style of solution is future proof as well: it doesn't matter if we add additional roles later, for example a `deluxe' or `corporate' plan. To achieve this future-proofing, we don't use any \codeword{switch}, \codeword{if}, or \codeword{else if} logic on the user's role. Instead we opting for the \codeword{Object.values()} of the available roles, and compare them against every role with \codeword{roles.find()}.
 
-Excellent. We've put together a website for our SaaS product, complete with authentication, authorization, and .
+Excellent. We've add custom styling and themeing to our website, as well as authentication, authorization, and automatic deploys to our live custom URL. The next step is to build our initial endpoint on our custom API and call it from the frontend to ensure that it is working.
 
-Here's an example TypeScript snippet:
-
-\begin{minted}[breaklines=true, bgcolor=terminalbackground]{typescript}
-
-import { AnimationType } from '../enums/AnimationType';
-
-export type UsePleaseStayOptions = {
-  messages: Array<string>;
-  animationType?: AnimationType;
-  delay?: number;
-  faviconHref?: string;
-}
-
-\end{minted}
-
-\chapter{The Backend}\label{cap:primer}
+\chapter{The Backend - Getting Started}\label{cap:primer}
 
 \section{Introduction to the Backend}
-\section{Bootstrap the Backend With the .NET CLI}
-\section{Writing Our First Endpoint}
+\minisec{Chapter Objectives}
+\begin{arrows}
+\item A few of my own opinions when writing backend code with .NET
+\item Define the framework and tool versions used on the backend
+\end{arrows}
 
-Great. Our API is up and running. Typically as a sanity check, I create a root controller which just returns some plain text of an API version string. 
+\minisec{Some Notes on My Backend Style}
+
+\begin{arrows}
+\item Use Repositories 
+\item Use Service Classes
+\end{arrows}
+
+\minisec{Backend Frameworks and Tools Versioning}
+
+On the backend, I will be using the following versions of the following tools and frameworks:
+
+\begin{arrows}
+\item .NET 5.0
+\item PostgreSQL 13.2
+\item Nginx 1.17
+\item Ubuntu 20.04 (Focal Fossa)
+\end{arrows}
+
+\section{Bootstrap the Backend With the .NET CLI}
+
+\section{Clean Up the Backend Boiletplate Code}
+
+Just as we did for the frontend, we'll clean up some of the extra fluff that .NET has created in our API codebase.
+
+\section{Setup a Bitbucket Repository for the Backend}
+
+Just as we used Bitbucket for the frontend, we will do the same for the backend.
 
 \section{Use Bitbucket Pipelines for the DevOps Framework}
 
 Just as we used Netlify for automatic builds on the frontend, let's hook up Bitbucket Pipelines for automatic builds on our API. To get started with Bitbucket Pipelines, create a \codeword{bitbucket-pipelines.yml} file in the root of your .NET project:
 
-\begin{minted}[breaklines=true, bgcolor=terminalbackground]{bash}
+\begin{code}{bash}
 touch bitbucket-pipelines.yml  
-\end{minted}
+\end{code}
 
 Great. It appears that our pipeline is working, but we have nowhere to send it to! In the next chapter, we'll configure a Digital Ocean droplet with Ubuntu 20.04, PostgreSQL 13.2, and .NET 5.0.
 
-\chapter{Configuring a Digital Ocean Droplet}\label{cap:primer}
-
-\section{Introduction}
+\section{Create a Digital Ocean Droplet}\label{cap:primer}
 
 Our custom .NET API will live on our Digital Ocean Droplet.
 
 \section{Creating a Droplet}
 
-Head over to Digital Ocean and create an account if you don't have one already. Once you're logged in, click the 'Droplets' tab in the sidebar:
+Head over to Digital Ocean and create an account if you don't have one already. Once you're logged in, click the `Droplets' tab in the sidebar:
 
 \standardfigure{\textwidth/2}{droplet/droplets-tab}{Screenshot of the droplets tab.}
 
-In the new page that opens, click the big green 'Create Droplet' button:
+In the new page that opens, click the big green `Create Droplet' button:
 
 \standardfigure{\textwidth}{droplet/new-droplet}{Screenshot of the new droplet button.}
 
@@ -698,7 +906,7 @@ On the resulting page, choose the following settings:
 
 \minisec{Generating a New SSH Key}
 
-If you don't have an SSH key saved with Digital Ocean yet, no worries. Click the 'New SSH Key' button.
+If you don't have an SSH key saved with Digital Ocean yet, no worries. Click the `New SSH Key' button to get started:
 
 So, our Digital Ocean Droplet is spooled up and runs at the insane price of just \$5 / month! Don't think our app will be able to run on such a tiny little instance? Just wait and see!
 
@@ -706,12 +914,11 @@ So, our Digital Ocean Droplet is spooled up and runs at the insane price of just
 
 Secret keeping is always a major disussion when it comes to production environments. To handle our app secrets like our PostgreSQL connection string, we'll be using. SOMETHING
 
+\chapter{The Backend - Implementation}
 
-\chapter{Payment Integrations}\label{cap:primer}
+\section{Writing the First Endpoint for the Custom API}
 
-\section{Introduction}
-
-Payment integrations are of course an essential part of any SaaS production. In this chapter, we'll learn how to connect Stripe, PayPal, and Gumroad into the frontend flow, be notified of both new subscriptions and unsubscriptions, and automatically update the role in the user's netlify Identity user automatically.
+Great. Our API is up and running, and, like the frontend, will automatically deploy upon pushing to the \codeword{master branch} Typically, when I get to this point, as a sanity check, I create what I call a \codeword{Root} controller which just returns some plain text of an API version string, or really whatever you'd like to have.
 
 \chapter{Building a Staging (or Testing) Environment}\label{cap:primer}
 
@@ -719,7 +926,7 @@ So far we've focused on building out the frontend and custom backend API for Red
 
 In this section of the book, we'll get into building out what is known as a staging environment. With all of the tooling available in netlify on the frontend side, and .NET on the backend side, the challenge is not too great, but there will be some important considerations and distinctions which we'll look at in detail.
 
-\section{A Testing Environment is Essential!}\label{sec:titles}
+\section{The Essential need for a Testing Environment}\label{sec:titles}
 
 A staging environment is important, because it mimics your live product almost exactly. As we'll see in this section, in comparison to your live product, the staging version of your product will differ only in small configuration changes. Perhaps the exact quality of what certain API endpoints return may differ, but other than that, your staging site is essentially a production-like, risk-free playground where you can test new features, or catch bugs before they ship to production.
 
@@ -745,13 +952,55 @@ Our .NET application will unfortunately be a bit more involved than what it took
 
 As we did with the frontend, branch of of the development repository for the backend:
 
+\minisec{Staging Environment Recap}
 
+Perfect. We've successfully built out a staging environment from layers as deep as the database, all the way to the frontend. Tools like Bitbucket Pipelines and Netlify's branch builds made this a relatively painless task as well, since we already had the production environments working.
+
+\minisec{What's Next?}
+
+Our SaaS app is in a pretty good position right now: we have staging and production environments running successfully side by side (on both the frontend and backend), and we have fully working user onboarding flow thanks to Netlify and Fauna DB, and are able to process payments and subscriptions with Stripe. 
+
+The remainder of this book takes will take our SaaS app to the next level. The remaining sections consist of a variety of "recipes" on how to integrate things like additional payment providers, application-wide logging, and examples of automation tasks you may want to add to your application. I would recommend trying to implement them \textit{all}, as they will bring your SaaS app above and beyond intergalactic standards! \rocket
+
+\chapter{Recipe No. \#1: Additional Payment Platform Integrations}\label{cap:primer}
+
+\section{Introduction}
+
+Payment integrations are of course an essential part of any SaaS production. In this chapter, we'll learn how to connect Stripe, PayPal, and Gumroad into the frontend flow, be notified of both new subscriptions and unsubscriptions, and automatically update the role in the user's netlify Identity user automatically.
+
+\chapter{Recipe No. \#2: Add Application-Wide Logging}\label{cap:primer}
+
+
+\chapter{Recipe No. \#3: Adding Custom Emails}\label{cap:primer}
+
+While Netlify takes care of the user email flow (welcome emails, reset password, forgot password)
+
+\chapter{Recipe No. \#4: Adding Automation}\label{cap:primer}
 
 \chapter*{Afterword}\label{cap:primer}
 \addcontentsline{toc}{chapter}{Afterword}
 
-\section{You've Done It!}\label{sec:titles}
+\section*{You've Done It!}\label{sec:titles}
 
 Well, that was quite an adventure. We've both made it out alive! I hope you've found this book immensely useful, and that you're ready to refine your SaaS building skills even further.
+
+Cheers! \beers
+
+-Chris
+
+\chapter*{Credits and Thanks}\label{cap:primer}
+\addcontentsline{toc}{chapter}{Credits}
+
+Credit where credit is due! (Note that I am not sponsored or supported by any of these platforms or individuals in anyway):
+
+\begin{enumerate}
+\item Netlify, for their simply awesome "feels like stealing" free tier
+\item Bitbucket, for their great UI and tooling, including Bitbucket Pipelines
+\item Digital Ocean, for the sheer ease of to start up a Linux instance with a few clicks
+\item .NET, for just being an absolute joy of a framework to write and run code in
+\item Jason Lengstorf, \link{@jlengstorf}{https://twitter.com/jlengstorf}, who ultimately was responsible in sending me down the Netlify / Identity / Stripe rabbithole with his free course video, \link{Sell Products on the JAMstack}{https://www.youtube.com/watch?v=0fQPbiqG9bY}
+\item Josh W. Comeau, \link{@JoshWComeau}{https://twitter.com/JoshWComeau} who also released a book independently which inspired me to do the same (somewhat unrelated: I consider him my blog rival, though I suppose that feeling is not mutual \joy)
+\item All my family and friends, who had to deal with my near daily spamming of PDF drafts of this book, probably overloading all their memory on all their devices. (It's addicting and too easy to do when you're working with LaTeX!) 
+\end{enumerate}
 
 \end{document}

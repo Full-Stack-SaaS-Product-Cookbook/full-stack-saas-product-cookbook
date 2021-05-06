@@ -1,4 +1,4 @@
-# ignore this latex nonesense - even the pdf is technically a build!!!
+# ignore all the latex nonesense
 *.aux
 *.log
 *.out
@@ -6,5 +6,4 @@
 *.toc
 *.fls
 *.fdb_latexmk
-*.pdf
 _minted*
