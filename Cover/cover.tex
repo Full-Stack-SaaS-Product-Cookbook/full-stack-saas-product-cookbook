@@ -1,4 +1,5 @@
-\documentclass[a4paper, oneside]{article}
+\documentclass{article}
+\usepackage[paperheight=9.250in,paperwidth=12.394in,margin=1in,heightrounded]{geometry}
 
 \usepackage{lmodern}         % for the looks
 \usepackage[T1]{fontenc}     % to hypenate accented characters correctly
@@ -6,48 +7,78 @@
 \usepackage{tikz}            % the graphics
 \usepackage{textcomp}        % for \textregistered
 
+% custom colors
 \definecolor{specialred}{HTML}{E11202}
+\definecolor{black}{HTML}{000000}
+
+% Defining a new coordinate system for the page:
+%
+% --------------------------
+% |(-1,1)    (0,1)    (1,1)|
+% |                        |
+% |(-1,0)    (0,0)    (1,0)|
+% |                        |
+% |(-1,-1)   (0,-1)  (1,-1)|
+% --------------------------
+\makeatletter
+\def\parsecomma#1,#2\endparsecomma{\def\page@x{#1}\def\page@y{#2}}
+\tikzdeclarecoordinatesystem{page}{
+    \parsecomma#1\endparsecomma
+    \pgfpointanchor{current page}{north east}
+    % Save the upper right corner
+    \pgf@xc=\pgf@x%
+    \pgf@yc=\pgf@y%
+    % save the lower left corner
+    \pgfpointanchor{current page}{south west}
+    \pgf@xb=\pgf@x%
+    \pgf@yb=\pgf@y%
+    % Transform to the correct placement
+    \pgfmathparse{(\pgf@xc-\pgf@xb)/2.*\page@x+(\pgf@xc+\pgf@xb)/2.}
+    \expandafter\pgf@x\expandafter=\pgfmathresult pt
+    \pgfmathparse{(\pgf@yc-\pgf@yb)/2.*\page@y+(\pgf@yc+\pgf@yb)/2.}
+    \expandafter\pgf@y\expandafter=\pgfmathresult pt
+}
+\makeatother
 
 \begin{document}
+
 \thispagestyle{empty}
 
-\begin{tikzpicture}[remember picture,overlay]
+\begin{tikzpicture}[remember picture,overlay,every node/.style={anchor=center}]
 
-\node [align=center] at (current page.north) % upper
-      {\begin{tikzpicture}[remember picture, overlay]
-	  \fill[fill=specialred] (-10,0) rectangle (10,-0.5);
-	  \node[anchor=north] at (0,-0.5) {\Large\textit{Build your own full stack SaaS product in days!}};
-      \end{tikzpicture}};
-      
-\node [align=center] at (current page.center) % dragon
-      {\begin{tikzpicture}[remember picture, overlay]
-          \node[anchor=center,align=center] at (0,5)
-               {\includegraphics[width=1.5\textwidth]{polarbear_clean.png}};
-      \end{tikzpicture}};
-
-\node [yshift=-5cm] at (current page.center) % title
-      {\begin{tikzpicture}[remember picture, overlay]
-          \fill[fill=specialred] (-10,-5) rectangle (10 ,1);
-          \node[align=center] at (0,-1)
-               {\resizebox{1.57\linewidth}{!}{\Huge\color{white}\textbf{Full Stack SaaS}}};
-        \node[align=center] at (0,-3)
-               {\resizebox{1.57\linewidth}{!}{\Huge\color{white}\textbf{Product Cookbook}}};
-	       \node[anchor=east,align=right] at (10,-5.5) {\Huge\color{black}\textit{From Soup to Nuts}};
-      \end{tikzpicture}};
-
-% \node [shift={(-5cm,-5cm)}] at (current page.north east) % Revision 2
+% \node at (page cs: 0,1) % debug center bar
 %       {\begin{tikzpicture}[remember picture, overlay]
-%           \draw[fill=black] (0,5) -- (1.5,5) -- (5,1.5) -- (5,0) -- cycle ;
-%           \node[inner sep=0pt,rotate=-45] (rev) at (2.9,2.9) {\huge\color{white}\textbf{Revision 2}};
+%       \fill[fill=black] (-0.01,-30) rectangle (0,30);
 %       \end{tikzpicture}};
 
-\node [align=center] at (current page.south) % bottom
+\node at (page cs: 0.5,1) % top bar
       {\begin{tikzpicture}[remember picture, overlay]
-          \node[anchor=south west, align=left] at (-10,0.5)
-               {\resizebox{.3\linewidth}{!}
-                 {\Huge\color{black}
-                   \textbf{Full Stack Craft LLC\textsuperscript{\large{\texttrademark}}}}};
-               \node[anchor=south east, align=right] at (10,0.5) {\Huge\color{black}\textit{Christopher J. Frewin}};
+      \fill[fill=specialred] (-7,0) rectangle (7,-1);
+      \node[anchor=north] at (0,-1) {\Large\textit{Build your own full stack SaaS product in days!}};
+      \end{tikzpicture}};
+      
+\node at (page cs: 0.5,-0.2) % polar bear
+      {\begin{tikzpicture}[remember picture, overlay]
+      \node[anchor=center,align=center] at (0,5)
+            {\includegraphics[width=0.5\textwidth]{polarbear_clean.png}};
+      \end{tikzpicture}};
+
+\node at (page cs: 0.5,-0.4) % title block
+      {\begin{tikzpicture}[remember picture, overlay]
+      \fill[fill=specialred] (-7,-2.5) rectangle (7 ,1);
+      \node[align=center] at (0,0)
+            {\resizebox{0.5\linewidth}{!}{\large\color{white}\textbf{Full Stack SaaS}}};
+      \node[align=center] at (0,-1.5)
+            {\resizebox{0.5\linewidth}{!}{\large\color{white}\textbf{Product Cookbook}}};
+            \node[anchor=east,align=right] at (7,-3) {\Huge\color{black}\textit{From Soup to Nuts}};
+      \end{tikzpicture}};
+
+\node at (page cs: 0.5,-0.94) % bottom text
+      {\begin{tikzpicture}[remember picture, overlay]
+      \node[anchor=south west, align=left] at (-7,0)
+            {\large\color{black}
+                  \textbf{Full Stack Craft LLC\textsuperscript{\large{\texttrademark}}}};
+            \node[anchor=south east, align=right] at (7,0) {\Huge\color{black}\textit{Christopher J. Frewin}};
       \end{tikzpicture}};
 
 \end{tikzpicture}

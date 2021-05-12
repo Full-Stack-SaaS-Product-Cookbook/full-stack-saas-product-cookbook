@@ -1,0 +1,45 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Screenshot of the unmodified default Gatsby starter.}}{30}{figure.2.1}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Screenshot of adding a repository on Bitbucket.}}{39}{figure.2.2}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Screenshot of the 'create repository' on Bitbucket.}}{39}{figure.2.3}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Screenshot of repository fields for your SaaS product.}}{41}{figure.2.4}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Screenshot of the `New site from Git' button.}}{43}{figure.2.5}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Screenshot of the `Bitbucket' button.}}{44}{figure.2.6}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Screenshot of Netlify build settings for a Gatsby site.}}{45}{figure.2.7}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Screenshot of where to find the detailed deploy log per deploy.}}{45}{figure.2.8}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Screenshot of the `Domain settings' button.}}{46}{figure.2.9}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Screenshot of the `Edit site name' domain option.}}{47}{figure.2.10}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Screenshot of the `Edit site name' domain option.}}{47}{figure.2.11}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Screenshot of the `Set up a custom domain' domain step.}}{50}{figure.2.12}%
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Screenshot of the custom domain input.}}{51}{figure.2.13}%
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Screenshot of the DNS warnings on the custom domains.}}{51}{figure.2.14}%
+\contentsline {figure}{\numberline {2.15}{\ignorespaces Screenshot of the `Use Netlify DNS link'.}}{52}{figure.2.15}%
+\contentsline {figure}{\numberline {2.16}{\ignorespaces Screenshot of the final step in the Netlify DNS setup, `Activate Netlify DNS'.}}{53}{figure.2.16}%
+\contentsline {figure}{\numberline {2.17}{\ignorespaces Screenshot of the nameservers dropdown on the Namecheap site dashboard.}}{54}{figure.2.17}%
+\contentsline {figure}{\numberline {2.18}{\ignorespaces Screenshot of the Netlify nameservers applied to the custom DNS configuration on Namecheap.}}{54}{figure.2.18}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Screenshot of the Netlify environment variables panel and the `Edit variables' button.}}{61}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Screenshot of the opened Netlify Environment variables panel, with it's key-value style interface. Here we are adding the NODE\_VERSION variable.}}{62}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Screenshot of the terminal output after running the Netlify CLI in development mode. The environment variable NODE\_VERSION we defined in the Netlify UI is being used in our local environment.}}{63}{figure.3.3}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Screenshot of the terminal output after running the Netlify CLI in development mode. The environment variable NODE\_VERSION we defined in the Netlify UI is now being ignored, as the local NODE\_VERSION defined in process takes precident.}}{64}{figure.3.4}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Screenshot of the single tab code editor.}}{76}{figure.3.5}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Screenshot of the multi tabbed code editor.}}{76}{figure.3.6}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces The square plate-like logo for ReduxPlate.}}{80}{figure.3.7}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Screenshot of the sidebar options in SVGOMG.}}{81}{figure.3.8}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Screenshot of the sidebar options in SVGOMG.}}{82}{figure.3.9}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Screenshot of the option buttons in SVGOMG (Background toggle, copy to clipboard, and export).}}{82}{figure.3.10}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Screenshot of the logo in the nav.}}{88}{figure.3.11}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Screenshot of the logo as a favicon.}}{88}{figure.3.12}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Screenshot of the droplets tab.}}{102}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Screenshot of the new droplet button.}}{102}{figure.4.2}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

@@ -1,0 +1,24 @@
+\begin{theindex}
+
+  \item \codeword{Footer.tsx}, \hyperpage{70}
+  \item \codeword{Header.tsx}, \hyperpage{64}, \hyperpage{71}
+  \item \codeword{Layout.tsx}, \hyperpage{64}, \hyperpage{69, 70}
+  \item \codeword{Nav.tsx}, \hyperpage{68}, \hyperpage{70, 71}, 
+		\hyperpage{87}
+  \item \codeword{gatsby-plugin-manifest}, \hyperpage{30}, 
+		\hyperpage{86, 87}
+  \item \codeword{gatsby-plugin-offline}, \hyperpage{30}
+  \item \codeword{gatsby-plugin-sass}, \hyperpage{64, 65}
+  \item \codeword{netlify-identity-widget}, \hyperpage{92}
+  \item \codeword{package.json}, \hyperpage{30}, \hyperpage{35}, 
+		\hyperpage{37}, \hyperpage{41}
+
+  \indexspace
+
+  \item Redux, \hyperpage{22}
+
+  \indexspace
+
+  \item TypeScript, \hyperpage{22}
+
+\end{theindex}

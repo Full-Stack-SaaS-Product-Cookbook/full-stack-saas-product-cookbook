@@ -1,0 +1,9 @@
+export const useShouldAnimate = (): boolean => {
+  const location = useWindowLocation()
+  const [shouldAnimate, setShouldAnimate] = useState<boolean>(true)
+
+  // every time location changes, set the
+  useEffect(() => {
+    setShouldAnimate(location === "/")
+  },[location])
+}
