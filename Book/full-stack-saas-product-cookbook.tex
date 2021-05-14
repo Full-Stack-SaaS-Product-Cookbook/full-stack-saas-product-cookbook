@@ -18,6 +18,9 @@
 \usepackage{textcomp}
 \usepackage{float}
 
+% for multiple appendices
+% \usepackage[toc,page]{appendix}
+
 % for index
 \usepackage{imakeidx}
 
@@ -34,7 +37,21 @@
 
 % for highlighted sections of texts i.e. "frames", as well as code snippets
 \usepackage[most,minted]{tcolorbox}
-\usepackage{listings}
+\tcbuselibrary{listings}
+
+\lstset{
+  breaklines=true,
+  breakatwhitespace=false,
+  xleftmargin=1em,
+  frame=single,
+  numbers=left,
+  numbersep=5pt,
+}
+
+% \usepackage{listings}
+% % TODO: this doesn't solve the multiple page code snippet issue
+% % see maybe https://tex.stackexchange.com/questions/117836/code-listing-spanning-multiple-pages-with-captions-at-top
+% \lstset{float=H}
 
 \usetikzlibrary{calc,shadows.blur}
 
@@ -196,6 +213,10 @@
 \newcommand{\link}[2]{\textbf{\textcolor{monokaiPink}{\href{#2}{#1}}}}
 
 \newcommand{\standardfigure}[3]{\begin{figure}[H]\begin{center}\includegraphics[width=#1]{#2}\caption{#3}\label{fig:#2}\end{center}\end{figure}}
+
+% for that pain in the ass @ symbol
+\newcommand{\at}{\makeatletter @\makeatother}
+
 
 \newtcblisting{code}[2]{
 listing engine=minted,
@@ -1123,7 +1144,7 @@ import "./src/styles/styles.scss"
 
 We should now see our theming applied site-wide.
 
-\section{Creating React Components for Your Site}
+\section{Creating React Components for Your Site's Layout}
 
 We have some nice looking theming for our SaaS product. Let's now start creating React components across our site!
 
@@ -1132,7 +1153,6 @@ We have some nice looking theming for our SaaS product. Let's now start creating
 \item Create a navigation component
 \item Create a footer component
 \item Improve the header component
-\item Create a code editor component
 \end{arrows}
 
 \minisec{Creating a Navigation Component}
@@ -1229,26 +1249,134 @@ Move the \index{\codeword{Header.tsx}} component into the \codeword{layout/} fol
 
 First, \index{\codeword{Header.tsx}} can be replaced with the following code:
 
-\minisec{Creating a Code Editor Widget}
+\begin{codeInput}{jsx}{Header.tsx}{The contents of Header.tsx.}
+import { useStaticQuery, graphql } from 'gatsby';
+import * as React from 'react';
+import * as styles from '../../../styles/modules/header.module.scss'
+import { PlateWidget } from '../../widgets/PlateWidget';
 
-I decided to put a code editor immediately on the home page, as I think a direct interactive example will interest and convert the most customers. Later, this editor will actually interact with our custom .NET API, but for now, let's focus on it's appearance. We will be using the \codeword{react-ace} package, which provides an \codeword{AceEditor} component from the \codeword{ace} package. We can begin to imagine for this product that we would like a typical code editor UI - a tabbed interface with file names, which, when clicked, reveal the code in those files.
+export function Header () {
+  const data = useStaticQuery(graphql`
+    query HeaderQuery {
+      site {
+        siteMetadata {
+          description
+        }
+      }
+    }
+  `)
+  return (
+    <header className={styles.header}>
+    <h1 className={styles.title}>
+      <span className="text-primary">Redux</span>
+      <span className="text-light">Plate</span>
+      <PlateWidget />
+    </h1>
+    <h2 className={styles.subtitle}>{data.site.siteMetadata.description}</h2>
+  </header>
+  );
+}  
+\end{codeInput}
 
-Ultimately, I decided on the name of \codeword{EditorWidget} for the component. Create a new folder called \codeword{widgets} under \codeword{src/componetnts/}, and create a new TypeScript React component file called \codeword{EditorWidget.tsx}.
+Where \codeword{header.module.scss} contains the following:
 
-The \codeword{react-ace} package makes the editor part of our\codeword{EditorWidget} component rather easy:
+\codeFromFile{jsx}{header.module.scss}{The contents of header.module.scss.}{./snippets/header.module.scss}
+
+The \codeword{<PlateWidget/>} component actually holds the markup of the background pseudo element:
+
+\begin{codeInput}{jsx}{PlateWidget.tsx}{The contents of PlateWidget.tsx.}
+import * as React from 'react';
+import * as styles from '../../styles/modules/plate-widget.module.scss'
+
+export function PlateWidget () {
+  return (
+    <span className={styles.plate}>
+      <span className={styles.topScrews}>
+        <span className={styles.bottomScrews}></span>
+      </span>
+    </span>
+  );
+}  
+\end{codeInput}
+
+Where \codeword{plate-widget.module.scss} contains the following:
+
+\codeFromFile{jsx}{plate-widget.module.scss}{The contents of plate-widget.module.scss.}{./snippets/plate-widget.module.scss}
+
+You'll notice as a little easter egg, when hovering on the plate that there is a kind of 'unscrew' animation, where the plate appears to lift off the page! Worried about responsive styling? The way these elements are arranged and marked up with flex styling allows them to be quite responsive! Go ahead in exploring how various widths look. There should be no troubles.
+
+\section{Creating an Interactive Code Editor Widget}
+
+I decided to put a code editor immediately on the home page, as I think an interactive example draws interest and converts to the most customers. Later, this editor will actually interact with our custom .NET API, but for now, let's focus on it's appearance. We will be using the \codeword{react-ace} package, which provides an \codeword{AceEditor} component from the \codeword{ace} package. We can begin to imagine for this product that we would like a typical code editor UI - a tabbed interface with file names, which, when clicked, reveal the code in those files. The code can then be edited in the editor.
+
+Ultimately, I decided on the name of \codeword{EditorWidget} for the component. Create a new folder called \codeword{widgets} under \codeword{src/componetnts/}, and create a new TypeScript React component file called \codeword{EditorWidget.tsx}. 
+
+\minisec{Props for <EditorWidget/>}
+
+Our editor widget can have an option title above the editor, then we need a series of 'files' to render. These 'files' should have both a label for the file name, the code contents of that 'file', and if it is active or not. We can define an interface IEditorSettings as a helper to store these two values per file, and then we can pass an array of this settings interface to the \codeword{EditorWidget} component. I called it \codeword{IEditorSettings}. It's actually the first non-prop interface we're creating so far on the frontend, so let's create a new folder under the \codeword{src/} folder called {interfaces/}. Go ahead and create a new file \codeword{IEditorSettings.ts}, and add this:
+
+\begin{codeInput}{typescript}{IEditorSettings.ts}{The IEditorSettings interface.}
+export default interface IEditorSetting {
+  fileLabel: string
+  code: string
+}  
+\end{codeInput}
+
+\begin{highlightBox}{A Word on the `interfaces' Folder}{blue}{\information}
+Some developers like including interfaces and types close to where they are used in various React components, so they act as more of a namespace. I typically do not follow this pattern for two reasons:
+
+\begin{enumerate}
+  \item Many custom interfaces we define will be used in more than one component.
+  \item JavaScript and TypeScript do not natively have a concept of namespaces, and so I generally 
+\end{enumerate}
+
+No matter what style you decide, Visual Studio Code's Intellisense won't care and will automatically update the import locations for you as you rearrange and drag and drop files. Just know that it is my preference to put all non-prop interfaces in the \codeword{src/interfaces} folder.
+\end{highlightBox}
+
+With \codeword{IEditorSettings} defined, we can now fully define the props for our component, \codeword{IEditorWidgetProps}:
+
+\begin{codeInput}{typescript}{IEditorWidgetProps.ts}{The IEditorWidgetProps interface.}
+export interface IEditorWidgetProps {
+  editorTitle?: string
+  editorSettings: Array<IEditorSetting>
+}
+\end{codeInput}
+
+Whew. All done with props. Let's get on to the body of the component.
+
+\minisec{State Management and Setup}
+
+As is my style, I destructure all props out from \codeword{props}. We'll then immediately make the \codeword{editorSettings} prop stateful - we'll need to track all changes to it for each editor. Then, as we'll see below, we will need a ref for the editor to make some changes with it.
+
+\begin{codeInput}{jsx}{EditorWidget.tsx}{State management in EditorWidget.tsx}
+...
+const { editorTitle, editorSettings } = props
+const [editorSettingsState, setEditorSettingsState] = useState<
+  Array<IEditorSetting>
+>(editorSettings)
+const aceEditorRef = useRef<AceEditor>()
+...
+\end{codeInput}
+
+That's all the React state and ref variables we should need for our component to be functional. Let's move on to what we will render for the component.
+
+\minisec{Rendering the Code Editor and File Tabs}
+
+The \codeword{react-ace} package makes rendering the editor part of our\codeword{EditorWidget} component rather easy:
 
 \begin{codeInput}{jsx}{EditorWidget.tsx}{Rendering an Ace editor in EditorWidget.tsx}
 return (
   ...
   <AceEditor
+    className={styles.editor}
     ref={aceEditorRef}
     mode="typescript"
     theme="kuroir"
-    onChange={onChange}
+    onChange={onChangeCode}
     showPrintMargin={true}
     showGutter={true}
     highlightActiveLine={true}
-    name="editor-widget"
+    name={editorTitle.split(' ').join('-').toLowerCase()}
     value={editorSetting.code}
     setOptions={{
       enableBasicAutocompletion: true,
@@ -1262,135 +1390,182 @@ return (
 )
 \end{codeInput}
 
-But as mentioned, we should also make a way to have multiple tabs
+As mentioned, we should also make a way to have multiple tabs above the editor portion. To have such a display, I'm going to leverage some Bootstrap nav tab styles on an \codeword{<ul>} element. The active tab will then simply need the 'active' class applied:
 
-We'll need to define this \codeword{IEditorSettings} interface. It's actually the first non-prop interface we're creating so far on the frontend, so let's create a new folder under the \codeword{src/} folder called {interfaces/}. Go ahead and create a new file \codeword{IEditorSettings.ts}, and add this:
-
-\begin{codeInput}{typescript}{IEditorSettings.ts}{The IEditorSettings interface.}
-export default interface IEditorSetting {
-  fileLabel: string
-  code: string
-}  
+\begin{codeInput}{jsx}{EditorWidget.tsx}{Rendering Bootstrap styled nav tabs in EditorWidget.tsx}
+  <ul className="nav nav-tabs">
+  {editorSettingsState
+    .map(editorSettings => {
+      const { fileLabel } = editorSettings;
+      const className =
+      editorSettings.isActive
+          ? "nav-link active font-monospace"
+          : "nav-link font-monospace"
+      return (
+        <li className="nav-item" onClick={() => onChangeTab(fileLabel)}>
+          <button className={className}>
+            {fileLabel}
+          </button>
+        </li>
+      )
+    })}
+</ul>
 \end{codeInput}
 
-and we can now fully define the IEditorWidgetProps:
+So far, you may have noticed two helper functions being used in our render, \codeword{onChangeCode} and \codeword{onChangeTab}. Those are defined as follows:
 
-
-Whew. All done. The final contents we arrive at for EditorWidget are:
-
-\begin{codeInput}{jsx}{EditorWidget.tsx}{The full contents of EditorWidget.tsx}
-import * as React from "react"
-import AceEditor from "react-ace"
-import "ace-builds/src-noconflict/mode-typescript"
-import "ace-builds/src-noconflict/theme-kuroir"
-import { useEffect, useRef, useState } from "react"
-import IEditorSetting from "../../../interfaces/IEditorSettings"
-
-export interface IEditorWidgetProps {
-  editorTitle: string
-  editorSettings: Array<IEditorSetting>
+\begin{codeInput}{jsx}{EditorWidget.tsx}{The two helper functions\, onChangeCode and onChangeTab in EditorWidget.tsx}
+const onChangeCode = (code: string) => {
+  // only modify the code string of the file which is active
+  setEditorSettingsState(editorSettingsState.map(editorSetting => {
+    if (editorSetting.isActive) {
+      editorSetting.code = code
+    }
+    return editorSetting
+  }))
 }
 
-export function EditorWidget(props: IEditorWidgetProps) {
-  const { editorTitle, editorSettings } = props
-  const [editorSettingsState, setEditorSettingsState] = useState<
-    Array<IEditorSetting>
-  >(editorSettings)
-  const [activeFileLabel, setActiveFileLabel] = useState<string>(
-    editorSettings[0].fileLabel
-  )
-
-  const onChange = code => {
-    setEditorSettingsState(code)
-  }
-
-  const aceEditorRef = useRef<AceEditor>()
-
-  // on mount: go to the first property of state in our example snippet
-  useEffect(() => {
-    const editor = aceEditorRef.current.editor
-    editor.gotoLine(0, 0, false)
-  }, [])
-
-  return (
-    <div className="d-flex flex-column justify-content-center m-3">
-      <h3 className="text-primary text-underline"><u>{editorTitle}</u></h3>
-      {/* Tabs are always rendered */}
-      <ul className="nav nav-tabs">
-        {editorSettingsState
-          .map(editorSettings => editorSettings.fileLabel)
-          .map(fileLabel => {
-            const className =
-              fileLabel === activeFileLabel
-                ? "nav-link active font-monospace"
-                : "nav-link font-monospace"
-            return (
-              <li className="nav-item" onClick={() => setActiveFileLabel(fileLabel)}>
-                <button className={className}>
-                  {fileLabel}
-                </button>
-              </li>
-            )
-          })}
-      </ul>
-      {/* For the editor, return only the active code */}
-      {editorSettingsState.map(editorSetting => {
-        return editorSetting.fileLabel === activeFileLabel ? (
-          <AceEditor
-            ref={aceEditorRef}
-            mode="typescript"
-            theme="kuroir"
-            onChange={onChange}
-            showPrintMargin={true}
-            showGutter={true}
-            highlightActiveLine={true}
-            name="editor-widget"
-            value={editorSetting.code}
-            setOptions={{
-              enableBasicAutocompletion: true,
-              enableLiveAutocompletion: true,
-              enableSnippets: false,
-              showLineNumbers: true,
-              tabSize: 2,
-            }}
-          />
-        ) : (
-          <></>
-        )
-      })}
-    </div>
-  )
-}    
+const onChangeTab = (fileLabel: string) => {
+  setEditorSettingsState(editorSettingsState.map(editorSetting => {
+      editorSetting.isActive = editorSetting.fileLabel === fileLabel
+    return editorSetting
+  }))
+}
 \end{codeInput}
 
-\begin{highlightBox}{A Word on the 'interfaces' Folder}{blue}{\information}
-Some developers like including interfaces and types close to where they are used in various React components, so they act as more of a namespace. I typically do not follow this pattern for two reasons:
+Finally, as a micro-optimization, using the \codeword{useEffect} hook, we can add a side effect that when \codeword{<EditorWidget/>} mounts, we can put the editor cursor location at the beginning of the file - the default is the very end, which feels a bit weird. This is where we will employ our \codeword{ref} for the Ace editor:
 
-\begin{enumerate}
-  \item Many custom interfaces we define will be used in more than one component.
-  \item JavaScript and TypeScript do not natively have a concept of namespaces, and so I generally 
-\end{enumerate}
+\begin{codeInput}{jsx}{EditorWidget.tsx}{Adding an on mount side effect to move the cursor of the editor to the start of the code.}
+// on mount: go to the top left of the editor
+useEffect(() => {
+  const editor = aceEditorRef.current.editor
+  editor.gotoLine(0, 0, false)
+}, [])
+\end{codeInput}
 
-No matter what style you decide, Visual Studio Code's Intellisense won't care and will automatically update the import locations for you as you rearrange and drag and drop files. Just know that it is my preference to put all non-prop interfaces in the \codeword{src/interfaces} folder.
-\end{highlightBox}
+Excellent. We are finished with our editor widget component. The full contents we arrive at for EditorWidget are:
 
-
+\codeFromFile{jsx}{EditorWidget.tsx}{The full contents of EditorWidget.tsx}{./snippets/EditorWidget.tsx}
 
 The code editor to modify what state the user would like to generate looks like this:
 
 \standardfigure{\textwidth}{frontend/components/single-editor}{Screenshot of the single tab code editor.}
 
-It's just the single \codeword{types.ts} file, so we see that one tab and the one source. A traditional generation output would ultimately result in three files, two in addition to the \codeword{types.ts}, a \codeword{actions.ts} and \codeword{reducer.ts} file (at least when not using \codeword{redux-toolkit}). Such a config results in our \codeword{EditorWidget} to look like this:
+It's just the single \codeword{store/types.ts} file, so we see that one tab and the one source. A traditional generation output would ultimately result in three files, two in addition to the \codeword{types.ts}, a \codeword{actions.ts} and \codeword{reducer.ts} file (at least when not using \codeword{@reduxjs/toolkit}). Such a config results in our \codeword{EditorWidget} to look like this:
 
 \standardfigure{\textwidth}{frontend/components/multi-editor}{Screenshot of the multi tabbed code editor.}
 
 We will again reuse this component later on the 'App' page in just a few sections.
 
+\minisec{Creating a 'Try It' Widget}
+
+Now that we've got our Editor Widget, we can create the desired `Try it' component for visitors to immediately see the power of ReduxPlate for themselves. Create a new file \codeword{TryItWidget.tsx} under the same \codeword{home/} folder, and add this to it:
+
+\begin{codeInput}{jsx}{TryItWidget.tsx}{The full contents of TryItWidget.tsx.}
+import * as React from "react"
+import { EditorWidget } from "./EditorWidget"
+import { TryItButtons } from "./TryItButtons"
+
+export function TryItWidget() {
+  return (
+    <div className="container text-center">
+      <div className="d-flex flex-wrap justify-content-center">
+        <EditorWidget
+          editorTitle="Desired Redux State"
+          editorSettings={[
+            {
+              fileLabel: "store/types.ts",
+              code: `// Feel free to edit with whatever state you need.
+// Then click 'Generate!' below!
+export interface MyState {
+    myBoolean: boolean
+    myNumber: number
+    myString: string
+    myStringArray: Array<string>
+}`,
+isActive: true
+            },
+          ]}
+        />
+        <EditorWidget
+          editorTitle="Generated Code"
+          editorSettings={[
+            {
+              fileLabel: "store/types.ts",
+              code: `// types.ts
+// Nothing here yet.
+// Click 'Generate!' below!`,
+isActive: true
+            },
+            {
+              fileLabel: "store/reducer.ts",
+              code: `// reducer.ts
+// Nothing here yet.
+// Click 'Generate!' below!`,
+isActive: false
+            },
+            {
+              fileLabel: "store/actions.ts",
+              code: `// actions.ts
+// Nothing here yet.
+// Click 'Generate!' below!`,
+isActive: false
+            },
+          ]}
+        />
+      </div>
+      <TryItButtons/>
+    </div>
+  )
+}
+\end{codeInput}
+
+It's two of our \codeword{<EditorWidget/>} components side by side in a flex box. I then put two buttons under our side-by-side editors: one says `Generate!' which will actually kick off a real example functionality of what ReduxPlate can do, and another button to prompt visitors to preview the full app, labeled `Try Full App'. I organized those into a component called <TryItButtons/>. Create a new file \codeword{TryItButtons.tsx} under the same \codeword{home/} folder, and add this to it:
+
+\begin{codeInput}{jsx}{TryItButtons.tsx}{The full contents of TryItButtons.tsx.}
+import { Link } from "gatsby"
+import * as React from "react"
+
+export function TryItButtons() {
+  return (
+    <div className="d-flex justify-content-center">
+      <button className="btn btn-outline-primary m-3">
+        Generate!
+      </button>
+      <Link to="/app" className="btn btn-primary m-3">
+        Try Full App
+      </Link>
+    </div>
+  )
+}  
+\end{codeInput}
+
+Take note of the class names on each - Bootstrap helps us out a lot with the style of these buttons. Even though the `Try Full App' is actually a Gatsby \codeword{<Link/>} component (an anchor tag), it will still appear identical to a button - nice! 
+
+\minisec{Refactoring Button Styles}
+
+The default Bootstrap button styles look a little too playful for what will be a serious developer tool. To make it more serious looking, let's set all border radius throughout the Bootstrap styles to 0. To do that, add the following variables to \codeword{_variables.sccs}:
+
+\begin{codeInput}{scss}{\_variables.scss}{Adding additional bootstrap variables to \_variables.scss}
+$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;
+$badge-pill-border-radius: 0;
+\end{codeInput}
+
+I then decided to use the class \codeword{btn-outline-primary} on the `Generate!' button instead of \codeword{btn-primary} as it seems to fit the style of the home page a bit better. The call to action button, `Try Full App', retains the `primary' styling, however. 
+
+Also note that the `Generate!' button has no \codeword{onClick} handler yet - it won't do anythign if you click it. Likewise, the `Try Full App' button will take us to the \codeword{app/} page, but that page doesn't exist yet, so we'll get the Gatsby development 404 page.
+
 \minisec{Extending the Index (Home) Page}
 
-When using Gatsby, I like to keep the components. This is to signify that these are actual HTML pages that will be created, and their actual content can be abstracted away into various components under the \codeword{components/} folder. Start by creating a  \codeword{pages/} folder under  \codeword{components/}, and then another folder  \codeword{home/} under that. Then create the file.
+Now that we've got our \codeword{<TryItWidget/>} component, start by creating a \codeword{pages/} folder under  \codeword{components/}, and then another folder \codeword{home/} under that. Then create the file \codeword{Home.tsx}.
 
-We can now add the header and `try it' widget to the  \codeword{Home.tsx} file:
+\begin{highlightBox}{A Word on React Component Organization in Gatsby}{blue}{\information}
+When using Gatsby, I like to keep the components in the \codeword{pages} folder as simple as possible. This is to signify that these are actual HTML pages that will be created, and their actual content can be abstracted away into various components under the \codeword{components/} folder.
+\end{highlightBox}
+
+We can now add the \codeword{<Header/>} and \codeword{<TryItWidget/>} components to the  \codeword{Home.tsx} file:
 
 \begin{codeInput}{jsx}{Home.tsx}{The contents of Home.tsx.}
 import * as React from "react"
@@ -1407,32 +1582,9 @@ export function Home() {
 }  
 \end{codeInput}
 
-Bootstrap helps us here, that even though in market it is an anchor tag, it will still appear identical to our 
-
-\minisec{Refactoring Button Styles}
-
-The current `Generate!' button looks a little too playful for what will be a serious developer tool. To make it more serious looking, let's set all border radius throughout the Bootstrap styles to 0. To do that, add the following variables to \codeword{_variables.sccs}:
-
-\begin{codeInput}{scss}{\_variables.scss}{Adding additional bootstrap variables to \_variables.scss}
-$border-radius: 0;
-$border-radius-lg: 0;
-$border-radius-sm: 0;
-$badge-pill-border-radius: 0;
-\end{codeInput}
-
-I then decided to use the class \codeword{btn-outline-primary} instead of \codeword{btn-primary} as it seems to fit the style of the home page a bit better.
-
-\section{Recipe: Creating a Web-Ready SVG}
+\section{Recipe: Creating a Production-Ready SVG}
 
 It's now time to create the logo for our Saas Product. In this section, I'll teach you how to make a low footprint SVG, ready to use simply as a static SVG, or to build as a React component to be animated or otherwise dynamically modified.
-
-\minisec{Chapter Objectives}
-\begin{arrows}
-\item Create a navigation component
-\item Create a footer component
-\item Improve the header component
-\item Create a code editor component
-\end{arrows}
 
 My typical process of producing a production-ready SVG looks something like this:
 
@@ -1549,7 +1701,7 @@ and as the site's favicon:
 
 \standardfigure{\textwidth/3}{frontend/logo-design/favicon-screenshot}{Screenshot of the logo as a favicon.}
 
-For the nav, I'd like to do something a little fancy for the logo.
+For the logo being displayed In the nav, I'd like to do a little something extra and fancy.
 
 \minisec{Create a React Component for the Logo}
 
@@ -1628,7 +1780,9 @@ Add the following to \codeword{Logo.tsx}:
 
 Within \codeword{Nav.tsx}, we'll now replace the \codeword{<StaticImage/>} with our \codeword{<Logo/>} component.
 
-Nice, same looking nav, new fun animations!
+Nice, same looking nav, new fun animations! Looking good. If you've followed all the steps so far, the homepage should now look like this:
+
+\standardfigure{\textwidth}{frontend/homepage}{A screenshot of the homepage we've built so far.}
 
 \minisec{Review of Initial Components and Layout}
 
@@ -1638,15 +1792,297 @@ Nice! You've made it to the second milestone code repository, \codeword{themed-f
 
 So far so good. We've refactored a few file locations, namely creating a \codeword{pages/} and \codeword{layout/} folder to organize our \codeword{components/} folder a bit more. So far, the layout of your code base should look something like this:
 
-\begin{codeInput}{bash}{terminal}{Directory tree of further improved frontend.}
+\begin{codeInput}{bash}{terminal}{Directory tree of further expanded frontend.}
+.
+├── LICENSE
+├── README.md
+├── gatsby-browser.js
+├── gatsby-config.js
+├── gatsby-node.js
+├── gatsby-ssr.js
+├── package-lock.json
+├── package.json
+└── src
+    ├── components
+    │   ├── Seo.tsx
+    │   ├── layout
+    │   │   ├── Footer.tsx
+    │   │   ├── Layout.tsx
+    │   │   └── Nav.tsx
+    │   ├── pages
+    │   │   ├── app
+    │   │   │   └── App.tsx
+    │   │   └── home
+    │   │       ├── EditorWidget.tsx
+    │   │       ├── Header.tsx
+    │   │       ├── Home.tsx
+    │   │       ├── TryItButtons.tsx
+    │   │       └── TryItWidget.tsx
+    │   ├── utils
+    │   │   └── Logo.tsx
+    │   └── widgets
+    │       └── PlateWidget.tsx
+    ├── images
+    │   └── logo.svg
+    ├── interfaces
+    │   └── IEditorSettings.ts
+    ├── pages
+    │   ├── 404.tsx
+    │   ├── app.tsx
+    │   └── index.tsx
+    └── styles
+        ├── _variables.scss
+        ├── modules
+        │   ├── editor.module.scss
+        │   ├── header.module.scss
+        │   ├── logo.module.scss
+        │   └── plate-widget.module.scss
+        └── styles.scss
+\end{codeInput}
+
+It's been pretty basic React so far, and all cosmetic oriented changes. Now we're going to get into some more complex functionality, involving helper functions and actual business functions that form the bedrock of ReduxPlate.
+
+\section{Recipe: Adding API Helper Functions}
+
+We will now add a series of API Helper functions which I believe are as optimized as it can be. They are both as flexible as possible in terms of typings, but able to be called from any React component as a one-liner, \textit{including} side effect callbacks. This set of functions will be completely standalone, so you can reuse it for \textit{any} SaaS product. Thus they earn their spot as the first official recipe listing in this book:
+
+\begin{codeInput}{typescript}{ApiHelpers.ts}{The series of API Helper functions\, ApiHelpers.ts.}
 
 \end{codeInput}
 
-It's been pretty basic React so far, but now we're going to get involved. The next few sections will start involving more complex functionality.
+\section{Setting Up a Contract-Based API Call}
 
-\section{Recipe: Adding Toast Helper Functions}
+As we saw in our API Helper Functions, the calls to our API accept a generic type and return a generic type. In this section, we'll be setting up an interface that matches what we will build in our .NET API, so that on both the frontend and backend we can expect what shapes of data will be receiving and sending. Even later, we'll see even in the free preview of the \codeword{app/} page, we will limit features available. In any case, it's clear that the \codeword{/generate} endpoint will have a complex set of options that our API and client will need to robustly follow and understand. The best way to do this is define an interface for the POST body. As we build complexity and features to our SaaS product, we can always return to this contract and extend it.
 
-Following the inclusion of our \codeword{ApiHelpers} functions, we saw the need for side effects to inform the customer. A typical pattern is to include an animated feedback that appears on screen. It is up to you to have these appear directly on the site, for example, right near the button after it is clicked, or in a floating div somewhere else on the page. I typically use the floating pattern of. Just as we did with an API connector, we'll create.
+For starting off this contract, we'll need a few boolean flag options, and then the properties of the Redux state that we will be generating code for.
+
+\minisec{Creating the IGenerateOptions Interface}
+
+Let's create a new TypeScript file, \codeword{IGenerateOptions.ts} under the \codeword{src/interfaces/} folder. Our initial \codeword{IGenerateOptions} interface will look like this:
+
+\begin{codeInput}{jsx}{IGenerateOptions.ts}{The intial shape of interface IGenerateOptions}
+export default IGenerateOptions {
+  typeScriptProperties: Array<ITypeScriptProperty>
+  useReduxToolkit: boolean;
+  useTypeScript: boolean;
+  singleFile: boolean;
+}
+\end{codeInput}
+
+The interface \codeword{ITypeScriptProperty} is yet another new interface that we need to define. Create a new file \codeword{ITypeScriptProperty.ts} under the \codeword{src/interfaces/} folder, and add this to it:
+
+\begin{codeInput}{jsx}{ITypeScriptProperty.ts}{The intial shape of interface IGenerateOptions}
+export default interface ITypeScriptProperty {
+  name: string
+  type: string
+}
+\end{codeInput}
+
+This is the type that will hold our array of properties from the state. It should be all we need from the client to generate a fully working Redux boilerplate codebase. Because generating and doctoring Redux code is the whole point of our SaaS product, the generation step must be done on our server. The state code itself is already public and editable , so parsing out the types 
+
+\section{Parsing the Redux State Interface}
+
+We will be parsing out the names and types of the state interface using the package \index{\codeword{ts-morph}}. \codeword{ts-morph} is a developer-friendly wrapper around Typescript's compiler API. With it, we can rather quickly access all parts of TypeScript's abstract syntax tree (AST) API - to parse out what we need and be on our way. As a bonus, we'll be able to handle and show our SaaS customers any syntax or typing errors they may make - directly in the client!
+
+\minisec{Install ts-morph}
+
+First install \codeword{ts-morph} with \codeword{npm}:
+
+\begin{codeInput}{bash}{terminal}{Installing the ts-morph package.}
+npm install ts-morph
+\end{codeInput}
+
+Then, create a new folder called \codeword{helpers}, and create the a file called \codeword{ASTHelpers.ts}. This file holds a helper function \codeword{parseTypeScript} which accepts a string of TypeScript code and returns our desired \codeword{Array<ITypeScriptProperty>}:
+
+\begin{codeInput}{typescript}{ASTHelpers.ts}{The contents of ASTHelpers.ts}
+
+\end{codeInput}
+
+If we go to our `Generate!' button and try to call this function, we'll run into an annoying issue. We don't immediately have access to . Getting to it in a traditional React way would involve a variety of parent to child and vice versa callbacks, which is not readable, or maintainable. It's time we introduce Redux into the app, with a slice of state specifically for storing the state of this `Try It' widget.
+
+\section{Adding Redux}
+
+We saw in the previous section that when we went to add the call to our \codeword{parseTypeScript} function, that we didn't have easy access to the current value of what the code was in the editor. To do this in a clean and maintainable way, we will at Redux to our frontend. (I know, I know, using Redux in a developer tool built \textit{for} Redux is a bit meta, but it won't be too bad to understand \wink). 
+
+\minisec{Getting Started}
+
+Before writing code, let's install all the packages we will need to use Redux. We'll need \index{\codeword{redux}} itself, \index{\codeword{react-redux}} for a variety of react style hooks to use redux in our components, and finally \index{\codeword{\at reduxjs/toolkit}}, for Redux toolkit, which helps making slices of state a breeze. All together, this install with \codeword{npm} is:
+
+\begin{codeInput}{bash}{terminal}{Installing redux\, react-redux\, and \at reduxjs/toolkit.}
+npm install redux react-redux @reduxjs/toolkit
+\end{codeInput}
+
+\minisec{Add Redux Scaffolding to Make Redux Compatible with Gatsby}
+
+There is a \link{nice example on GitHub on how to use Redux in a Gatsby app}{https://github.com/gatsbyjs/gatsby/tree/master/examples/using-redux}. We will be following the same pattern here. First start by creating a \textbf{JavaScript} file in the project root called \codeword{wrap-with-provider.js}, and add the following:
+
+\begin{codeInput}{javascript}{wrap-with-provider.js}{The contents of wrap-with-provider.js}
+import React from "react"
+import { Provider } from "react-redux"
+import createStore from "./src/store/index"
+
+export default ({ element }) => {
+  const store = createStore()
+  return <Provider store={store}>{element}</Provider>
+}  
+\end{codeInput}
+
+Then import it in \codeword{gatsby-ssr.js}:
+
+\begin{codeInput}{javascript}{gatsby-ssr.js}{Adding wrapWithProvider to gatsby-ssr.js}
+import wrapWithProvider from './wrap-with-provider'
+
+export const wrapRootElement = wrapWithProvider
+\end{codeInput}
+
+Also add these two lines to \codeword{gatsby-browser.js}, such that it results with:
+
+\begin{codeInput}{javascript}{gatsby-browser.js}{Adding wrapWithProvider to gatsby-browser.js}
+import "./src/styles/styles.scss"
+import wrapWithProvider from './wrap-with-provider'
+
+export const wrapRootElement = wrapWithProvider
+\end{codeInput}
+
+\minisec{Adding a Slice of State for the Editors}
+
+Add a new folder called \codeword{store/} under the \codeword{src/} folder. Then, create a folder for our first slice called \codeword{editors}. Finally, create a file called \codeword{editorsSlice}. Add the following to it:
+
+\begin{codeInput}{typescript}{editorsSlice.ts}{The 'editors' slice of the Redux state\, editorsSlice.ts}
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import Editor from "../../enums/Editor"
+import IEditorSetting from "../../interfaces/IEditorSettings"
+
+interface EditorsState {
+  editors: {
+    [Editor: string]: {
+      editorTitle: string
+      editorSettings: Array<IEditorSetting>
+    }
+  }
+}
+
+const initialState: EditorsState = {
+  editors: {
+    [Editor.TRY_IT_STATE]: {
+      editorTitle: "Desired Redux State",
+      editorSettings: [
+        {
+          fileLabel: "store/types.ts",
+          code: `// Feel free to edit with whatever state you need.
+// Then click 'Generate!' below!
+export interface MyState {
+  myBoolean: boolean
+  myNumber: number
+  myString: string
+  myStringArray: Array<string>
+}`,
+          isActive: true,
+        },
+      ],
+    },
+    [Editor.TRY_IT_RESULTS]: {
+      editorTitle: "Generated Code",
+      editorSettings: [
+        {
+          fileLabel: "store/types.ts",
+          code: `// types.ts
+// Nothing here yet.
+// Click 'Generate!' below!`,
+          isActive: true,
+        },
+        {
+          fileLabel: "store/reducer.ts",
+          code: `// reducer.ts
+// Nothing here yet.
+// Click 'Generate!' below!`,
+          isActive: false,
+        },
+        {
+          fileLabel: "store/actions.ts",
+          code: `// actions.ts
+// Nothing here yet.
+// Click 'Generate!' below!`,
+          isActive: false,
+        },
+      ],
+    },
+  },
+}
+
+export const editorsSlice = createSlice({
+  name: "tryItWidget",
+  initialState,
+  reducers: {
+    codeChanged: (
+      state,
+      action: PayloadAction<{
+        editor: Editor
+        code: string
+      }>
+    ) => {
+      const { editor, code } = action.payload
+      state.editors[editor].editorSettings = state.editors[
+        editor
+      ].editorSettings.map(editorSetting => {
+        if (editorSetting.isActive) {
+          editorSetting.code = code
+        }
+        return editorSetting
+      })
+    },
+    tabClicked: (
+      state,
+      action: PayloadAction<{ editor: Editor; fileLabel: string }>
+    ) => {
+      const { editor, fileLabel } = action.payload
+      state.editors[editor].editorSettings = state.editors[
+        editor
+      ].editorSettings.map(editorSetting => {
+        editorSetting.isActive = editorSetting.fileLabel === fileLabel
+        return editorSetting
+      })
+    },
+  },
+})
+
+export const { codeChanged, tabClicked } = editorsSlice.actions
+
+export default editorsSlice.reducer  
+\end{codeInput}
+
+I've moved most of the \codeword{editorSettings} update logic into the reducer action logic. We can also remove the state variable from \codeword{EditorWidget}. The initial state and props can also be eliminated from \codeword{<EditorWidget/>} component. These changes ultimately results in the \codeword{<EditorWidget/>} and \codeword{<TryItWidget/>} being much cleaner and easier to read. Most of the complexity was really in the initial props of the editors, now refactored to be in the Redux initial state.
+
+After refactoring, the \index{\codeword{TryItWidget}} component now looks like this:
+
+\begin{codeInput}{jsx}{TryItWidget.tsx}{The TryItWidget component\, after refactoring the frontend application to use Redux}
+import * as React from "react"
+import Editor from "../../../enums/Editor"
+import { EditorWidget } from "./EditorWidget"
+import { TryItButtons } from "./TryItButtons"
+
+export function TryItWidget() {
+  return (
+    <div className="container text-center">
+      <div className="d-flex flex-wrap justify-content-center">
+        <EditorWidget editor={Editor.TRY_IT_STATE} />
+        <EditorWidget editor={Editor.TRY_IT_RESULTS} />
+      </div>
+      <TryItButtons />
+    </div>
+  )
+}
+\end{codeInput}
+
+likewise, the EditorWiget comoponent has also become much cleaner:
+
+\codeFromFile{jsx}{EditorWidget.tsx}{The EditorWidget component\, after refactoring the frontend application to use Redux.}{./snippets/EditorWidget-after-redux.tsx}
+
+Let's now finally hook in a call to our API (which doesn't exist yet, but we're getting very close to a point where we can start writing it). For the `Generate!' button which triggers a call to our endpoint \codeword{/generate}, we can actually hard code the settings for \codeword{IGenerateOptions}, since this is the totally free and public version of the endpoint, and the user won't have access to the more advanced options Adding a \codeword{useSelector} hook, we can now get at the current value of the editor's code within the \codeword{<TryItButtons/>} component. We can then submit this, along with the hardcoded values, to the \codeword{post} function from ApiHelpers!
+
+\section{Recipe: Toast Helper Functions}
+
+Following the inclusion of our \codeword{ApiHelpers} functions, we saw the need for side effects to inform the customer. A typical pattern is to include an animated feedback that appears on screen. It is up to you to have these appear directly on the site, for example, right near the button after it is clicked, or in a floating div somewhere else on the page. I typically use the floating pattern of. Just as we did with an API connector, we'll create a file \codeword{ToastHelpers} inside the \codeword{helpers/} directory with a variety of helper functions which can create these toasts.
 
 \minisec{Getting Started}
 
@@ -1674,9 +2110,9 @@ npm install netlify-identity-widget
 
 Then create a file under \codeword{src/helpers/} called NetlifyIdentityHelpers.ts. This is the single place where we will import and use \index{\codeword{netlify-identity-widget}} package.
 
-\section{Adding Redux}
+\section{Adding Netlify State to Redux}
 
-As we saw in the previous section, we need to manage the user's Netlify state across the app. We'll be using Redux for this. As an added bonus, we'll even be using \codeword{redux-persist} to persist the user state within \codeword{localStorage}. (I know, I know, using Redux in a very developer tool for Redux is a bit Meta, but it won't be too bad \wink)
+As we saw in the previous section, we need to manage the user's Netlify state across the app. We'll need to add the Netlify state to Redux to accomplish this. As an added bonus, we'll even be using \codeword{redux-persist} to persist the user state within \codeword{localStorage}.
 
 \minisec{Resolving User Roles}
 
@@ -1736,30 +2172,6 @@ export default AppPage
 
 Now when we click the `Try Full App' button on our homepage, we'll get an nearly empty (but at least existing) app page, just with our `Coming Soon' message, instead of the Gatsby development 404 page.
 
-\section{Recipe: Adding API Helper Functions}
-
-We will now add an API Service which I believe is as optimized as it can be. It is both configurable as possible, but able to be called from any React component as a one-liner, \textit{including} side effect callbacks. This set of functions will be complete standalone, so you can reuse it for \textit{any} SaaS product. Thus it is yet another listing in our Recipe list:
-
-\section{Setting Up a Contract-Based API}
-
-As we saw in our API Helper Functions, the calls accept a generic type and return a generic type. In this section, we'll be setting up an interface that matches what we will build in our .NET API, so that on both the frontend and backend we can expect what shapes of data will be receiving and sending. Even later, we'll see even in the free preview of the \codeword{app/} page, we will limit features available. In any case, it's clear that the \codeword{/generate} endpoint will have a complex set of options that our API and client will need to robustly follow and understand. The best way to do this is define an interface for the POST body.
-
-\minisec{Creating the IGenerateOptions Interface}
-
-Let's create a new TypeScript file, \codeword{IGenerateOptions.ts} under the \codeword{src/interfaces/}. Our initial \codeword{IGenerateOptions} interface will look like this:
-
-\begin{codeInput}{jsx}{IGenerateOptions.ts}{The intial shape of interface IGenerateOptions}
-export default IGenerateOptions {
-  useReduxToolkit: boolean;
-  useTypeScript: boolean;
-  singleFile: boolean;
-}
-\end{codeInput}
-
-Let's now finally hook in a call to our API (which doesn't exist yet, but we're getting very close to a point where we can start writing it). For the `Generate!' button which triggers a call to our endpoint \codeword{/generate}, we can actually hardcode the settings for \codeword{IGenerateOptions}, since this is the totally free and public version of the endpoint, and the user won't have access to the more advanced options.
-
-Remember that the \codeword{generate} endpoint will need to first run through our serverless function, as it is our authorization source of truth and we need to make sure that we are calling our custom API with our API Key.
-
 \section{Review of the Frontend Implementation}
 
 Great work so far! In this section, we've: 
@@ -1770,6 +2182,7 @@ Great work so far! In this section, we've:
 \item added a ToastHelpers file, which provides some powerful utility functions for the \codeword{react-toastify} package
 \item added authentication, authorization, via Netlify Identity
 \item added automatic deploys to our live custom URL every time we push to the \codeword{master} branch
+\item created a page under the /app path
 \end{arrows}
 
 Right now, our app \textit{looks} really solid when viewed in a browser. But there's one major problem - our product doesn't actually \textit{do} anything yet! \joy Remember those calls to the \codeword{/generate} endpoint? Yeah. That endpoint doesn't exist yet - our toast will continually 
@@ -1790,6 +2203,7 @@ The next step then is to build this \codeword{/generate} endpoint on our custom 
 \begin{arrows}
 \item Use Repositories 
 \item Use Service Classes
+\item Use the EF Framework for all database migrations and modifications
 \end{arrows}
 
 \minisec{Backend Frameworks and Tools Versioning}
@@ -1805,7 +2219,11 @@ On the backend, I will be using the following versions of the following tools an
 
 \section{Bootstrap the Backend With the .NET CLI}
 
-\section{Clean Up the Backend Boiletplate Code}
+\minisec{Getting Started}
+
+Start off using the 
+
+\section{Clean Up the Backend Boilerplate Code}
 
 Just as we did for the frontend, we'll clean up some of the extra fluff that .NET has created in our API codebase.
 
@@ -2011,5 +2429,20 @@ Credit where credit is due! (Note that I am not sponsored or supported by any of
 
 \printindex
 \addcontentsline{toc}{chapter}{Index}
+
+% \begin{appendices}
+% \chapter{Installing Node.js and NPM}
+
+% Though the process of install Node.js has become ever more easy over the years, I still find it is a challenge to maintain the ever evolving versions of both Node.js and npm (and cheers to the team for producing releases so rapidly!)
+
+% I believe a tool like nvm is essential, as it manages and partitials all environment seperately, so you will never end up with a missing version or incompatible globally install module. You can also permanantly uninstall older version of node, or install newer ones with a one-liner CLI command.
+
+% \chapter{Installing .NET 5.0}
+
+% Head to [the official download site to download .NET 5.0](https://dotnet.microsoft.com/download). The site will attempt to detect your OS, but make sure that it is suggesting the correct one for your machine. The click the `Download .NET SDK' button, and open it as soon as it downloads. The downloader
+
+% This .NET download will include everything you need: the runtime, all intellisense, and the the CLI command \codeword{dotnet}.
+
+% \end{appendices}
 
 \end{document}

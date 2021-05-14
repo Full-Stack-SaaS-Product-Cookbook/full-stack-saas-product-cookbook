@@ -4,14 +4,19 @@
   \item \codeword{Header.tsx}, \hyperpage{64}, \hyperpage{71}
   \item \codeword{Layout.tsx}, \hyperpage{64}, \hyperpage{69, 70}
   \item \codeword{Nav.tsx}, \hyperpage{68}, \hyperpage{70, 71}, 
-		\hyperpage{87}
+		\hyperpage{98}
+  \item \codeword{TryItWidget}, \hyperpage{112}
+  \item \codeword{\at reduxjs/toolkit}, \hyperpage{108}
   \item \codeword{gatsby-plugin-manifest}, \hyperpage{30}, 
-		\hyperpage{86, 87}
+		\hyperpage{97, 98}
   \item \codeword{gatsby-plugin-offline}, \hyperpage{30}
   \item \codeword{gatsby-plugin-sass}, \hyperpage{64, 65}
-  \item \codeword{netlify-identity-widget}, \hyperpage{92}
+  \item \codeword{netlify-identity-widget}, \hyperpage{115}
   \item \codeword{package.json}, \hyperpage{30}, \hyperpage{35}, 
 		\hyperpage{37}, \hyperpage{41}
+  \item \codeword{react-redux}, \hyperpage{108}
+  \item \codeword{redux}, \hyperpage{108}
+  \item \codeword{ts-morph}, \hyperpage{106}
 
   \indexspace
 

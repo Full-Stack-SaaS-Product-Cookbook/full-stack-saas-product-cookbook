@@ -1,0 +1,117 @@
+@import "../variables";
+
+$plateWidth: 185px;
+$plateHeight: 170px;
+$screwSize: $plateHeight / 6;
+$screwColor: $primaryMid;
+$plateColor: $primaryLight;
+
+.plate {
+  text-align: center;
+  font-size: $plateHeight / 7;
+  position: absolute;
+  z-index: -1;
+  transform: translateX(-$plateWidth*.99) translateY(-$plateHeight / 30);
+  &:before {
+    transition: all 0.5s ease-in-out;
+    content: "";
+    position: absolute;
+    background-color: $plateColor;
+    width: $plateWidth;
+    height: $plateHeight;
+    border-radius: $plateHeight / 4;
+    transform: translateY(-$plateHeight / 5);
+    border: 2px solid $screwColor;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  }
+  // plate lifts and screws spin on hover
+  &:hover {
+    &:before {
+      box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+      transform: translateY(-$plateHeight / 5 - 2px);
+    }
+    & .top-screws:before {
+      box-shadow: 0px 0px 1px black;
+      transform: translateX($plateHeight / 16) translateY(-$plateHeight / 10)
+        rotate(-360deg);
+    }
+    & .top-screws:after {
+      box-shadow: 0px 0px 1px black;
+      transform: translateX($plateWidth - $screwSize * 1.4)
+        translateY(-$plateHeight / 10) rotate(-360deg);
+    }
+    & .bottom-screws:before {
+      box-shadow: 0px 0px 1px black;
+      transform: translateX($plateHeight / 16) translateY($plateHeight / 1.85)
+        rotate(-360deg);
+    }
+    & .bottom-screws:after {
+      box-shadow: 0px 0px 1px black;
+      transform: translateX($plateWidth - $screwSize * 1.4)
+        translateY($plateHeight / 1.85) rotate(-360deg);
+    }
+  }
+}
+
+.bottom-screws {
+  &:before {
+    color: black;
+    transition: all 0.5s ease-in-out;
+    content: "\2716";
+    position: absolute;
+    background-color: $screwColor;
+    height: $screwSize;
+    width: $screwSize;
+    border-radius: 100%;
+    transform: translateX($plateWidth / 16) translateY($plateWidth / 2);
+  }
+
+  &:after {
+    color: black;
+    transition: all 0.5s ease-in-out;
+    content: "\2716";
+    position: absolute;
+    background-color: $screwColor;
+    height: $screwSize;
+    width: $screwSize;
+    border-radius: 100%;
+    transform: translateX($plateWidth - $screwSize * 1.4)
+      translateY($plateWidth / 2);
+  }
+}
+
+.top-screws {
+  &:before {
+    color: black;
+    transition: all 0.5s ease-in-out;
+    content: "\2716";
+    position: absolute;
+    background-color: $screwColor;
+    height: $screwSize;
+    width: $screwSize;
+    border-radius: 100%;
+    transform: translateX($plateWidth / 16) translateY(-$plateWidth / 12);
+  }
+
+  &:after {
+    color: black;
+    transition: all 0.5s ease-in-out;
+    content: "\2716";
+    position: absolute;
+    background-color: $screwColor;
+    height: $screwSize;
+    width: $screwSize;
+    border-radius: 100%;
+    transform: translateX($plateWidth - $screwSize * 1.4)
+      translateY(-$plateWidth / 12);
+  }
+}
+
+// mobile styles - make redux part block with a small margin-bottom
+@media only screen and (max-width: 768px) {
+  .light {
+    display: block;
+    margin-bottom: 2rem;
+  }
+}

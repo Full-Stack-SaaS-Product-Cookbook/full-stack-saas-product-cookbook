@@ -23,17 +23,18 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Screenshot of the opened Netlify Environment variables panel, with it's key-value style interface. Here we are adding the NODE\_VERSION variable.}}{62}{figure.3.2}%
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Screenshot of the terminal output after running the Netlify CLI in development mode. The environment variable NODE\_VERSION we defined in the Netlify UI is being used in our local environment.}}{63}{figure.3.3}%
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Screenshot of the terminal output after running the Netlify CLI in development mode. The environment variable NODE\_VERSION we defined in the Netlify UI is now being ignored, as the local NODE\_VERSION defined in process takes precident.}}{64}{figure.3.4}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Screenshot of the single tab code editor.}}{76}{figure.3.5}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Screenshot of the multi tabbed code editor.}}{76}{figure.3.6}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces The square plate-like logo for ReduxPlate.}}{80}{figure.3.7}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Screenshot of the sidebar options in SVGOMG.}}{81}{figure.3.8}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Screenshot of the sidebar options in SVGOMG.}}{82}{figure.3.9}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Screenshot of the option buttons in SVGOMG (Background toggle, copy to clipboard, and export).}}{82}{figure.3.10}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Screenshot of the logo in the nav.}}{88}{figure.3.11}%
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Screenshot of the logo as a favicon.}}{88}{figure.3.12}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Screenshot of the single tab code editor.}}{84}{figure.3.5}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Screenshot of the multi tabbed code editor.}}{84}{figure.3.6}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces The square plate-like logo for ReduxPlate.}}{90}{figure.3.7}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Screenshot of the sidebar options in SVGOMG.}}{91}{figure.3.8}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Screenshot of the sidebar options in SVGOMG.}}{92}{figure.3.9}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Screenshot of the option buttons in SVGOMG (Background toggle, copy to clipboard, and export).}}{93}{figure.3.10}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Screenshot of the logo in the nav.}}{99}{figure.3.11}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Screenshot of the logo as a favicon.}}{99}{figure.3.12}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces A screenshot of the homepage we've built so far.}}{102}{figure.3.13}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Screenshot of the droplets tab.}}{102}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Screenshot of the new droplet button.}}{102}{figure.4.2}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Screenshot of the droplets tab.}}{124}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Screenshot of the new droplet button.}}{124}{figure.4.2}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
