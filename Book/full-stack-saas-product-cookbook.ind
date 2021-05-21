@@ -1,29 +1,35 @@
 \begin{theindex}
 
-  \item \codeword{Footer.tsx}, \hyperpage{70}
-  \item \codeword{Header.tsx}, \hyperpage{64}, \hyperpage{71}
-  \item \codeword{Layout.tsx}, \hyperpage{64}, \hyperpage{69, 70}
-  \item \codeword{Nav.tsx}, \hyperpage{68}, \hyperpage{70, 71}, 
-		\hyperpage{98}
-  \item \codeword{TryItWidget}, \hyperpage{112}
-  \item \codeword{\at reduxjs/toolkit}, \hyperpage{108}
-  \item \codeword{gatsby-plugin-manifest}, \hyperpage{30}, 
-		\hyperpage{97, 98}
-  \item \codeword{gatsby-plugin-offline}, \hyperpage{30}
-  \item \codeword{gatsby-plugin-sass}, \hyperpage{64, 65}
-  \item \codeword{netlify-identity-widget}, \hyperpage{115}
-  \item \codeword{package.json}, \hyperpage{30}, \hyperpage{35}, 
-		\hyperpage{37}, \hyperpage{41}
-  \item \codeword{react-redux}, \hyperpage{108}
-  \item \codeword{redux}, \hyperpage{108}
-  \item \codeword{ts-morph}, \hyperpage{106}
+  \item \codeword{Footer.tsx}, \hyperpage{74}
+  \item \codeword{Header.tsx}, \hyperpage{68}, \hyperpage{75}
+  \item \codeword{Jering.Javascript.NodeJS}, \hyperpage{186, 187}
+  \item \codeword{Layout.tsx}, \hyperpage{68}, \hyperpage{73, 74}
+  \item \codeword{Nav.tsx}, \hyperpage{72}, \hyperpage{74, 75}, 
+		\hyperpage{107}
+  \item \codeword{TryItWidget}, \hyperpage{130}
+  \item \codeword{\at monaco-editor/react}, \hyperpage{80}
+  \item \codeword{\at reduxjs/toolkit}, \hyperpage{125}
+  \item \codeword{gatsby-plugin-manifest}, \hyperpage{34}, 
+		\hyperpage{106, 107}
+  \item \codeword{gatsby-plugin-offline}, \hyperpage{34}
+  \item \codeword{gatsby-plugin-sass}, \hyperpage{68, 69}
+  \item \codeword{monaco-editor}, \hyperpage{80}
+  \item \codeword{monaco-themes}, \hyperpage{90}
+  \item \codeword{netlify-identity-widget}, \hyperpage{200}
+  \item \codeword{node-fetch}, \hyperpage{144}
+  \item \codeword{package.json}, \hyperpage{34}, \hyperpage{39}, 
+		\hyperpage{41}, \hyperpage{46}
+  \item \codeword{react-redux}, \hyperpage{125}
+  \item \codeword{react-toastify}, \hyperpage{133}
+  \item \codeword{redux}, \hyperpage{125}
+  \item \codeword{ts-morph}, \hyperpage{176}
 
   \indexspace
 
-  \item Redux, \hyperpage{22}
+  \item Redux, \hyperpage{26}
 
   \indexspace
 
-  \item TypeScript, \hyperpage{22}
+  \item TypeScript, \hyperpage{26}
 
 \end{theindex}

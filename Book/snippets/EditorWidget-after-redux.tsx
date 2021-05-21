@@ -4,9 +4,9 @@ import "ace-builds/src-noconflict/mode-typescript"
 import "ace-builds/src-noconflict/theme-kuroir"
 import { useEffect, useRef } from "react"
 import * as styles from "../../../styles/modules/editor.module.scss"
-import { useDispatch, useSelector } from "react-redux"
 import Editor from "../../../enums/Editor"
 import { codeChanged, tabClicked } from "../../../store/editors/editorsSlice"
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks"
 
 export interface IEditorWidgetProps {
   editor: Editor
@@ -14,10 +14,10 @@ export interface IEditorWidgetProps {
 
 export function EditorWidget(props: IEditorWidgetProps) {
   const { editor } = props
-  const { editorTitle, editorSettings } = useSelector(
-    state => (state as any).editors.editors[editor]
+  const { editorTitle, editorSettings } = useAppSelector(
+    state => state.editors.editors[editor]
   )
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const aceEditorRef = useRef<AceEditor>()
 
   const onChangeCode = (code: string) => {
