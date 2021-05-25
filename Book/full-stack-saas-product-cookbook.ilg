@@ -1,6 +1,18 @@
 This is makeindex, version 2.15 [TeX Live 2020] (kpathsea + Thai support).
-Scanning input file full-stack-saas-product-cookbook.idx....done (40 entries accepted, 0 rejected).
-Sorting entries....done (221 comparisons).
-Generating output file full-stack-saas-product-cookbook.ind....done (35 lines written, 0 warnings).
+Scanning input file full-stack-saas-product-cookbook.idx....
+!! Input index error (file = full-stack-saas-product-cookbook.idx, line = 171):
+   -- Illegal null field.
+
+!! Input index error (file = full-stack-saas-product-cookbook.idx, line = 202):
+   -- Illegal null field.
+
+!! Input index error (file = full-stack-saas-product-cookbook.idx, line = 329):
+   -- Illegal null field.
+
+!! Input index error (file = full-stack-saas-product-cookbook.idx, line = 646):
+   -- Illegal null field.
+done (696 entries accepted, 4 rejected).
+Sorting entries........done (6961 comparisons).
+Generating output file full-stack-saas-product-cookbook.ind....done (490 lines written, 0 warnings).
 Output written in full-stack-saas-product-cookbook.ind.
 Transcript written in full-stack-saas-product-cookbook.ilg.
