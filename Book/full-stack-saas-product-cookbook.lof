@@ -1,57 +1,81 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Screenshot of the unmodified default Gatsby starter.}}{32}{figure.2.1}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Screenshot of adding a repository on Bitbucket.}}{41}{figure.2.2}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Screenshot of the 'create repository' on Bitbucket.}}{41}{figure.2.3}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Screenshot of repository fields for your SaaS product.}}{43}{figure.2.4}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Screenshot of the `New site from Git' button.}}{45}{figure.2.5}%
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Screenshot of the `Bitbucket' button.}}{46}{figure.2.6}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Screenshot of Netlify build settings for a Gatsby site.}}{47}{figure.2.7}%
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Screenshot of where to find the detailed deploy log per deploy.}}{47}{figure.2.8}%
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Screenshot of the `Domain settings' button.}}{48}{figure.2.9}%
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Screenshot of the `Edit site name' domain option.}}{49}{figure.2.10}%
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Screenshot of the `Edit site name' domain option.}}{49}{figure.2.11}%
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Screenshot of the `Set up a custom domain' domain step.}}{52}{figure.2.12}%
-\contentsline {figure}{\numberline {2.13}{\ignorespaces Screenshot of the custom domain input.}}{53}{figure.2.13}%
-\contentsline {figure}{\numberline {2.14}{\ignorespaces Screenshot of the DNS warnings on the custom domains.}}{53}{figure.2.14}%
-\contentsline {figure}{\numberline {2.15}{\ignorespaces Screenshot of the `Use Netlify DNS link'.}}{54}{figure.2.15}%
-\contentsline {figure}{\numberline {2.16}{\ignorespaces Screenshot of the final step in the Netlify DNS setup, `Activate Netlify DNS'.}}{55}{figure.2.16}%
-\contentsline {figure}{\numberline {2.17}{\ignorespaces Screenshot of the nameservers dropdown on the Namecheap site dashboard.}}{56}{figure.2.17}%
-\contentsline {figure}{\numberline {2.18}{\ignorespaces Screenshot of the Netlify nameservers applied to the custom DNS configuration on Namecheap.}}{56}{figure.2.18}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Screenshot of the unmodified default Gatsby starter.}}{25}{figure.2.1}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Screenshot of adding a repository on Bitbucket.}}{32}{figure.2.2}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Screenshot of the 'create repository' on Bitbucket.}}{32}{figure.2.3}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Screenshot of repository fields for your SaaS product.}}{34}{figure.2.4}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Screenshot of the `New site from Git' button.}}{36}{figure.2.5}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Screenshot of the `Bitbucket' button.}}{37}{figure.2.6}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Screenshot of Netlify build settings for a Gatsby site.}}{38}{figure.2.7}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Screenshot of where to find the detailed deploy log per deploy.}}{38}{figure.2.8}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Screenshot of the `Domain settings' button.}}{39}{figure.2.9}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Screenshot of the `Edit site name' domain option.}}{40}{figure.2.10}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Screenshot of the `Edit site name' domain option.}}{40}{figure.2.11}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Screenshot of the `Set up a custom domain' domain step.}}{43}{figure.2.12}%
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Screenshot of the custom domain input.}}{44}{figure.2.13}%
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Screenshot of the DNS warnings on the custom domains.}}{44}{figure.2.14}%
+\contentsline {figure}{\numberline {2.15}{\ignorespaces Screenshot of the `Use Netlify DNS link'.}}{45}{figure.2.15}%
+\contentsline {figure}{\numberline {2.16}{\ignorespaces Screenshot of the final step in the Netlify DNS setup, `Activate Netlify DNS'.}}{46}{figure.2.16}%
+\contentsline {figure}{\numberline {2.17}{\ignorespaces Screenshot of the nameservers dropdown on the Namecheap site dashboard.}}{47}{figure.2.17}%
+\contentsline {figure}{\numberline {2.18}{\ignorespaces Screenshot of the Netlify nameservers applied to the custom DNS configuration on Namecheap.}}{47}{figure.2.18}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Screenshot of the Netlify environment variables panel and the `Edit variables' button.}}{63}{figure.3.1}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Screenshot of the opened Netlify Environment variables panel, with it's key-value style interface. Here we are adding the NODE\_VERSION variable.}}{64}{figure.3.2}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Screenshot of the terminal output after running the Netlify CLI in development mode. The environment variable NODE\_VERSION we defined in the Netlify UI is being used in our local environment.}}{65}{figure.3.3}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Screenshot of the terminal output after running the Netlify CLI in development mode. The environment variable NODE\_VERSION we defined in the Netlify UI is now being ignored, as the local NODE\_VERSION defined in process takes precident.}}{66}{figure.3.4}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Screenshot of the single tab code editor.}}{92}{figure.3.5}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Screenshot of the multi tabbed code editor.}}{93}{figure.3.6}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces The square plate-like logo for ReduxPlate.}}{99}{figure.3.7}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Screenshot of the sidebar options in SVGOMG.}}{101}{figure.3.8}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Screenshot of the sidebar options in SVGOMG.}}{102}{figure.3.9}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Screenshot of the option buttons in SVGOMG (Background toggle, copy to clipboard, and export).}}{102}{figure.3.10}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Screenshot of the logo in the nav.}}{108}{figure.3.11}%
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Screenshot of the logo as a favicon.}}{108}{figure.3.12}%
-\contentsline {figure}{\numberline {3.13}{\ignorespaces A screenshot of the homepage we've built so far.}}{113}{figure.3.13}%
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Copying Mailchimp's form action URL and validation name value.}}{153}{figure.3.14}%
-\contentsline {figure}{\numberline {3.15}{\ignorespaces Navigation to Mailchimp's embedded forms.}}{154}{figure.3.15}%
-\contentsline {figure}{\numberline {3.16}{\ignorespaces Navigation to Mailchimp's form builder.}}{157}{figure.3.16}%
-\contentsline {figure}{\numberline {3.17}{\ignorespaces Selecting `Confirmation thank you page' from the dropdown.}}{158}{figure.3.17}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Screenshot of the Netlify environment variables panel and the `Edit variables' button.}}{51}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Screenshot of the opened Netlify Environment variables panel, with it's key-value style interface. Here we are adding the NODE\_VERSION variable.}}{52}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Screenshot of the terminal output after running the Netlify CLI in development mode. The environment variable NODE\_VERSION we defined in the Netlify UI is being used in our local environment.}}{53}{figure.3.3}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Screenshot of the terminal output after running the Netlify CLI in development mode. The environment variable NODE\_VERSION we defined in the Netlify UI is now being ignored, as the local NODE\_VERSION defined in process takes precident.}}{53}{figure.3.4}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces The TypeScript version number at the bottom of Visual Studio Code.}}{66}{figure.3.5}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces The `Select TypeScript Version' option.}}{66}{figure.3.6}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces The `Use Workspace Version' option.}}{66}{figure.3.7}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces The CSS Modules extension in Visual Studio Code.}}{67}{figure.3.8}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Screenshot of the single tab code editor.}}{78}{figure.3.9}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Screenshot of the multi tabbed code editor.}}{79}{figure.3.10}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces The square plate-like logo for ReduxPlate.}}{85}{figure.3.11}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Screenshot of the sidebar options in SVGOMG.}}{86}{figure.3.12}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Screenshot of the sidebar options in SVGOMG.}}{87}{figure.3.13}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Screenshot of the option buttons in SVGOMG (Background toggle, copy to clipboard, and export).}}{88}{figure.3.14}%
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Screenshot of the logo in the nav.}}{92}{figure.3.15}%
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Screenshot of the logo as a favicon.}}{92}{figure.3.16}%
+\contentsline {figure}{\numberline {3.17}{\ignorespaces A screenshot of the homepage we've built so far.}}{96}{figure.3.17}%
+\contentsline {figure}{\numberline {3.18}{\ignorespaces The new toast explaining that the error is at the .NET API level.}}{133}{figure.3.18}%
+\contentsline {figure}{\numberline {3.19}{\ignorespaces Copying Mailchimp's form action URL and validation name value.}}{137}{figure.3.19}%
+\contentsline {figure}{\numberline {3.20}{\ignorespaces Navigation to Mailchimp's embedded forms.}}{138}{figure.3.20}%
+\contentsline {figure}{\numberline {3.21}{\ignorespaces Navigation to Mailchimp's form builder.}}{141}{figure.3.21}%
+\contentsline {figure}{\numberline {3.22}{\ignorespaces Selecting `Confirmation thank you page' from the dropdown.}}{142}{figure.3.22}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Screenshot of the droplets tab.}}{174}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Screenshot of the new droplet button.}}{174}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces The repository variables page with the USER and SERVER variables.}}{179}{figure.4.3}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Creating a new app on the Slack API site.}}{181}{figure.4.4}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Selecting the `from scratch' option in the Slack API UI.}}{182}{figure.4.5}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Selecting the `from scratch' option in the Slack API UI.}}{183}{figure.4.6}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Selecting the `from scratch' option in the Slack API UI.}}{184}{figure.4.7}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Adding the ReduxPlate logo to the Bitbucket repositories.}}{154}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Creating a project in the Digital Ocean UI}}{155}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Screenshot of the new droplet button.}}{156}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Bitbucket tells us we need to first activate Pipelines to use the repository variables page.}}{159}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces The switch to activate pipelines.}}{160}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces The repository variables page with the USER and SERVER variables.}}{161}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Copying the public key in the Bitbucket UI.}}{162}{figure.4.7}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Adding the public key to the Bitbucket UI.}}{163}{figure.4.8}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Creating a new app on the Slack API site.}}{167}{figure.4.9}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Selecting the `from scratch' option in the Slack API UI.}}{168}{figure.4.10}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Selecting the `from scratch' option in the Slack API UI.}}{169}{figure.4.11}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Selecting the `from scratch' option in the Slack API UI.}}{170}{figure.4.12}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces The Slack bot styling settings I chose for the ReduxPlate deploy bot.}}{172}{figure.4.13}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Our very first Slack bot messaging shining through with the good news!}}{173}{figure.4.14}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Selecting the `Web API Controller Class' template choice in Visual Studio.}}{188}{figure.5.1}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces The run project button and it's description in Visual Studio.}}{190}{figure.5.2}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Swagger screen with expandable endpoint method bars.}}{190}{figure.5.3}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Expanded method bar with `Execute' button shown}}{191}{figure.5.4}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Detailed response panel showing both the response body and response headers.}}{192}{figure.5.5}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces The manage NuGet packages menu.}}{208}{figure.5.6}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces The NuGet window, searching for `Jering'.}}{209}{figure.5.7}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Selecting the `Web API Controller Class' template choice in Visual Studio.}}{175}{figure.5.1}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces The run project button and it's description in Visual Studio.}}{176}{figure.5.2}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Initial Swagger screen with expandable endpoint method bars.}}{177}{figure.5.3}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Expanded method bar with `Execute' button shown}}{178}{figure.5.4}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Detailed response panel showing both the response body and response headers.}}{179}{figure.5.5}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces The footer, now showing the api version string from our backend.}}{180}{figure.5.6}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Where to find the green Netlify DNS button.}}{181}{figure.5.7}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces A Name records for our API subdomain.}}{182}{figure.5.8}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces The new REDUX\_PLATE\_API\_URL Netlify environment variable.}}{183}{figure.5.9}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Triggering a new deploy in the Netlify UI.}}{184}{figure.5.10}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces The manage NuGet packages menu.}}{206}{figure.5.11}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces The NuGet window, searching for `Jering'.}}{207}{figure.5.12}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Selecting Options in the project context menu.}}{214}{figure.5.13}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Adding an explicit PATH environment variable to a specific version of Node.js.}}{215}{figure.5.14}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Maintaining values for the staging deploy context.}}{221}{figure.6.1}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Maintaining values for our new GitHub OAuth application.}}{235}{figure.8.1}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
@@ -60,7 +84,4 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {14.1}{\ignorespaces Christopher Frewin}}{259}{figure.14.1}%
+\contentsline {figure}{\numberline {14.1}{\ignorespaces Christopher Frewin}}{258}{figure.14.1}%

@@ -1,0 +1,15 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
+
+.editorWrapper {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+}
+
+@include media-breakpoint-down(lg) {
+    .editorWrapper {
+        width: 100% !important;
+    }
+}

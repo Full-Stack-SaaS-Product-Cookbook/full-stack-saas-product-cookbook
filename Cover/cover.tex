@@ -1,6 +1,5 @@
 \documentclass{article}
 \usepackage[paperheight=9.250in,paperwidth=12.394in,margin=1in,heightrounded]{geometry}
-
 \usepackage{lmodern}         % for the looks
 \usepackage[T1]{fontenc}     % to hypenate accented characters correctly
 \usepackage[utf8]{inputenc}  % just in case we go for non-ascii
@@ -45,11 +44,6 @@
 \thispagestyle{empty}
 
 \begin{tikzpicture}[remember picture,overlay,every node/.style={anchor=center}]
-
-% \node at (page cs: 0,1) % debug center bar
-%       {\begin{tikzpicture}[remember picture, overlay]
-%       \fill[fill=black] (-0.01,-30) rectangle (0,30);
-%       \end{tikzpicture}};
 
 \node at (page cs: 0.5,1) % top bar
       {\begin{tikzpicture}[remember picture, overlay]

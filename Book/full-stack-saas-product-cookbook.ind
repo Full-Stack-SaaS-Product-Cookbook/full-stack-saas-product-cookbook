@@ -1,490 +1,564 @@
 \begin{theindex}
 
-  \item ./netlify/functions/api-connector, \hyperpage{141}
-  \item .app, \hyperpage{51}
-  \item .com, \hyperpage{51}
-  \item .csproj, \hyperpage{170}
-  \item .gitignore, \hyperpage{44}, \hyperpage{172, 173}, 
-		\hyperpage{206}
-  \item .profile, \hyperpage{184}
-  \item .ts, \hyperpage{39}
-  \item .tsx, \hyperpage{33}, \hyperpage{39}
-  \item .us, \hyperpage{51}
-  \item .zprofile, \hyperpage{148}
-  \item /CodeGenerator, \hyperpage{121}, \hyperpage{123}, 
-		\hyperpage{141}, \hyperpage{149}, \hyperpage{167}
-  \item /app, \hyperpage{121}, \hyperpage{149}, \hyperpage{151}, 
-		\hyperpage{166}, \hyperpage{224}
-  \item /var/www/, \hyperpage{178}
-  \item /var/www/ReduxPlateApi, \hyperpage{185}
-  \item : ICodeGeneratorService, \hyperpage{195}
-  \item <Seo/>, \hyperpage{150}
-  \item <StaticImage>, \hyperpage{33}
-  \item <p/>, \hyperpage{155}
-  \item <ul>, \hyperpage{83}
-  \item \#764abc, \hyperpage{68}
-  \item \$SERVER, \hyperpage{178}
-  \item \$USER, \hyperpage{178}
-  \item \&, \hyperpage{117}
-  \item \_toasts.scss, \hyperpage{138}
-  \item \_variables.sccs, \hyperpage{96}
-  \item \_variables.scss, \hyperpage{68, 69}, \hyperpage{99}
-  \item \at monaco-editor/react, \hyperpage{79}, \hyperpage{89}
-  \item \at reduxjs/toolkit, \hyperpage{126}
-  \item \dollar, \hyperpage{179}
-  \item 100\%, \hyperpage{88}
-  \item 123.456.789.0, \hyperpage{175}, \hyperpage{178}
-  \item 14.15.0, \hyperpage{65}
-  \item 14.16.0, \hyperpage{63}
-  \item 404.tsx, \hyperpage{39}
+  \item ./netlify/functions/api-connector, \hyperpage{124}
+  \item .app, \hyperpage{42}
+  \item .bashrc, \hyperpage{203}
+  \item .com, \hyperpage{42}
+  \item .csproj, \hyperpage{151}
+  \item .gitignore, \hyperpage{35}, \hyperpage{153}, \hyperpage{201}
+  \item .profile, \hyperpage{170}, \hyperpage{204}
+  \item .scss, \hyperpage{64}
+  \item .ts, \hyperpage{30}, \hyperpage{65}
+  \item .tsx, \hyperpage{26}, \hyperpage{30, 31}, \hyperpage{65}, 
+		\hyperpage{228}
+  \item .us, \hyperpage{42}
+  \item .zprofile, \hyperpage{130}
+  \item /.netlify/functions/oauth/github, \hyperpage{235}
+  \item /CodeGenerator, \hyperpage{111, 112}, \hyperpage{124}, 
+		\hyperpage{133}, \hyperpage{149}
+  \item /Users/chris/.nvm/versions/node/v14.17.0/bin/, \hyperpage{215}
+  \item /app, \hyperpage{111}, \hyperpage{133--135}, \hyperpage{148}, 
+		\hyperpage{225}, \hyperpage{228}
+  \item /etc/nginx/sites-available, \hyperpage{184}
+  \item /etc/systemd/system/, \hyperpage{165}
+  \item /var/www/, \hyperpage{158}
+  \item /var/www/ReduxPlateApi, \hyperpage{166}
+  \item : ICodeGeneratorService, \hyperpage{190}
+  \item <Seo/>, \hyperpage{134}
+  \item <StaticImage>, \hyperpage{26}
+  \item <p/>, \hyperpage{140}
+  \item <ul>, \hyperpage{70}
+  \item \#764abc, \hyperpage{55}
+  \item \$SERVER, \hyperpage{159}
+  \item \$USER, \hyperpage{159}
+  \item \&, \hyperpage{101}
+  \item \_toasts.scss, \hyperpage{108}
+  \item \_variables.sccs, \hyperpage{82}
+  \item \_variables.scss, \hyperpage{55}, \hyperpage{85}
+  \item \at monaco-editor/react, \hyperpage{67}, \hyperpage{76}
+  \item \at reduxjs/toolkit, \hyperpage{114}
+  \item \dollar, \hyperpage{161}
+  \item ~/.ssh/authorized\_keys, \hyperpage{161}
+  \item 100\%, \hyperpage{74}
+  \item 123.456.789.0, \hyperpage{157}, \hyperpage{160}, 
+		\hyperpage{223}
+  \item 14.15.0, \hyperpage{53}
+  \item 14.17.0, \hyperpage{51}, \hyperpage{203}
+  \item 404.tsx, \hyperpage{30}
 
   \indexspace
 
-  \item action, \hyperpage{163, 164}
-  \item actions.ts, \hyperpage{92}, \hyperpage{201}
-  \item advanced-implementation-part-i, \hyperpage{227}
-  \item advanced-implementation-part-ii, \hyperpage{228}, 
-		\hyperpage{230}
-  \item api-connector, \hyperpage{147}
-  \item api-connector.ts, \hyperpage{146}, \hyperpage{148}
-  \item api\_postbuild.sh, \hyperpage{178}, \hyperpage{180}
-  \item ApiErrorMessage, \hyperpage{118}, \hyperpage{120}, 
-		\hyperpage{147}, \hyperpage{201}, \hyperpage{211}, 
-		\hyperpage{214}
-  \item apiErrorMessage, \hyperpage{138}, \hyperpage{147}
-  \item ApiErrorMessageConfig, \hyperpage{159}
-  \item apiErrorMessageConfig, \hyperpage{119}, \hyperpage{160}
-  \item ApiErrorMessageConfigEntries, \hyperpage{159, 160}
-  \item ApiErrorMessages, \hyperpage{202}
-  \item apiErrorMessages, \hyperpage{119}
-  \item ApiErrorMessages.ts, \hyperpage{118}
-  \item ApiHelpers, \hyperpage{134}
-  \item App.tsx, \hyperpage{150}
-  \item app.tsx, \hyperpage{150}
-  \item app/, \hyperpage{97}, \hyperpage{150}
-  \item AppDispatch, \hyperpage{128}
-  \item AppErrorMessages, \hyperpage{202}
-  \item AppMessage, \hyperpage{162}
-  \item AppMessageConfig, \hyperpage{162}
-  \item appMessageConfig[AppMessage.MAILCHIMP\_SUBSCRIPTION\_SUCCESSFUL], 
-		\hyperpage{161}
-  \item AppMessageConfigEntry, \hyperpage{162}
-  \item author, \hyperpage{32}
+  \item A, \hyperpage{223}
+  \item action, \hyperpage{144--146}
+  \item ActionButtons, \hyperpage{121, 122}, \hyperpage{124}, 
+		\hyperpage{132}, \hyperpage{231}, \hyperpage{233}
+  \item ActionButtons.tsx, \hyperpage{82}, \hyperpage{107}, 
+		\hyperpage{121}
+  \item actions.ts, \hyperpage{79}, \hyperpage{196}, \hyperpage{225}
+  \item advanced-implementation-part-ii, \hyperpage{239, 240}
+  \item api-connector, \hyperpage{102}, \hyperpage{128}, 
+		\hyperpage{130}, \hyperpage{180}
+  \item api-connector.ts, \hyperpage{127}, \hyperpage{130}
+  \item api.reduxplate.com, \hyperpage{184}, \hyperpage{187}, 
+		\hyperpage{223}
+  \item api\_postbuild, \hyperpage{201}, \hyperpage{204}
+  \item api\_postbuild.sh, \hyperpage{158}, \hyperpage{164}, 
+		\hyperpage{171}, \hyperpage{222}
+  \item ApiErrorMessage, \hyperpage{102, 103}, \hyperpage{105}, 
+		\hyperpage{131}, \hyperpage{133}, \hyperpage{146}, 
+		\hyperpage{196}, \hyperpage{209}, \hyperpage{213}
+  \item apiErrorMessage, \hyperpage{108}, \hyperpage{130}
+  \item ApiErrorMessageConfig, \hyperpage{131}, \hyperpage{143}
+  \item apiErrorMessageConfig, \hyperpage{104}, \hyperpage{143}
+  \item ApiErrorMessageConfigEntries, \hyperpage{143}
+  \item ApiErrorMessages, \hyperpage{196}
+  \item apiErrorMessagesConfig, \hyperpage{104}
+  \item ApiErrorMessagesConfig.ts, \hyperpage{103}
+  \item ApiHelpers, \hyperpage{102}, \hyperpage{105}
+  \item App.tsx, \hyperpage{134}
+  \item app.tsx, \hyperpage{134}
+  \item app/, \hyperpage{83}, \hyperpage{134}
+  \item AppDispatch, \hyperpage{115}
+  \item AppErrorMessages, \hyperpage{196}
+  \item AppMessage, \hyperpage{146}
+  \item AppMessageConfig, \hyperpage{147}
+  \item AppMessageConfigEntries, \hyperpage{147}
+  \item author, \hyperpage{26}
 
   \indexspace
 
-  \item beforeMount, \hyperpage{89}
-  \item bitbucket-pipelines.yml, \hyperpage{176}, \hyperpage{179}
-  \item body, \hyperpage{122}
-  \item btn-outline-primary, \hyperpage{97}
-  \item btn-primary, \hyperpage{97}
-  \item build, \hyperpage{204}
+  \item bitbucket-pipelines.yml, \hyperpage{157}, \hyperpage{161}, 
+		\hyperpage{201}, \hyperpage{222, 223}
+  \item body, \hyperpage{102}
+  \item btn-outline-primary, \hyperpage{83}
+  \item btn-primary, \hyperpage{83}
+  \item build, \hyperpage{198}
 
   \indexspace
 
-  \item cd, \hyperpage{170}
-  \item circle, \hyperpage{100}
-  \item class, \hyperpage{109}
-  \item className, \hyperpage{109}
-  \item code, \hyperpage{123}, \hyperpage{133}
-  \item codeEdited, \hyperpage{131}
-  \item codeGenerated, \hyperpage{139, 140}
-  \item CodeGenerator, \hyperpage{224}
-  \item CodeGeneratorController, \hyperpage{192}, \hyperpage{194}, 
-		\hyperpage{213}
-  \item CodeGeneratorService, \hyperpage{194, 195}, \hyperpage{208}, 
-		\hyperpage{211}, \hyperpage{213}
-  \item components, \hyperpage{33}
-  \item components/, \hyperpage{33}, \hyperpage{70}, \hyperpage{97}, 
-		\hyperpage{113}
-  \item components/utils/, \hyperpage{154}
-  \item config/, \hyperpage{118}, \hyperpage{160}
-  \item ConfigureServices, \hyperpage{209}
-  \item console.log, \hyperpage{136}, \hyperpage{139}
-  \item Controller, \hyperpage{188}
-  \item ControllerBase, \hyperpage{188}
-  \item Controllers/, \hyperpage{171}, \hyperpage{187}
-  \item create-react-app, \hyperpage{150}
-  \item createStore, \hyperpage{127, 128}
+  \item cat, \hyperpage{163}
+  \item cd, \hyperpage{151}
+  \item circle, \hyperpage{85}
+  \item class, \hyperpage{93}
+  \item className, \hyperpage{93}
+  \item code, \hyperpage{112}, \hyperpage{121}
+  \item codeEdited, \hyperpage{118}
+  \item codeGenerated, \hyperpage{121--123}
+  \item CodeGenerator, \hyperpage{236}
+  \item CodeGeneratorController, \hyperpage{188}, \hyperpage{190}, 
+		\hyperpage{211}
+  \item CodeGeneratorService, \hyperpage{190}, \hyperpage{205}, 
+		\hyperpage{209}, \hyperpage{211}
+  \item CodeGeneratorService.ts, \hyperpage{194}
+  \item components, \hyperpage{26}
+  \item components/, \hyperpage{26}, \hyperpage{57}, \hyperpage{83}, 
+		\hyperpage{96}
+  \item components/pages/app/, \hyperpage{229}
+  \item components/widgets/, \hyperpage{68}, \hyperpage{138}
+  \item config/, \hyperpage{103}, \hyperpage{144}
+  \item ConfigureServices, \hyperpage{207}
+  \item console.log, \hyperpage{107}, \hyperpage{121}, \hyperpage{132}
+  \item Controller, \hyperpage{175}
+  \item ControllerBase, \hyperpage{175}
+  \item Controllers/, \hyperpage{151}, \hyperpage{174}
+  \item create-react-app, \hyperpage{134}
+  \item createStore, \hyperpage{115}
+  \item curl, \hyperpage{171}, \hyperpage{203}
+  \item custom.d.ts, \hyperpage{64}, \hyperpage{67}
 
   \indexspace
 
-  \item d, \hyperpage{105}
-  \item dashboard, \hyperpage{150}
-  \item data, \hyperpage{122}, \hyperpage{147}
-  \item defaultProps, \hyperpage{33}
-  \item description, \hyperpage{32}
-  \item develop, \hyperpage{31}, \hyperpage{204}, \hyperpage{210}, 
-		\hyperpage{217}
-  \item dispatch, \hyperpage{140}
-  \item dist/, \hyperpage{144}, \hyperpage{199}
-  \item dist/index.js, \hyperpage{211}
-  \item dist/test.js, \hyperpage{211}
-  \item dotnet, \hyperpage{173}, \hyperpage{249}
-  \item dotnet new, \hyperpage{170}
+  \item d, \hyperpage{90}
+  \item dashboard, \hyperpage{134}
+  \item data, \hyperpage{102}, \hyperpage{130}
+  \item defaultProps, \hyperpage{26}
+  \item deployment, \hyperpage{222}
+  \item description, \hyperpage{26}
+  \item develop, \hyperpage{25}, \hyperpage{198}, \hyperpage{207}, 
+		\hyperpage{219, 220}
+  \item dispatch, \hyperpage{122}
+  \item dist/, \hyperpage{126}, \hyperpage{131}, \hyperpage{193}
+  \item dist/index.js, \hyperpage{209}
+  \item dist/test.js, \hyperpage{209}
+  \item dotnet, \hyperpage{153}, \hyperpage{250}
+  \item dotnet new, \hyperpage{150}
+  \item dotnet publish, \hyperpage{201}
+  \item DOTNET\_API\_ERROR, \hyperpage{131}
 
   \indexspace
 
-  \item editor.module.scss, \hyperpage{88}
-  \item Editor.TRY\_IT\_RESULTS, \hyperpage{141}
-  \item editors, \hyperpage{129}
-  \item editorSettings, \hyperpage{81}, \hyperpage{131}
-  \item editorsSlice, \hyperpage{129}
-  \item editorsSlice.ts, \hyperpage{139}
-  \item EditorWidget, \hyperpage{79, 80}, \hyperpage{82}, 
-		\hyperpage{92}, \hyperpage{95}, \hyperpage{131--133}
-  \item EditorWidget.tsx, \hyperpage{79}
-  \item else if, \hyperpage{226}
-  \item endpoint, \hyperpage{122}, \hyperpage{147}
-  \item Entry, \hyperpage{159}
-  \item enums/, \hyperpage{158}
-  \item Error, \hyperpage{211}
-  \item error, \hyperpage{211}
+  \item editor-widget.module.scss, \hyperpage{75}
+  \item Editor.TRY\_IT\_RESULTS, \hyperpage{122}
+  \item EditorID, \hyperpage{118}, \hyperpage{231}
+  \item editors, \hyperpage{116}
+  \item editorSettings, \hyperpage{69}, \hyperpage{118}, 
+		\hyperpage{123}
+  \item editorsSlice, \hyperpage{116}, \hyperpage{123}
+  \item editorsSlice.ts, \hyperpage{121}
+  \item editorsSlice.tsx, \hyperpage{228}
+  \item EditorWidget, \hyperpage{68--70}, \hyperpage{76}, 
+		\hyperpage{79}, \hyperpage{82}, \hyperpage{118, 119}, 
+		\hyperpage{121}
+  \item EditorWidget.tsx, \hyperpage{68}, \hyperpage{75}
+  \item else if, \hyperpage{238}
+  \item endpoint, \hyperpage{102}, \hyperpage{130}
+  \item Entry, \hyperpage{143}
+  \item enums/, \hyperpage{142}
+  \item EnvironmentName, \hyperpage{222}
+  \item Error, \hyperpage{209}
+  \item error, \hyperpage{208}
+  \item exit, \hyperpage{203}
 
   \indexspace
 
-  \item fetch, \hyperpage{146}
-  \item File, \hyperpage{193}
-  \item fileLabel, \hyperpage{123}
-  \item fill, \hyperpage{105}
-  \item Footer, \hyperpage{73}
-  \item Footer.tsx, \hyperpage{72}
-  \item forEach, \hyperpage{164}
-  \item form action, \hyperpage{152}
-  \item formActionURL, \hyperpage{154}, \hyperpage{156}
-  \item formValidationValue, \hyperpage{154}, \hyperpage{157}
-  \item from, \hyperpage{158}
-  \item frontend-full-ci-cd-complete, \hyperpage{220}
-  \item functions, \hyperpage{141, 142}
-  \item functions/, \hyperpage{143}, \hyperpage{146}
-  \item functions/dist, \hyperpage{148}
+  \item fetch, \hyperpage{102}, \hyperpage{128}
+  \item File, \hyperpage{188}
+  \item file-saver, \hyperpage{233}
+  \item fileLabel, \hyperpage{112}, \hyperpage{123}
+  \item files, \hyperpage{123}
+  \item fill, \hyperpage{90}
+  \item Footer, \hyperpage{58}
+  \item Footer.tsx, \hyperpage{58}, \hyperpage{109}
+  \item forEach, \hyperpage{145}
+  \item form action, \hyperpage{136}
+  \item formActionURL, \hyperpage{138}, \hyperpage{140}
+  \item formValidationValue, \hyperpage{138}, \hyperpage{140}
+  \item from, \hyperpage{142}
+  \item functions, \hyperpage{124}, \hyperpage{133}
+  \item functions/, \hyperpage{125}, \hyperpage{127}, \hyperpage{130}
+  \item functions/dist, \hyperpage{130}
+  \item functions/dist/functions/src, \hyperpage{132}
 
   \indexspace
 
-  \item gatsby-astronaut.png, \hyperpage{33}
-  \item gatsby-browser.js, \hyperpage{33}, \hyperpage{69}, 
-		\hyperpage{127}
-  \item gatsby-config, \hyperpage{71}
-  \item gatsby-config.js, \hyperpage{32}, \hyperpage{39}, 
-		\hyperpage{67}, \hyperpage{106}
-  \item gatsby-icon.png, \hyperpage{71}, \hyperpage{107}
-  \item gatsby-node.js, \hyperpage{33}
-  \item gatsby-plugin-manifest, \hyperpage{32}, \hyperpage{106, 107}
-  \item gatsby-plugin-offline, \hyperpage{32}
-  \item gatsby-plugin-sass, \hyperpage{66, 67}
-  \item gatsby-rowser.js, \hyperpage{134}
-  \item gatsby-ssr.js, \hyperpage{33}, \hyperpage{127}
-  \item gatsby-starter-default, \hyperpage{30}
-  \item Generate, \hyperpage{194, 195}
-  \item generate, \hyperpage{201}
-  \item Generated, \hyperpage{193}, \hyperpage{195}, \hyperpage{214}
-  \item GeneratorOptions, \hyperpage{193}
-  \item GeneratorService.ts, \hyperpage{199}
-  \item Get, \hyperpage{188, 189}
+  \item gatsby-astronaut.png, \hyperpage{26}
+  \item gatsby-browser.js, \hyperpage{26}, \hyperpage{56}, 
+		\hyperpage{106}, \hyperpage{115}
+  \item gatsby-config, \hyperpage{57}
+  \item gatsby-config.js, \hyperpage{26}, \hyperpage{31}, 
+		\hyperpage{54}, \hyperpage{90}
+  \item gatsby-icon.png, \hyperpage{57}, \hyperpage{91}
+  \item gatsby-node.js, \hyperpage{26}
+  \item gatsby-plugin-manifest, \hyperpage{26}, \hyperpage{90, 91}
+  \item gatsby-plugin-offline, \hyperpage{26}
+  \item gatsby-plugin-sass, \hyperpage{54}
+  \item gatsby-ssr.js, \hyperpage{26}, \hyperpage{114}
+  \item gatsby-starter-default, \hyperpage{24}
+  \item Generate, \hyperpage{190}
+  \item generate, \hyperpage{196}
+  \item GenerateButtonWidget, \hyperpage{233}
+  \item GenerateButtonWidget.tsx, \hyperpage{231}
+  \item Generated, \hyperpage{188}, \hyperpage{190}, \hyperpage{213}
+  \item GeneratedCodeTitleWithWarning, \hyperpage{226}
+  \item GeneratorOptions, \hyperpage{188}
+  \item Get, \hyperpage{175}
+  \item get, \hyperpage{99}, \hyperpage{101}, \hyperpage{109}
 
   \indexspace
 
-  \item Header, \hyperpage{33}, \hyperpage{74}, \hyperpage{97}
-  \item header.js, \hyperpage{33}
-  \item header.module.scss, \hyperpage{75}
-  \item Header.tsx, \hyperpage{66}, \hyperpage{74}
-  \item height, \hyperpage{109}
-  \item helpers/, \hyperpage{134, 135}, \hyperpage{163}
-  \item Home.tsx, \hyperpage{97}
-  \item home/, \hyperpage{93}, \hyperpage{95}, \hyperpage{97}
-  \item hooks, \hyperpage{129}, \hyperpage{227}
-  \item hooks/, \hyperpage{128, 129}
-  \item http://localhost:5000, \hyperpage{148}
-  \item https://api.slack.com/apps, \hyperpage{181}
-  \item https://localhost:5001, \hyperpage{148}
-  \item https://reduxplate.com/app, \hyperpage{158}
+  \item Header, \hyperpage{26}, \hyperpage{59}, \hyperpage{83}
+  \item header.js, \hyperpage{26}
+  \item header.module.scss, \hyperpage{60}
+  \item Header.tsx, \hyperpage{54}, \hyperpage{59}
+  \item height, \hyperpage{93}
+  \item helpers/, \hyperpage{105, 106}, \hyperpage{145}
+  \item Home.tsx, \hyperpage{83}
+  \item home/, \hyperpage{80}, \hyperpage{82, 83}
+  \item hooks, \hyperpage{116}, \hyperpage{239}
+  \item hooks/, \hyperpage{116}
+  \item http://localhost:5000, \hyperpage{130}, \hyperpage{180}
+  \item HTTPMethod, \hyperpage{101, 102}
+  \item https://api.reduxplate.com, \hyperpage{183}
+  \item https://api.slack.com/apps, \hyperpage{167}
+  \item https://localhost:5001, \hyperpage{130}
+  \item https://reduxplate.com/app, \hyperpage{142}
   \item https://reduxplate.com/app?from=mailchimp-subscription-successful, 
-		\hyperpage{158}
+		\hyperpage{142}
 
   \indexspace
 
-  \item IApiConnectorParams, \hyperpage{117}, \hyperpage{122}
-  \item IApiError, \hyperpage{117}, \hyperpage{121}
-  \item ICodeGenerateService, \hyperpage{195}
-  \item ICodeGeneratorService, \hyperpage{195}
-  \item IEditorSetting.ts, \hyperpage{123}
-  \item IEditorSettings, \hyperpage{80, 81}, \hyperpage{123}
-  \item IEditorSettings.ts, \hyperpage{80}
-  \item IEditorWidgetProps, \hyperpage{81}
-  \item if, \hyperpage{88}, \hyperpage{226}
-  \item IFile, \hyperpage{123}
-  \item IFile.ts, \hyperpage{123}
-  \item IGenerated, \hyperpage{121}
-  \item IGenerated.ts, \hyperpage{123}
-  \item IGenerateOptions, \hyperpage{121, 122}, \hyperpage{124}, 
-		\hyperpage{224}
-  \item IGenerateOptions.ts, \hyperpage{122}
-  \item images/, \hyperpage{33}
-  \item in, \hyperpage{120}
-  \item index.js, \hyperpage{33}
-  \item index.ts, \hyperpage{127}, \hyperpage{204, 205}, 
-		\hyperpage{209--211}
-  \item Index.tsx, \hyperpage{71}
-  \item index.tsx, \hyperpage{39}, \hyperpage{150}
-  \item Infrastructure, \hyperpage{194}
-  \item input, \hyperpage{152}
-  \item interfaces/, \hyperpage{123}
-  \item InvokeFromFileAsync, \hyperpage{211}
-  \item isActive, \hyperpage{140}
-  \item ISeoProps, \hyperpage{33}
-  \item isLowerCase, \hyperpage{203}
-  \item isSearchParamValid, \hyperpage{163, 164}
+  \item IApiConnectorParams, \hyperpage{101, 102}
+  \item IApiError, \hyperpage{111}
+  \item IApiErrorMessage, \hyperpage{102}, \hyperpage{130}
+  \item ICodeGenerateService, \hyperpage{190}, \hyperpage{213}
+  \item ICodeGeneratorService, \hyperpage{190}
+  \item id\_rsa, \hyperpage{163}
+  \item id\_rsa.pub, \hyperpage{163}
+  \item IEditorSetting.ts, \hyperpage{112}
+  \item IEditorSettings, \hyperpage{68, 69}, \hyperpage{112}
+  \item IEditorSettings.ts, \hyperpage{68}
+  \item IEditorWidgetProps, \hyperpage{69}
+  \item if, \hyperpage{74}, \hyperpage{238}
+  \item IFile, \hyperpage{112}
+  \item IFile.ts, \hyperpage{112}
+  \item IGenerated, \hyperpage{111}
+  \item IGenerated.ts, \hyperpage{112}
+  \item IGenerateOptions, \hyperpage{111}, \hyperpage{113}, 
+		\hyperpage{236}
+  \item IGenerateOptions.ts, \hyperpage{111}
+  \item images/, \hyperpage{26}
+  \item index.js, \hyperpage{26}
+  \item index.ts, \hyperpage{115}, \hyperpage{198}, 
+		\hyperpage{207, 208}
+  \item Index.tsx, \hyperpage{58}
+  \item index.tsx, \hyperpage{30}, \hyperpage{134}
+  \item Infrastructure, \hyperpage{190}
+  \item input, \hyperpage{136}
+  \item interfaces/, \hyperpage{112}
+  \item InvokeFromFileAsync, \hyperpage{209}
+  \item isActive, \hyperpage{122}
+  \item ISeoProps, \hyperpage{26}
+  \item isLowerCase, \hyperpage{197}
+  \item isSearchParamValid, \hyperpage{145}
 
   \indexspace
 
-  \item Jering.Javascript.NodeJS, \hyperpage{208, 209}, \hyperpage{211}
+  \item Jering.Javascript.NodeJS, \hyperpage{205--207}, \hyperpage{209}
+  \item json, \hyperpage{102}
 
   \indexspace
 
-  \item key in, \hyperpage{120}, \hyperpage{162}
-  \item keywords, \hyperpage{32}
+  \item key in, \hyperpage{105}, \hyperpage{147}
+  \item keywords, \hyperpage{26}
 
   \indexspace
 
-  \item Layout, \hyperpage{33}, \hyperpage{135}, \hyperpage{165}
-  \item layout, \hyperpage{71}
-  \item layout.css, \hyperpage{33}
-  \item layout.js, \hyperpage{33}
-  \item Layout.tsx, \hyperpage{66}, \hyperpage{71, 72}, \hyperpage{165}
-  \item layout/, \hyperpage{70}, \hyperpage{74}, \hyperpage{113}
-  \item let, \hyperpage{29}
-  \item license, \hyperpage{37}
-  \item Link, \hyperpage{33}, \hyperpage{96}, \hyperpage{149}
-  \item link-light, \hyperpage{73}
-  \item localhost:8000, \hyperpage{31}
-  \item localStorage, \hyperpage{225}
-  \item Logo, \hyperpage{112}
-  \item logo.module.scss, \hyperpage{109}
-  \item logo.svg, \hyperpage{106}
-  \item Logo.tsx, \hyperpage{109}, \hyperpage{111}
+  \item Layout, \hyperpage{26}, \hyperpage{106}, \hyperpage{146}
+  \item layout, \hyperpage{57}
+  \item layout.css, \hyperpage{26}
+  \item layout.js, \hyperpage{26}
+  \item Layout.tsx, \hyperpage{54}, \hyperpage{57, 58}, \hyperpage{146}
+  \item layout/, \hyperpage{57}, \hyperpage{59}, \hyperpage{96}
+  \item let, \hyperpage{23}
+  \item license, \hyperpage{29}
+  \item Link, \hyperpage{26}, \hyperpage{82}, \hyperpage{133}
+  \item link-light, \hyperpage{58}
+  \item localhost:8000, \hyperpage{25}
+  \item localStorage, \hyperpage{237}
+  \item Logo, \hyperpage{95}
+  \item logo-widget.module.scss, \hyperpage{93}
+  \item logo.svg, \hyperpage{90}
+  \item LogoWidget.tsx, \hyperpage{93}, \hyperpage{95}
 
   \indexspace
 
-  \item map, \hyperpage{85}, \hyperpage{88}
-  \item master, \hyperpage{45}, \hyperpage{57}, \hyperpage{166}, 
-		\hyperpage{185}, \hyperpage{187}, \hyperpage{217}
-  \item Message, \hyperpage{214}
-  \item message, \hyperpage{211}
-  \item Microservices, \hyperpage{196}
-  \item Microservices/, \hyperpage{196}
+  \item map, \hyperpage{72}, \hyperpage{74}
+  \item master, \hyperpage{36}, \hyperpage{48}, \hyperpage{148}, 
+		\hyperpage{172}, \hyperpage{174}, \hyperpage{219}, 
+		\hyperpage{222}
+  \item Message, \hyperpage{213}
+  \item message, \hyperpage{208, 209}
+  \item method, \hyperpage{130}
+  \item Microservices, \hyperpage{191}
+  \item Microservices/, \hyperpage{191}
   \item Microsoft.Extensions.FileProviders.PhysicalFileProvider, 
-		\hyperpage{212}
-  \item Models, \hyperpage{193}
-  \item module, \hyperpage{211}
-  \item module.exports, \hyperpage{209}, \hyperpage{211}
-  \item monaco, \hyperpage{89}
-  \item monaco-editor, \hyperpage{79}
-  \item monaco-themes, \hyperpage{89}
+		\hyperpage{211}
+  \item mileston-7-advanced-frontend, \hyperpage{238}
+  \item milestone-5-mvp-backend, \hyperpage{218}
+  \item milestone-6-backend-staging-ci-cd, \hyperpage{223}
+  \item milestone-6-frontend-staging-ci-cid, \hyperpage{223}
+  \item Models, \hyperpage{188}
+  \item module, \hyperpage{208}
+  \item module.exports, \hyperpage{207}, \hyperpage{209}
+  \item monaco, \hyperpage{76}
+  \item monaco-editor, \hyperpage{67}
+  \item monaco-themes, \hyperpage{75}
 
   \indexspace
 
-  \item name, \hyperpage{32, 33}, \hyperpage{152}
-  \item Nav, \hyperpage{72}
-  \item Nav.tsx, \hyperpage{70}, \hyperpage{72, 73}, \hyperpage{107}, 
-		\hyperpage{112}
-  \item netlify, \hyperpage{61}
-  \item netlify-identity-widget, \hyperpage{224, 225}
-  \item netlify.app, \hyperpage{53}
-  \item netlify.toml, \hyperpage{145, 146}, \hyperpage{148}
-  \item node-fetch, \hyperpage{146}
-  \item NODE\_VERSION, \hyperpage{63--65}
-  \item npm, \hyperpage{126}, \hyperpage{134}, \hyperpage{198}
-  \item npm init, \hyperpage{141}
-  \item npm run build, \hyperpage{46}, \hyperpage{211}
-  \item npm run dev, \hyperpage{62}
-  \item npm run develop, \hyperpage{205}
-  \item ntl, \hyperpage{61}, \hyperpage{148}
-  \item ntl dev, \hyperpage{62}, \hyperpage{65}, \hyperpage{148}
+  \item name, \hyperpage{26}, \hyperpage{136}
+  \item Nav, \hyperpage{58}
+  \item Nav.tsx, \hyperpage{57, 58}, \hyperpage{91}, \hyperpage{95}
+  \item netlify, \hyperpage{50}
+  \item netlify-identity-widget, \hyperpage{237}
+  \item netlify.app, \hyperpage{44}
+  \item netlify.toml, \hyperpage{126, 127}, \hyperpage{130}, 
+		\hyperpage{132, 133}
+  \item node, \hyperpage{131}, \hyperpage{204}
+  \item node-fetch, \hyperpage{128}
+  \item Node.js, \hyperpage{201}, \hyperpage{204}
+  \item node\_modules/, \hyperpage{204}
+  \item NODE\_VERSION, \hyperpage{51--53}
+  \item npm, \hyperpage{105}, \hyperpage{114}, \hyperpage{192}, 
+		\hyperpage{204}
+  \item npm init, \hyperpage{124}
+  \item npm run build, \hyperpage{37}, \hyperpage{209}
+  \item npm run dev, \hyperpage{50}
+  \item npm run develop, \hyperpage{198}
+  \item ntl, \hyperpage{50}, \hyperpage{130}
+  \item ntl dev, \hyperpage{50}, \hyperpage{53}, \hyperpage{130}
+  \item nvm, \hyperpage{203, 204}, \hyperpage{215}
 
   \indexspace
 
-  \item Object.values(), \hyperpage{226}
-  \item Ok(), \hyperpage{189}
-  \item onChangeCode, \hyperpage{84, 85}, \hyperpage{87}, 
-		\hyperpage{131}
-  \item onChangeTab, \hyperpage{84, 85}, \hyperpage{87}, 
-		\hyperpage{131}
-  \item onClick, \hyperpage{97}
-  \item onClickGenerate, \hyperpage{126}
-  \item onError, \hyperpage{118}, \hyperpage{138}
-  \item onSuccess, \hyperpage{118}
+  \item Object.values(), \hyperpage{238}
+  \item Ok(), \hyperpage{175}
+  \item onChangeCode, \hyperpage{71--73}, \hyperpage{118}
+  \item onChangeTab, \hyperpage{71--73}, \hyperpage{118}
+  \item onClick, \hyperpage{83}
+  \item onClickGenerate, \hyperpage{114}
+  \item onError, \hyperpage{103}, \hyperpage{108}
+  \item onMount, \hyperpage{76}
+  \item onSuccess, \hyperpage{103}
 
   \indexspace
 
-  \item package.json, \hyperpage{32}, \hyperpage{38, 39}, 
-		\hyperpage{44}, \hyperpage{141, 142}, \hyperpage{144}, 
-		\hyperpage{196}, \hyperpage{205}
-  \item page-2.js, \hyperpage{33}
-  \item pages, \hyperpage{97}
-  \item pages/, \hyperpage{33}, \hyperpage{97}, \hyperpage{113}
-  \item paint-order, \hyperpage{109}
-  \item paintOrder, \hyperpage{109}
-  \item parseTypeScript, \hyperpage{134}
-  \item path, \hyperpage{105}
-  \item plate-widget.module.scss, \hyperpage{77}
-  \item PlateWidget, \hyperpage{76}
-  \item post, \hyperpage{115}, \hyperpage{118}, \hyperpage{121}, 
-		\hyperpage{124}, \hyperpage{134}, \hyperpage{138}
-  \item process, \hyperpage{66}
-  \item props, \hyperpage{29}, \hyperpage{81}
-  \item propTypes, \hyperpage{33}
-  \item public ActionResult<string>, \hyperpage{189}
-  \item public string, \hyperpage{189}
-  \item public/, \hyperpage{46}
+  \item package.json, \hyperpage{26}, \hyperpage{29}, \hyperpage{31}, 
+		\hyperpage{35}, \hyperpage{124}, \hyperpage{126}, 
+		\hyperpage{191}, \hyperpage{198}
+  \item page-2.js, \hyperpage{26}
+  \item pages, \hyperpage{83}
+  \item pages/, \hyperpage{26}, \hyperpage{83}, \hyperpage{96}
+  \item paint-order, \hyperpage{93}
+  \item paintOrder, \hyperpage{93}
+  \item parseTypeScript, \hyperpage{121}
+  \item path, \hyperpage{90}
+  \item plate-widget.module.scss, \hyperpage{62}
+  \item PlateWidget, \hyperpage{61}
+  \item plugin, \hyperpage{65}
+  \item plugins: [{ name: typescript-plugin-css-modules }],, 
+		\hyperpage{65}
+  \item post, \hyperpage{99}, \hyperpage{101, 102}, \hyperpage{108}, 
+		\hyperpage{111}, \hyperpage{113}, \hyperpage{121}
+  \item postbuild, \hyperpage{204}
+  \item process, \hyperpage{53}
+  \item props, \hyperpage{23}, \hyperpage{69}
+  \item propTypes, \hyperpage{26}
+  \item public ActionResult<string>, \hyperpage{175}
+  \item public string, \hyperpage{175}
+  \item public/, \hyperpage{37}
 
   \indexspace
 
-  \item react-redux, \hyperpage{126}
-  \item react-toastify, \hyperpage{134}, \hyperpage{166}
-  \item React.createClass(), \hyperpage{109}
-  \item README.md, \hyperpage{35}
-  \item rect, \hyperpage{100}
-  \item reducers.ts, \hyperpage{92}, \hyperpage{201}
-  \item Redux, \hyperpage{24}
-  \item redux, \hyperpage{126}
-  \item redux-hooks.ts, \hyperpage{128}
-  \item redux-persist, \hyperpage{225}
-  \item redux-plate, \hyperpage{29}
-  \item redux-plate-code-generator, \hyperpage{196}
-  \item REDUX\_PLATE, \hyperpage{29}
-  \item REDUX\_PLATE\_API\_URL, \hyperpage{148, 149}
-  \item REDUX\_PLATE\_SLACK\_WEBHOOK\_URL, \hyperpage{180}
-  \item ReduxPlate, \hyperpage{28, 29}
-  \item reduxplate, \hyperpage{28, 29}, \hyperpage{49, 50}, 
-		\hyperpage{175}
-  \item reduxplate.com, \hyperpage{28}, \hyperpage{30}, \hyperpage{42}, 
-		\hyperpage{51}, \hyperpage{53}
-  \item reduxplate.netlify.app, \hyperpage{51}
-  \item ReduxPlateApi, \hyperpage{28}, \hyperpage{170}, \hyperpage{172}, 
-		\hyperpage{178}
-  \item ReduxPlateApi/, \hyperpage{170}
-  \item return, \hyperpage{189}
-  \item return(), \hyperpage{109}
-  \item robots.txt, \hyperpage{240}
-  \item roles.find(), \hyperpage{226}
-  \item Root, \hyperpage{187}
-  \item root, \hyperpage{178}
-  \item RootController, \hyperpage{189}
-  \item RootState, \hyperpage{128}
-  \item runSearchParamLogic, \hyperpage{164}
-  \item runValidations, \hyperpage{201}
-  \item runValidations(), \hyperpage{201}
+  \item react-redux, \hyperpage{114}
+  \item react-toastify, \hyperpage{105}, \hyperpage{148}
+  \item React.createClass(), \hyperpage{93}
+  \item ReactNode, \hyperpage{225, 226}
+  \item README.md, \hyperpage{28}
+  \item rect, \hyperpage{85}
+  \item reducers.ts, \hyperpage{79}, \hyperpage{196}, \hyperpage{225}
+  \item Redux, \hyperpage{20}
+  \item redux, \hyperpage{114}
+  \item redux-hooks.ts, \hyperpage{116}
+  \item redux-persist, \hyperpage{237}
+  \item redux-plate, \hyperpage{23}
+  \item redux-plate-code-generator, \hyperpage{191}
+  \item REDUX\_PLATE, \hyperpage{23}
+  \item REDUX\_PLATE\_API\_URL, \hyperpage{130}, \hyperpage{182}
+  \item REDUX\_PLATE\_SLACK\_WEBHOOK\_URL, \hyperpage{167}
+  \item ReduxPlate, \hyperpage{23}, \hyperpage{152}
+  \item reduxplate, \hyperpage{23}, \hyperpage{40, 41}, \hyperpage{156}
+  \item reduxplate.com, \hyperpage{23, 24}, \hyperpage{33}, 
+		\hyperpage{41}, \hyperpage{44}, \hyperpage{152}, 
+		\hyperpage{204}
+  \item reduxplate.netlify.app, \hyperpage{41}
+  \item ReduxPlateApi, \hyperpage{23}, \hyperpage{151, 152}, 
+		\hyperpage{158}
+  \item ReduxPlateApi.service, \hyperpage{165}
+  \item ReduxPlateApi/, \hyperpage{151}
+  \item ResponseForm, \hyperpage{101, 102}
+  \item responseForm, \hyperpage{130}
+  \item return, \hyperpage{176}
+  \item return(), \hyperpage{93}
+  \item robots.txt, \hyperpage{245}
+  \item roles.find(), \hyperpage{238}
+  \item Root, \hyperpage{174}
+  \item root, \hyperpage{160}
+  \item RootController, \hyperpage{176}, \hyperpage{188}
+  \item RootState, \hyperpage{115}
+  \item runSearchParamChecks, \hyperpage{145}
+  \item runValidations, \hyperpage{196}
+  \item runValidations(), \hyperpage{196}
 
   \indexspace
 
-  \item sass, \hyperpage{67}
-  \item scripts, \hyperpage{180}
-  \item searchParamConfig, \hyperpage{160}, \hyperpage{163}
-  \item SearchParamConfig.ts, \hyperpage{160, 161}
-  \item SearchParamConfigEntry, \hyperpage{159, 160}
-  \item Seo, \hyperpage{33}, \hyperpage{35}
-  \item seo.js, \hyperpage{33}
-  \item Seo.tsx, \hyperpage{33}
-  \item SERVER, \hyperpage{178}
-  \item Services, \hyperpage{194, 195}
-  \item services, \hyperpage{199}
-  \item short\_name, \hyperpage{33}
-  \item showMailchimpSuccessToast, \hyperpage{164}
-  \item showSimpleToast, \hyperpage{136}
-  \item SignUpWidget, \hyperpage{155}
-  \item SignUpWidget.tsx, \hyperpage{154}
-  \item sitemap.xml, \hyperpage{240}
-  \item siteTitle, \hyperpage{71}
-  \item sleepy-easley-bb9e3d.netlify.app, \hyperpage{48}
-  \item SourceFile, \hyperpage{201}
-  \item src, \hyperpage{39}
-  \item src/, \hyperpage{33}, \hyperpage{67}, \hyperpage{80}, 
-		\hyperpage{128, 129}, \hyperpage{144}, \hyperpage{146}, 
-		\hyperpage{199}, \hyperpage{207}
-  \item src/components/, \hyperpage{79}
-  \item src/components/pages/, \hyperpage{150}
-  \item src/helpers/, \hyperpage{225}
-  \item src/images, \hyperpage{106}
-  \item src/images/, \hyperpage{107}
-  \item src/interfaces, \hyperpage{81}
-  \item src/interfaces/, \hyperpage{122}
-  \item src/pages, \hyperpage{149}
-  \item src/pages/, \hyperpage{150}
-  \item src/store/, \hyperpage{127}
-  \item src/styles/modules, \hyperpage{109}
-  \item src/styles/styles.scss, \hyperpage{69}
-  \item Startup.cs, \hyperpage{171}, \hyperpage{209}
-  \item state.ts, \hyperpage{92}
-  \item stateCode, \hyperpage{122}, \hyperpage{204}, \hyperpage{224}
-  \item StaticImage, \hyperpage{112}, \hyperpage{149}
-  \item store/, \hyperpage{129}
-  \item StringHelpers.ts, \hyperpage{202}
-  \item styles.scss, \hyperpage{67--69}, \hyperpage{138}
-  \item styles/, \hyperpage{67}, \hyperpage{138}
-  \item switch, \hyperpage{214}, \hyperpage{226}
-  \item System.IO.Path, \hyperpage{212}
+  \item sass, \hyperpage{54}
+  \item scripts, \hyperpage{164}
+  \item scripts/, \hyperpage{223}
+  \item SearchParamConfig, \hyperpage{146}
+  \item searchParamConfig, \hyperpage{144}
+  \item SearchParamConfig.ts, \hyperpage{144}, \hyperpage{147}
+  \item SearchParamConfigEntry, \hyperpage{143}
+  \item Seo, \hyperpage{26}, \hyperpage{28}
+  \item seo.js, \hyperpage{26}
+  \item Seo.tsx, \hyperpage{26}
+  \item SERVER, \hyperpage{160}
+  \item Services, \hyperpage{190}
+  \item services, \hyperpage{194}
+  \item services.AddNodeJS();, \hyperpage{213}
+  \item short\_name, \hyperpage{26}
+  \item showComplexToast, \hyperpage{226}, \hyperpage{228}
+  \item showMailchimpSuccessToast, \hyperpage{145}
+  \item showSimpleToast, \hyperpage{107}
+  \item Sidebar.tsx, \hyperpage{229}
+  \item SideBySideEditors, \hyperpage{83}, \hyperpage{118}
+  \item SideBySideEditors.tsx, \hyperpage{80}
+  \item SignUpWidget, \hyperpage{140}
+  \item SignUpWidget.tsx, \hyperpage{138}
+  \item sitemap.xml, \hyperpage{245}
+  \item sites-enabled, \hyperpage{185}
+  \item siteTitle, \hyperpage{57}
+  \item sleepy-easley-bb9e3d.netlify.app, \hyperpage{39}
+  \item snapd, \hyperpage{186}
+  \item SourceFile, \hyperpage{196}
+  \item src, \hyperpage{30}
+  \item src/, \hyperpage{26}, \hyperpage{55}, \hyperpage{68}, 
+		\hyperpage{116}, \hyperpage{126, 127}, 
+		\hyperpage{193, 194}, \hyperpage{205}
+  \item src/components/pages/, \hyperpage{134}
+  \item src/helpers/, \hyperpage{237}
+  \item src/images, \hyperpage{90}
+  \item src/images/, \hyperpage{91}
+  \item src/interfaces, \hyperpage{69}
+  \item src/interfaces/, \hyperpage{111}
+  \item src/pages, \hyperpage{134}
+  \item src/pages/, \hyperpage{134}
+  \item src/store/, \hyperpage{115}
+  \item src/styles/modules, \hyperpage{93}
+  \item src/styles/styles.scss, \hyperpage{56}
+  \item ssl\_certificate, \hyperpage{187}
+  \item ssl\_certificate\_key, \hyperpage{187}
+  \item Staging, \hyperpage{222}
+  \item staging, \hyperpage{222}
+  \item staging.api.reduxplate.com, \hyperpage{222, 223}
+  \item staging.reduxplate.com, \hyperpage{221}
+  \item staging\_api\_postbuild.sh, \hyperpage{222, 223}
+  \item Startup.cs, \hyperpage{151}, \hyperpage{207}, \hyperpage{213}
+  \item state.ts, \hyperpage{78}
+  \item stateCode, \hyperpage{111}, \hyperpage{198}, \hyperpage{236}
+  \item StaticImage, \hyperpage{95}, \hyperpage{134}
+  \item store/, \hyperpage{116}
+  \item string, \hyperpage{225}
+  \item StringHelpers.ts, \hyperpage{196}
+  \item styles.scss, \hyperpage{55, 56}, \hyperpage{109}
+  \item styles/, \hyperpage{55}, \hyperpage{108}
+  \item switch, \hyperpage{213}, \hyperpage{238}
+  \item System.IO.Path, \hyperpage{210}
 
   \indexspace
 
-  \item T, \hyperpage{116, 117}
-  \item tabClicked, \hyperpage{131}
-  \item Task<Generated>, \hyperpage{195}
-  \item test.ts, \hyperpage{209}
-  \item text, \hyperpage{152}
-  \item themed-frontend-with-components, \hyperpage{113}
-  \item title, \hyperpage{32}
-  \item ToastContainer, \hyperpage{135}
-  \item ToastHelpers, \hyperpage{134}
-  \item TryItButton.tsx, \hyperpage{124}
-  \item TryItButtons, \hyperpage{139--141}
-  \item TryItButtons.tsx, \hyperpage{95}, \hyperpage{133}, 
-		\hyperpage{136}
-  \item TryItWidget, \hyperpage{97}, \hyperpage{131}
-  \item TryItWidget.tsx, \hyperpage{93}
-  \item ts-morph, \hyperpage{198}, \hyperpage{201}
-  \item tsc, \hyperpage{145}
-  \item tsconfig.json, \hyperpage{143, 144}, \hyperpage{198}
-  \item types.ts, \hyperpage{92}, \hyperpage{201}
-  \item types/, \hyperpage{119}
-  \item TypeScript, \hyperpage{24}
-  \item TypeScript Abstract Syntax Tree, \hyperpage{196}
-  \item TypeScript Compiler API, \hyperpage{196}
+  \item T, \hyperpage{101, 102}
+  \item tabClicked, \hyperpage{118}
+  \item Task<Generated>, \hyperpage{190}
+  \item test, \hyperpage{208}
+  \item test.ts, \hyperpage{198}, \hyperpage{207}
+  \item text, \hyperpage{102}, \hyperpage{136}
+  \item title, \hyperpage{26}
+  \item ToastContainer, \hyperpage{106}
+  \item ToastHelpers, \hyperpage{105}
+  \item TryItButton.tsx, \hyperpage{113}
+  \item ts-morph, \hyperpage{188}, \hyperpage{192}, \hyperpage{196}
+  \item tsc, \hyperpage{127}, \hyperpage{202}
+  \item tsconfig.json, \hyperpage{64}, \hyperpage{125, 126}, 
+		\hyperpage{193}
+  \item types.ts, \hyperpage{79}, \hyperpage{196}, \hyperpage{225}
+  \item types/, \hyperpage{104}
+  \item TypeScript, \hyperpage{20}
+  \item TypeScript Abstract Syntax Tree, \hyperpage{191}
+  \item TypeScript Compiler API, \hyperpage{191}
+  \item typescript-plugin-css-modules, \hyperpage{64, 65}
 
   \indexspace
 
-  \item U, \hyperpage{116}
-  \item updateArray, \hyperpage{86}, \hyperpage{88}, \hyperpage{131}
-  \item updateArray.ts, \hyperpage{86}
-  \item url, \hyperpage{44}
-  \item URLSearchParamKey.ts, \hyperpage{158}
-  \item useDispatch, \hyperpage{129}
-  \item USER, \hyperpage{178}
-  \item useSelector, \hyperpage{129}, \hyperpage{133}
-  \item useShouldAnimate.ts, \hyperpage{227}
-  \item using-typescript.tsx, \hyperpage{33}
-  \item util, \hyperpage{86}
-  \item utils, \hyperpage{79}, \hyperpage{86}
-  \item utils/, \hyperpage{80}, \hyperpage{109}
+  \item U, \hyperpage{101}
+  \item ufw, \hyperpage{185}
+  \item UNKNOWN\_ERROR, \hyperpage{103}
+  \item UNSPECIFIED\_BODY, \hyperpage{131}
+  \item updateArray, \hyperpage{72}, \hyperpage{74}, \hyperpage{118}, 
+		\hyperpage{123}
+  \item updateArray.ts, \hyperpage{72}
+  \item url, \hyperpage{35}
+  \item URLSearchParamKey.ts, \hyperpage{142}
+  \item useDispatch, \hyperpage{116}
+  \item useEffect, \hyperpage{109}
+  \item USER, \hyperpage{160}
+  \item useSelector, \hyperpage{116}, \hyperpage{121}
+  \item useShouldAnimate.ts, \hyperpage{239}
+  \item using-typescript.tsx, \hyperpage{26}
+  \item util, \hyperpage{72}
+  \item utils, \hyperpage{72}
+  \item utils/, \hyperpage{93}
 
   \indexspace
 
-  \item var, \hyperpage{29}
-  \item vs-light, \hyperpage{89}
+  \item var, \hyperpage{23}
+  \item vs-light, \hyperpage{75}
 
   \indexspace
 
-  \item WeatherForecast.cs, \hyperpage{171}
-  \item WeatherForecastController.cs, \hyperpage{171}
-  \item webapi, \hyperpage{170}
-  \item width, \hyperpage{88}, \hyperpage{109}
-  \item window, \hyperpage{164}
-  \item WindowHelpers.ts, \hyperpage{163, 164}
-  \item wrap-with-provider.js, \hyperpage{126}, \hyperpage{128}
-  \item www, \hyperpage{53}, \hyperpage{57}
-  \item www.reduxplate.com, \hyperpage{53}
+  \item WeatherForecast.cs, \hyperpage{151}
+  \item WeatherForecastController.cs, \hyperpage{151}
+  \item webapi, \hyperpage{151}
+  \item widgets/, \hyperpage{68}, \hyperpage{231}
+  \item width, \hyperpage{74}, \hyperpage{93}
+  \item window, \hyperpage{145}
+  \item WindowHelpers.ts, \hyperpage{145, 146}
+  \item wrap-with-provider.js, \hyperpage{114, 115}
+  \item www, \hyperpage{44}, \hyperpage{48}
+  \item www.reduxplate.com, \hyperpage{44}
 
   \indexspace
 
-  \item zsh, \hyperpage{148}
+  \item zsh, \hyperpage{130}
 
 \end{theindex}

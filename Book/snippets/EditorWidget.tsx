@@ -1,37 +1,42 @@
 import * as React from "react"
-import * as styles from "../../styles/modules/editor.module.scss"
-import EditorID from "../../enums/EditorID"
-import { codeEdited, tabClicked } from "../../store/editors/editorsSlice"
-import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks"
-import Editor from "@monaco-editor/react"
+import Editor, { Monaco } from "@monaco-editor/react"
+import * as styles from "../../styles/modules/editor-widget.module.scss"
+import { useState } from "react"
+import GitHub from "monaco-themes/themes/GitHub.json"
+import * as monaco from "monaco-editor/esm/vs/editor/editor.api"
+
+export interface IEditorSettings {
+  fileLabel: string
+  code: string
+  isActive: boolean
+}
 
 export interface IEditorWidgetProps {
-  editorID: EditorID
+  editorTitle?: string
+  editorSettings: Array<IEditorSettings>
 }
 
 export function EditorWidget(props: IEditorWidgetProps) {
-  const { editorID } = props
-  const { editorTitle, editorSettings } = useAppSelector(
-    state => state.editors.editors[editorID]
-  )
-  const dispatch = useAppDispatch()
+  const { editorTitle, editorSettings } = props
+  const [editorSettingsState, setEditorSettingsState] = useState<
+    Array<IEditorSettings>
+  >(editorSettings)
 
-  const onChangeCode = (code: string) => {
-    dispatch(
-      codeEdited({
-        editorID,
-        code,
+  const onChangeTab = (fileLabel: string) => {
+    setEditorSettingsState(
+      editorSettingsState.map(editorSetting => {
+        editorSetting.isActive = editorSetting.fileLabel === fileLabel
+        return editorSetting
       })
     )
   }
 
-  const onChangeTab = (fileLabel: string) => {
-    dispatch(
-      tabClicked({
-        editorID,
-        fileLabel,
-      })
-    )
+  const handleOnMount = (
+    _editor: monaco.editor.IStandaloneCodeEditor,
+    monaco: Monaco
+  ) => {
+    monaco.editor.defineTheme("GitHub", GitHub as monaco.editor.IStandaloneThemeData)
+    monaco.editor.setTheme("GitHub")
   }
 
   return (
@@ -39,15 +44,14 @@ export function EditorWidget(props: IEditorWidgetProps) {
       className={`d-flex flex-column justify-content-center m-3 ${styles.editorWrapper}`}
     >
       {editorTitle && (
-        <h3 className="text-primary text-underline">
+        <h3 className="text-primary">
           <u>{editorTitle}</u>
         </h3>
       )}
-      {/* Tabs are always rendered */}
       <ul className="nav nav-tabs">
-        {editorSettings.map(editorSettings => {
-          const { fileLabel } = editorSettings
-          const className = editorSettings.isActive
+        {editorSettings.map(editorSetting => {
+          const { fileLabel, isActive } = editorSetting
+          const className = isActive
             ? "nav-link active font-monospace"
             : "nav-link font-monospace"
           return (
@@ -57,20 +61,21 @@ export function EditorWidget(props: IEditorWidgetProps) {
           )
         })}
       </ul>
-      {/* For the editor, return an editor only the active one */}
       {editorSettings.map(editorSetting => {
-        return editorSetting.isActive ? (
-          <Editor
-            height="500px"
-            defaultLanguage="typescript"
-            defaultValue={editorSetting.code}
-            options={{
-              minimap: { enabled: false },
-            }}
-            onChange={onChangeCode}
-          />
-        ) : (
-          <></>
+        const { code, isActive } = editorSetting
+        return (
+          <div className={isActive ? "d-block" : "d-none"}>
+            <Editor
+              height="500px"
+              defaultLanguage="typescript"
+              value={code}
+              options={{
+                minimap: { enabled: false },
+                scrollBeyondLastLine: false,
+              }}
+              onMount={handleOnMount}
+            />
+          </div>
         )
       })}
     </div>

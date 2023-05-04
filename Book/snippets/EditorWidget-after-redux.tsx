@@ -51,9 +51,9 @@ export function EditorWidget(props: IEditorWidgetProps) {
       )}
       {/* Tabs are always rendered */}
       <ul className="nav nav-tabs">
-        {editorSettings.map(editorSettings => {
-          const { fileLabel } = editorSettings
-          const className = editorSettings.isActive
+        {editorSettings.map(editorSetting => {
+          const { fileLabel } = editorSetting
+          const className = editorSetting.isActive
             ? "nav-link active font-monospace"
             : "nav-link font-monospace"
           return (

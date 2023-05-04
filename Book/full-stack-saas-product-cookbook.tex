@@ -1,9 +1,12 @@
 % set to 'oneside' for web style, 'twoside' for book print
-\documentclass[paper=6in:9in,pagesize=pdftex,headinclude=on,footinclude=on,12pt,twoside]{scrbook}
-\areaset[0.50in]{4.5in}{8in}
+% for amazon:
+% \documentclass[paper=6in:9in,pagesize=pdftex,headinclude=on,footinclude=on,12pt,twoside]{scrbook}
+% \areaset[0.50in]{4.5in}{8in}
+% for normal size:
+\documentclass[a4paper,headinclude=on,footinclude=on,12pt,oneside]{scrbook}
 
-\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{xspace}
 \usepackage{bera}
 \usepackage{pifont}
@@ -71,10 +74,10 @@
 %%%%%%%%%%%%
 
 \DeclareFixedFont{\numcap}{T1}{phv}{bx}{n}{3cm}
-\DeclareFixedFont{\textcap}{T1}{phv}{bx}{n}{1.5cm}
+\DeclareFixedFont{\capitalizedtext}{T1}{phv}{bx}{n}{1.5cm}
 \DeclareFixedFont{\textaut}{T1}{phv}{bx}{n}{0.8cm} 
 
-\addtokomafont{chapter}{\color{gray}\textcap}
+\addtokomafont{chapter}{\color{gray}\capitalizedtext}
 \addtokomafont{section}{\color{white}\small}
 \addtokomafont{subsection}{\color{white}\small}
 \setkomafont{pagehead}{\sffamily\small}
@@ -143,27 +146,30 @@
 \emergencystretch=20pt
 
 \setcounter{secnumdepth}{3}
-\usepackage{titlesec}
 
-\titleformat{\chapter}[display]
-    {\usekomafont{sectioning} \usekomafont{chapter}\filleft}
-    {\numcap\textcolor[named]{gray}\thechapter}
-    {1em}
-    {}
+% titlesec (and thus titleformat) not compatible with scrbook!
+% see: https://tex.stackexchange.com/questions/684543/command-textcap-unavailable-in-encoding-t1
+% \usepackage{titlesec}
 
-\titleformat{\section}[block]
-    {\usekomafont{sectioning}\usekomafont{section}
-     \tikz[overlay]  \fill[color=black,rounded corners=.2ex] (0,-1ex) rectangle (\textwidth,1em);}
-    { \thesection}
-    {1em}
-    {}
+% \titleformat{\chapter}[display]
+%     {\usekomafont{sectioning} \usekomafont{chapter}\filleft}
+%     {\numcap\textcolor[named]{gray}\thechapter}
+%     {1em}
+%     {}
 
-\titleformat{\subsection}[block]
-    {\usekomafont{sectioning}\usekomafont{subsection}
-       \tikz[overlay] \fill[color=black!60] (0,-1ex) rectangle (\textwidth-2cm,1em);}
-    { \thesubsection}
-    {1em}
-    {}
+% \titleformat{\section}[block]
+%     {\usekomafont{sectioning}\usekomafont{section}
+%      \tikz[overlay]  \fill[color=black,rounded corners=.2ex] (0,-1ex) rectangle (\textwidth,1em);}
+%     { \thesection}
+%     {1em}
+%     {}
+
+% \titleformat{\subsection}[block]
+%     {\usekomafont{sectioning}\usekomafont{subsection}
+%        \tikz[overlay] \fill[color=black!60] (0,-1ex) rectangle (\textwidth-2cm,1em);}
+%     { \thesubsection}
+%     {1em}
+%     {}
 
 \usepackage{lipsum}
 %%%%%%%%%%%%%%%%%%%%
@@ -212,8 +218,8 @@
 
 \usepackage{colortbl}
 \arrayrulecolor{gray}
-\let\shline\hline
-\def\hline{\noalign{\vskip3pt}\shline\noalign{\vskip4pt}}
+% \let\shline\hline
+% \def\hline{\noalign{\vskip3pt}\shline\noalign{\vskip4pt}}
 
 % Custom colors
 \definecolor{monokaiPink}{HTML}{F92771}
@@ -256,7 +262,7 @@ title=\TwoSymbolsAndText{\faCode}{\footnotesize{\texttt{#2}}}{\faCode}
 }
 
 % can't work - see https://tex.stackexchange.com/questions/596791/newdocumentenvironment-not-working-as-expected-with-listing-and-tcolorbox?noredirect=1#comment1496456_596791
-% \NewDocumentEnvironment{codeWithCaption}{mmm}{\begin{listing}[H]\begin{code}{#1}{#2}}{\end{code}\caption{#3}\end{listing}}
+% \NewDocumentEnvironment{codeWithCaption}{mmm}{\begin{listing}[H]\begin{codeInput}{#1}{#2}}{\end{codeInput}\caption{#3}\end{listing}}
 
 % juicy code snippets
 \AtBeginDocument{
@@ -429,7 +435,7 @@ title=\TwoSymbolsAndText{\faCode}{\footnotesize{\texttt{#2}}}{\faCode}
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%% First Page
-\title{\textcap{Full Stack SaaS Product Cookbook}\\\small{From Soup \soup to Nuts \nuts - Create a Profitable SaaS Product as a Solo Developer}}
+\title{\capitalizedtext{Full Stack SaaS Product Cookbook}\\\small{From Soup \soup to Nuts \nuts - Create a Profitable SaaS Product as a Solo Developer}}
 \author{
     \textaut{Christopher J. Frewin}\\https://chrisfrew.in
 }
@@ -533,7 +539,7 @@ I'm proud of how this book came out, and I frequently reap the rewards of my own
 %*************************************************************************
 \dictum%
 [Marc Andreessen]%author
-{It's really rare for people to have a successful start-up in this industry without a breakthrough product. I'll take it a step further. It has to be a radical product. It has to be something where, when people look at it, at first they say, 'I don't get it, I don't understand it. I think it's too weird, I think it's too unusual.
+Book/full-stack-saas-product-cookbook.listing{It's really rare for people to have a successful start-up in this industry without a breakthrough product. I'll take it a step further. It has to be a radical product. It has to be something where, when people look at it, at first they say, 'I don't get it, I don't understand it. I think it's too weird, I think it's too unusual.
 } %text
 
 \section{The Product We'll Be Building}
@@ -598,7 +604,7 @@ On the frontend, I will be using these versions of the following tools and frame
 
 \begin{arrows}
 \item npm 7.6.13
-\item Node 14.16.0
+\item Node 14.17.0
 \item Gatsby 3.0.0
 \item React (and React DOM) 17.0.2
 \item Bootstrap 5.0
@@ -620,16 +626,9 @@ With some housekeeping done, let's jump right into code. We'll start by cloning 
 So, you'll also need to install Gatsby if you don't have it installed yet:
 
 % this works fine
-\begin{listing}[H]
-\begin{code}{bash}{terminal}
+\begin{codeInput}{bash}{terminal}{Installing Gatsby via npm.}
 npm install gatsby
-\end{code}
-\caption{Installing Gatsby via npm.}
-\end{listing}
-
-% \begin{codeWithCaption}{bash}{terminal}{Installing Gatsby via npm.}
-% npm install gatsby
-% \end{codeWithCaption}
+\end{codeInput}
 
 Then, the command to create our frontend Gatsby project is:
 
@@ -807,10 +806,6 @@ For the Gatsby project, every file we write within the \codeword{src} directory 
 
 We're nearly reading to start actually coding and building our frontend. We've bootstrapped our project with the Gatsby CLI. We've edited our \codeword{package.json} and \codeword{gatsby-config.js} to reflect our project, converted all components to \codeword{.tsx} files, and removed all fluff from all files and code. We also made a few changes to get the codebase to jive nicely with TypeScript. All that is left to get started is to creating a proper git repository so we can start pushing our changes!
 
-\begin{highlightBox}{Milestone Code \#1}{green}{\greenCheck}
-We've reached the first milestone repository of this book: \link{the skeleton Gatsby repository which we've just finished crafting}{https://github.com/Full-Stack-SaaS-Product-Cookbook/milestone-1-gatsby-skeleton-project}! There's not much in it, but it is a perfect minimalist and TypeScript-minded Gatsby boilerplate to start your future SaaS products with.
-\end{highlightBox}
-
 \section{Setup a Bitbucket Repository for the Frontend}
 \minisec{Chapter Objectives}
 \begin{arrows}
@@ -874,6 +869,10 @@ git push
 \end{codeInput}
 
 Don't worry about adding files or patterns to the \codeword{.gitignore} file, the Gatsby starter has already included one for us!
+
+\begin{highlightBox}{Milestone Code \#1}{green}{\greenCheck}
+We've reached the first milestone repository of this book: the skeleton Gatsby repository which we've just finished crafting, at \link{milestone-1-gatsby-skeleton-project}{https://github.com/Full-Stack-SaaS-Product-Cookbook/milestone-1-gatsby-skeleton-project}! There's not much in it, but it is a perfect minimalist and TypeScript-minded Gatsby boilerplate to start your future SaaS products with.
+\end{highlightBox}
 
 \section{Use Netlify for the Frontend DevOps Framework}
 \minisec{Chapter Objectives}
@@ -1055,7 +1054,7 @@ To illustrate how Netlify injects environment variables into your local machine,
 
 \standardfigure{\textwidth}{frontend/netlify/netlify-environment-variables}{Screenshot of the Netlify environment variables panel and the `Edit variables' button.}
 
-You should have an empty panel with just two inputs that pop up with `Key' and `Value'. Here we'll add our first environment variable, and one that I like to maintain myself in all my Netlify projects: \codeword{NODE\_VERSION}. Let's set it to the latest LTS release of Node. (As of June 2021 when this edition was first published, that was \codeword{14.16.0}). Maintain the `Key' as \codeword{NODE\_VERSION}, and it's value as \codeword{14.16.0}, and click `Save':
+You should have an empty panel with just two inputs that pop up with `Key' and `Value'. Here we'll add our first environment variable, and one that I like to maintain myself in all my Netlify projects: \codeword{NODE\_VERSION}. Let's set it to the latest LTS release of Node. (As of June 2021 when this edition was first published, that was \codeword{14.17.0}). Maintain the `Key' as \codeword{NODE\_VERSION}, and it's value as \codeword{14.17.0}, and click `Save':
 
 \standardfigure{\textwidth}{frontend/netlify/netlify-maintaining-node-version}{Screenshot of the opened Netlify Environment variables panel, with it's key-value style interface. Here we are adding the NODE\_VERSION variable.}
 
@@ -1089,7 +1088,7 @@ It's finally time to get into some code! \partypopper We'll be doing some stylin
 
 \minisec{Chapter Objectives}
 \begin{arrows}
-\item Use scss as our main styling language.
+\item Use Sass as our main styling framework.
 \item Add the \codeword{gatsby-plugin-sass} plugin, which allows us to import our .scss files directly and will compile our styles inline during the build process.
 \item Add Bootstrap as our main styling framework.
 \end{arrows}
@@ -1261,6 +1260,8 @@ export default Layout
 
 \minisec{Improve the Header Component}
 
+The header component doesn't need to belong in our layout. In fact, we'll only be using the big <h1> title that it has in our homepage. Create a new folder pages 
+
 Move the \codeword{Header} component into the \codeword{layout/} folder as well. We will now begin filling it out, including a nice little SCSS widget I thought up which leverages CSS pseudo elements.
 
 First, \codeword{Header.tsx} can be replaced with the following code:
@@ -1321,6 +1322,81 @@ Where \codeword{plate-widget.module.scss} contains the following:
 
 You'll notice as a little easter egg, when hovering on the plate that there is a kind of 'unscrew' animation, where the plate appears to lift off the page! Worried about responsive styling? The way these elements are arranged and marked up with flex styling allows them to be quite responsive! Go ahead in exploring how various widths look. There should be no troubles.
 
+\section{Setup Intellisense for Sass Modules}
+
+So far so good with styling, but there's one annoying point with our Sass modules: TypeScript is complaining that it can't find definitions for any of our Sass modules. 
+
+\minisec{Create a Custom TypeScript Declaration File}
+
+To rectify this problem, start by creating a new file \codeword{custom.d.ts} in the root of your project, and add the following:
+
+\begin{codeInput}{typescript}{custom.d.ts}{Adding a module declaration for all .scss files.}
+declare module "*.module.scss" {
+  const classes: { [key: string]: string }
+  export default classes
+}  
+\end{codeInput}
+
+Keep in mind that for this project, I'll be using Sass modules exclusively, so I only need the \codeword{.scss} extension. If you prefer to write in pure CSS or LESS, you'll have to add those declarations to your \codeword{custom.d.ts} file. Now, by adding this custom.d.ts file to your project, you will see the import errors disappear, but then TypeScript will begin complain about the class names themselves. To fix this, we're going to use a TypeScript plugin \codeword{typescript-plugin-css-modules}. Start by installing it as a dev dependency:
+
+\begin{codeInput}{bash}{terminal}{Installing typescript-plugin-css-modules as a dev dependency.}
+npm install --save-dev typescript-plugin-css-modules
+\end{codeInput}
+
+We'll then need to create a \codeword{tsconfig.json} so we include this plugin:
+
+\begin{codeInput}{json}{tsconfig.json}{Adding a tsconfig.json to the project with the typescript-plugin-css-modules.}
+{
+  "include": ["./src/**/*", "custom.d.ts"],
+  "compilerOptions": {
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["dom", "es2017"],
+    "jsx": "react",
+    "strict": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node"
+  }
+}
+\end{codeInput}
+
+This tsconfig.json file follows the recommended version of the file on \link{Gatsby's official `using-typescript' example repository}{https://github.com/gatsbyjs/gatsby/blob/master/examples/using-typescript/tsconfig.json}. It has only been extended with the \codeword{plugin} line \codeword{"plugins": [{ "name": "typescript-plugin-css-modules" }],}
+
+\minisec{Adding TypeScript to the Workspace}
+
+So far, we've been getting by using Visual Studio Code's built in TypeScript version. However, the \codeword{typescript-plugin-css-modules} will only work properly when we use a workspace version of TypeScript. First we'll have to install TypeScript as a dev dependency:
+
+\begin{codeInput}{bash}{terminal}{Installing TypeScript as a dev dependency to our project.}
+npm install --save-dev typescript
+\end{codeInput}
+
+Then, to ensure we are using the workspace's version of TypeScript and not Visual Studio Code's built in version, open any \codeword{.ts} or \codeword{.tsx} file in your project, and on the bottom of the editor window, click the version number next to the language:
+
+\standardfigure{\textwidth/2}{/frontend/visual-studio-code-version-number}{The TypeScript version number at the bottom of Visual Studio Code.}
+
+In the resulting dialog, click `Select TypeScript Version...':
+
+\standardfigure{\textwidth}{/frontend/select-typescript-version}{The `Select TypeScript Version' option.}
+
+Then click `Use Workspace Version':
+
+\standardfigure{\textwidth}{/frontend/use-workspace-version}{The `Use Workspace Version' option.}
+
+This should finally fix all TypeScript complaints related to your Sass modules.
+
+\minisec{Adding `Go to Definition' Functionality to Sass Classes}
+
+Finally, if we try to use Visual Studio Code's `Go to definition' function (or Cmd + click) on a variable, TypeScript will just bring us to the \codeword{custom.d.ts} file. Fortunately, there is a Visual Studio Code extension that we can install that will give us this `Go to definition' functionality. The extension is simply called `CSS Modules':
+
+\standardfigure{\textwidth}{/frontend/css-modules-extension}{The CSS Modules extension in Visual Studio Code.}
+
+After installing this extension, we can see that our Cmd + Click works, bringing us right to the class definition in our file.
+
 \section{Creating an Interactive Code Editor Widget}
 
 I decided to put a code editor immediately on the home page, as I think an interactive example draws interest and converts to the most customers. Later, this editor will actually interact with our custom .NET API, but for now, let's focus on it's appearance. We will be using the \codeword{\at monaco-editor/react}, which is a React wrapper for the \codeword{monaco-editor}, which is the Microsoft-owned open source repository for their powerful Intellisense editor, used in Visual Studio Code, Microsoft's online TypeScript Playground, and CodeSandbox. 
@@ -1331,7 +1407,7 @@ We can begin to imagine for our SaaS product that we would like a typical code e
 
 \minisec{Naming and Building the Code Editor Component}
 
-Ultimately, I decided on the name of \codeword{EditorWidget} for the component. Create a new folder called \codeword{utils} under \codeword{src/components/}, and create a new TypeScript React component file called \codeword{EditorWidget.tsx}. I put this component under the \codeword{utils/} folder because it will be used on multiple pages and locations in our app.
+Ultimately, I decided on the name of \codeword{EditorWidget} for the component. Under the \codeword{components/widgets/} folder, create a new TypeScript React component file called \codeword{EditorWidget.tsx}. I put this component under the \codeword{widgets/} folder because it will be used on multiple pages and locations in our app.
 
 \minisec{Props for the EditorWidget component}
 
@@ -1352,7 +1428,7 @@ Some developers like including interfaces and types close to where they are used
   \item JavaScript and TypeScript do not natively have a concept of namespaces, and so I generally organize all interfaces, enums, and types into respective folders labeled so
 \end{enumerate}
 
-No matter what style you decide, Visual Studio Code's Intellisense doesn't care either way and will automatically update the import locations for you as you rearrange and drag and drop files. Just know that it is my preference to put all non-prop interfaces in the \codeword{src/interfaces} folder.
+No matter what style you decide, Visual Studio Code's IntelliSense doesn't care either way and will automatically update the import locations for you as you rearrange and drag and drop files. Just know that it is my preference to put all non-prop interfaces in the \codeword{src/interfaces} folder.
 \end{highlightBox}
 
 With \codeword{IEditorSettings} defined, we can now fully define the props for our component, \codeword{IEditorWidgetProps}:
@@ -1460,7 +1536,7 @@ But there's something a bit repetitive about what we are doing in each of these 
 // Updates an object array at the specified update key with the update value,
 // if the specified test key matches the test value.
 // Optionally pass 'testFailValue' to set a default value if the test fails.
-export const updateArray = <T, U extends keyof T, V extends keyof T>(options: {
+export const updateArray = <T, U extends keyof T, V extends keyof T>(params: {
   array: Array<T>
   testKey: keyof T
   testValue: T[U]
@@ -1525,9 +1601,9 @@ this solution is rather verbose, but we don't have to think about write any \cod
 
 \section{Some Styling for the Editors}
 
-The \codeword{width} property for the Monaco Editor is \codeword{100\%} by default. This value messes with our side-by-side layout when using flexbox. We should also consider more narrow screens like iPads, where the editors should become single column and take the full width of the screen. To handle this, we'll create a new Sass module, \codeword{editor.module.scss}:
+The \codeword{width} property for the Monaco Editor is \codeword{100\%} by default. This value messes with our side-by-side layout when using flexbox. We should also consider more narrow screens like iPads, where the editors should become single column and take the full width of the screen. To handle this, we'll create a new Sass module, \codeword{editor-widget.module.scss}:
 
-\codeFromFile{scss}{editor.module.scss}{Responsive styles used by the EditorWidget component}{./snippets/editor.module.scss}
+\codeFromFile{scss}{editor-widget.module.scss}{Responsive styles used by the EditorWidget component}{./snippets/editor-widget.module.scss}
 
 \section{Adding a Custom Theme to the Editor}
 
@@ -1539,19 +1615,32 @@ First we'll install the package \codeword{monaco-themes} with npm:
 npm install monaco-themes
 \end{codeInput}
 
-We will need to access the \codeword{monaco} object to define and set a new theme. Luckily, the \codeword{\at monaco-editor/react} package includes a \codeword{beforeMount} callback in their component which includes the \codeword{monaco} object as an argument. We can load and set the GitHub theme there:
+We can import any theme that we'd like, but I'll be importing the GitHub theme, as I think it fits nicely with the Redux aesthetic. Add the following to the imports at the top of \codeword{EditorWidget.tsx}:
 
-\begin{codeInput}{jsx}{EditorWidget.tsx}{Loading and setting the GitHub theme to the editor in a useEffect hook.}
-// any time an editor is about to mount, set the theme to github
-const handleBeforeMount = (monaco: Monaco) => {
-  import("monaco-themes/themes/Github.json").then(data => {
-    monaco.editor.defineTheme("github", data)
-    monaco.editor.setTheme("github")
-  })
+\begin{codeInput}{jsx}{EditorWidget.tsx}{Importing the GitHub theme from monaco-themes}
+import GitHub from "monaco-themes/themes/GitHub.json"
+\end{codeInput}
+
+We will need to access the \codeword{monaco} object to define and set a new theme. Luckily, the \codeword{\at monaco-editor/react} package exposes an \codeword{onMount} callback in their component which includes the \codeword{monaco} object as an argument. We can load and set the GitHub theme there:
+
+\begin{codeInput}{jsx}{EditorWidget.tsx}{Setting the GitHub theme to the editor in the handleOnMount callback.}
+// any time an editor mounts, set the theme to GitHub theme
+const handleOnMount = (
+  _editor: monaco.editor.IStandaloneCodeEditor,
+  monaco: Monaco
+) => {
+  monaco.editor.defineTheme("GitHub", GitHub as monaco.editor.IStandaloneThemeData)
+  monaco.editor.setTheme("GitHub")
 }
 \end{codeInput}
 
-Excellent. We are finished with our editor widget component. The full contents we arrive at for EditorWidget are:
+Note that here I've had to import the typings to prevent typescript warnings:
+
+\begin{codeInput}{jsx}{EditorWidget.tsx}{Importing types for the monaco object.}
+import * as monaco from "monaco-editor/esm/vs/editor/editor.api"
+\end{codeInput}
+
+Excellent. We are finished with our \codeword{EditorWidget} component. The full contents we arrive at for \codeword{EditorWidget} are:
 
 \codeFromFile{jsx}{EditorWidget.tsx}{The full contents of EditorWidget.tsx}{./snippets/EditorWidget.tsx}
 
@@ -1565,16 +1654,15 @@ It's just the single file that I call \codeword{state.ts}, so we see that one ta
 
 We will again reuse this component later on the 'App' page in just a few sections.
 
-\minisec{Creating a 'Try It' Widget}
+\minisec{Creating a `SideBySideEditors' Widget}
 
-Now that we've got our Editor Widget, we can create the desired `Try it' component for visitors to immediately see the power of ReduxPlate for themselves. Create a new file \codeword{TryItWidget.tsx} under the same \codeword{home/} folder, and add this to it:
+Now that we've got our Editor Widget, we can create the desired side by side editor component for visitors to immediately see the power of ReduxPlate for themselves. Create a new file \codeword{SideBySideEditors.tsx} under the same \codeword{home/} folder, and add this to it:
 
-\begin{codeInput}{jsx}{TryItWidget.tsx}{The full contents of TryItWidget.tsx.}
+\begin{codeInput}{jsx}{SideBySideEditors.tsx}{The full contents of SideBySideEditors.tsx.}
 import * as React from "react"
 import { EditorWidget } from "./EditorWidget"
-import { TryItButtons } from "./TryItButtons"
 
-export function TryItWidget() {
+export function SideBySideEditors() {
   return (
     <div className="container text-center">
       <div className="d-flex flex-wrap justify-content-center">
@@ -1622,7 +1710,6 @@ isActive: false
           ]}
         />
       </div>
-      <TryItButtons/>
     </div>
   )
 }
@@ -1630,15 +1717,15 @@ isActive: false
 
 It's two of our \codeword{EditorWidget} components side by side in a flex box. 
 
-\minisec{What is the TryItButtons component?}
+\minisec{Creating an `ActionButtons' Component}
 
-I decided to put two buttons under our side-by-side editors: one says `Generate!' which will actually kick off a real example functionality of what ReduxPlate can do, and another button to prompt visitors to preview the full app, labeled `Try Full App'. I organized those into a component called <TryItButtons/>. Create a new file \codeword{TryItButtons.tsx} under the same \codeword{home/} folder, and add this to it:
+I decided to put two buttons under our side-by-side editors: one says `Generate!' which will actually kick off a real example functionality of what ReduxPlate can do, and another button to prompt visitors to preview the full app, labeled `Try Full App'. I organized those into a component called <ActionButtons/>. Create a new file \codeword{ActionButtons.tsx} under the same \codeword{home/} folder, and add this to it:
 
-\begin{codeInput}{jsx}{TryItButtons.tsx}{The full contents of TryItButtons.tsx.}
+\begin{codeInput}{jsx}{ActionButtons.tsx}{The full contents of ActionButtons.tsx.}
 import { Link } from "gatsby"
 import * as React from "react"
 
-export function TryItButtons() {
+export function ActionButtons() {
   return (
     <div className="d-flex justify-content-center">
       <button className="btn btn-outline-primary m-3">
@@ -1671,24 +1758,24 @@ Also note that the `Generate!' button has no \codeword{onClick} handler yet - it
 
 \minisec{Extending the Index (Home) Page}
 
-Now that we've got our \codeword{TryItWidget} component, start by creating a \codeword{pages/} folder under  \codeword{components/}, and then another folder \codeword{home/} under that. Then create the file \codeword{Home.tsx}.
+Now that we've got our \codeword{SideBySideEditors} component, start by creating a \codeword{pages/} folder under  \codeword{components/}, and then another folder \codeword{home/} under that. Then create the file \codeword{Home.tsx}.
 
 \begin{highlightBox}{A Word on React Component Organization in Gatsby}{blue}{\information}
 When using Gatsby, I like to keep the components in the \codeword{pages} folder as simple as possible. This is to signify that these are actual HTML pages that will be created, and their actual content can be abstracted away into various components under the \codeword{components/} folder.
 \end{highlightBox}
 
-We can now add the \codeword{Header} and \codeword{TryItWidget} components to the  \codeword{Home.tsx} file:
+We can now add the \codeword{Header} and \codeword{SideBySideEditors} components to the  \codeword{Home.tsx} file:
 
 \begin{codeInput}{jsx}{Home.tsx}{The contents of Home.tsx.}
 import * as React from "react"
 import { Header } from "./Header"
-import { TryItWidget } from "./TryItWidget"
+import { SideBySideEditors } from "./SideBySideEditors"
 
 export function Home() {
   return (
     <>
       <Header />
-      <TryItWidget />
+      <SideBySideEditors />
     </>
   )
 }  
@@ -1738,7 +1825,7 @@ Typically, I have found you can get quite close to a precision of `0' before not
 
 In addition to using the `Precision' bar, I typically check the option `Prefer viewBox to width/height'. You can explore and toggle the other numerous options in SVGOMG, but I find that the default values work quite well.
 
-When you are done, click either the export button to trigger a browser download of the SVG, or the copy button, to copy the SVG markup to your clipboard (both of these buttons are shown in \ref{fig:frontend/logo-design/svgomg-icons}). Typically I simply copy the markup to the clipboard and paste it into an empty Visual Studio Code. The SVG markup produced by SVGOMG is as follows:
+When you are done, click either the export button to trigger a browser download of the SVG, or the copy button, to copy the SVG markup to your clipboard (both of these buttons are shown in \ref{fig:frontend/logo-design/svgomg-icons}). Typically I simply copy the markup to the clipboard and paste it into fresh empty Visual Studio Code editor. The SVG markup produced by SVGOMG is as follows:
 
 \begin{codeInput}{html}{logo.svg}{SVG markup as returned by SVGOMG.}
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 161 161">
@@ -1827,11 +1914,11 @@ You may be wondering why I have opted to create an entire React component for th
 
 First we'll utilize a tool to ensure our SVG markup is compatible with React. React will not recognize the various hyphenated properties of vanilla SVG markup (ex. \codeword{paint-order}), only understanding their camel case versions (ex. \codeword{paintOrder}). The \link{HTML to JSX Compiler}{https://magic.reactjs.net/htmltojsx.htm} will take care of all of that for you, also converting other common attribute gotchas like \codeword{class} to \codeword{className}. In the case of the example SVG I am working with, there are not too many changes. but if your SVG is more complex, you may find the HTML to JSX Compiler to be very helpful.
 
-Unfortunately, the HTML to JSX Compiler produces the old school \codeword{React.createClass()} style markup, so we won't be copying the entirety of the output, but that's fine, we can copy everything the contents of the \codeword{return()} statement. After copying that, create a new file under the \codeword{utils/} folder called \codeword{Logo.tsx}.
+Unfortunately, the HTML to JSX Compiler produces the old school \codeword{React.createClass()} style markup, so we won't be copying the entirety of the output, but that's fine, we can copy everything the contents of the \codeword{return()} statement. After copying that, create a new file under the \codeword{utils/} folder called \codeword{LogoWidget.tsx}.
 
-We'll need to migrate the \codeword{className}, \codeword{width}, and \codeword{height} properties to the SVG node in \codeword{Logo.tsx}. Then of course it is time to add animations. Create a new scss module under \codeword{src/styles/modules} called \codeword{logo.module.scss}. I decided to make a variety of animations, and applied them to each of the four screws. The contents of \codeword{logo.module.scss} looks like this:
+We'll need to migrate the \codeword{className}, \codeword{width}, and \codeword{height} properties to the SVG node in \codeword{LogoWidget.tsx}. Then of course it is time to add animations. Create a new scss module under \codeword{src/styles/modules} called \codeword{logo-widget.module.scss}. I decided to make a variety of animations, and applied them to each of the four screws. The contents of \codeword{logo-widget.module.scss} looks like this:
 
-\begin{codeInput}{scss}{logo.module.scss}{Animation styles for the logo component.}
+\begin{codeInput}{scss}{logo-widget.module.scss}{Animation styles for the logo component.}
 .topLeftScrew,
 .topRightScrew,
 .bottomLeftScrew,
@@ -1886,11 +1973,11 @@ We'll need to migrate the \codeword{className}, \codeword{width}, and \codeword{
 
 See what fun animations you can think up for your own logo!
 
-With these styles complete, import what you had from the HTML to JSX Compiler, which results in the following to \codeword{Logo.tsx}:
+With these styles complete, import what you had from the HTML to JSX Compiler, which results in the following to \codeword{LogoWidget.tsx}:
 
-\begin{codeInput}{jsx}{Logo.tsx}{The contents of Logo.tsx.}
+\begin{codeInput}{jsx}{LogoWidget.tsx}{The contents of LogoWidget.tsx.}
 import * as React from 'react';
-import * as styles from '../../styles/modules/logo.module.scss'
+import * as styles from '../../styles/modules/logo-widget.module.scss'
 
 export function Logo () {
   return (
@@ -1918,7 +2005,7 @@ Nice, same looking nav, new fun animations! Looking good. If you've followed all
 \minisec{Review of Initial Components and Layout}
 
 \begin{highlightBox}{Milestone Code \#2}{green}{\greenCheck}
-Nice! You've made it to the second milestone code repository, \codeword{themed-frontend-with-components}
+Nice! You've made it to the second milestone code repository, \link{milestone-2-themed-frontend-with-components}{https://github.com/Full-Stack-SaaS-Product-Cookbook/milestone-2-themed-frontend-with-components}
 \end{highlightBox}
 
 So far so good. We've refactored a few file locations, namely creating a \codeword{pages/} and \codeword{layout/} folder to organize our \codeword{components/} folder a bit more. So far, the layout of your code base should look something like this:
@@ -1927,96 +2014,141 @@ So far so good. We've refactored a few file locations, namely creating a \codewo
 .
 ├── LICENSE
 ├── README.md
+├── custom.d.ts
 ├── gatsby-browser.js
 ├── gatsby-config.js
 ├── gatsby-node.js
 ├── gatsby-ssr.js
 ├── package-lock.json
 ├── package.json
-└── src
-    ├── components
-    │   ├── Seo.tsx
-    │   ├── layout
-    │   │   ├── Footer.tsx
-    │   │   ├── Layout.tsx
-    │   │   └── Nav.tsx
-    │   ├── pages
-    │   │   ├── app
-    │   │   │   └── App.tsx
-    │   │   └── home
-    │   │       ├── EditorWidget.tsx
-    │   │       ├── Header.tsx
-    │   │       ├── Home.tsx
-    │   │       ├── TryItButtons.tsx
-    │   │       └── TryItWidget.tsx
-    │   ├── utils
-    │   │   └── Logo.tsx
-    │   └── widgets
-    │       └── PlateWidget.tsx
-    ├── images
-    │   └── logo.svg
-    ├── interfaces
-    │   └── IEditorSettings.ts
-    ├── pages
-    │   ├── 404.tsx
-    │   ├── app.tsx
-    │   └── index.tsx
-    └── styles
-        ├── _variables.scss
-        ├── modules
-        │   ├── editor.module.scss
-        │   ├── header.module.scss
-        │   ├── logo.module.scss
-        │   └── plate-widget.module.scss
-        └── styles.scss
+├── src
+│   ├── components
+│   │   ├── Seo.tsx
+│   │   ├── layout
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Layout.tsx
+│   │   │   └── Nav.tsx
+│   │   ├── pages
+│   │   │   └── home
+│   │   │       ├── ActionButtons.tsx
+│   │   │       ├── Header.tsx
+│   │   │       ├── Home.tsx
+│   │   │       └── SideBySideEditors.tsx
+│   │   └── widgets
+│   │       ├── EditorWidget.tsx
+│   │       ├── LogoWidget.tsx
+│   │       └── PlateWidget.tsx
+│   ├── images
+│   │   └── logo.svg
+│   ├── pages
+│   │   ├── 404.tsx
+│   │   └── index.tsx
+│   └── styles
+│       ├── _variables.scss
+│       ├── modules
+│       │   ├── editor-widget.module.scss
+│       │   ├── header.module.scss
+│       │   ├── logo-widget.module.scss
+│       │   └── plate-widget.module.scss
+│       └── styles.scss
+└── tsconfig.json
 \end{codeInput}
 
 It's been pretty basic React so far, and all cosmetic oriented changes. Now we're going to get into some more complex functionality, involving helper functions and actual business functions that form the bedrock of ReduxPlate.
 
 \section{Recipe: Adding API Helper Functions}
 
-We will now add the first in a series of API Helper functions which I believe are as optimized as they can be. They are both as flexible as possible in terms of typings, but able to be called from any React component as a single function call, \textit{including} side effect callbacks. This set of functions will be completely standalone, so you can reuse them for \textit{any} SaaS product. The first we will be adding is a \codeword{post} method to call our netlify function.
+We will now add the first of a series of API Helper functions which I believe are as optimized as they can be. They are both as flexible as possible in terms of typings, but able to be called from any React component as a single function call, \textit{including} side effect callbacks. This set of functions will be completely standalone, so you can reuse them for \textit{any} SaaS product. The first two functions we will be adding are \codeword{get} and \codeword{post} functions to call our future .NET API.
 
 \begin{codeInput}{typescript}{ApiHelpers.ts}{The start of our API Helper functions\, ApiHelpers.ts.}
 import IApiConnectorParams from "../../interfaces/IApiConnector"
-import IApiError from "../../interfaces/IApiError"
+import IApiErrorMessage from "../../interfaces/IApiErrorMessage"
 
-export const post = async <T = undefined, U = undefined>(
-  success: (model: U) => void,
-  failed: (model: IApiError) => void,
-  body?: IApiConnectorParams & T
+export const get = async <T>(
+  body: IApiConnectorParams,
+  onSuccess: (model: T) => void,
+  onError: (model: IApiErrorMessage) => void,
 ): Promise<void> => {
   try {
-    const response = await fetch(`/.netlify/functions/api-connector`, {
-      method: "POST",
+    const response = await fetch("/.netlify/functions/api-connector", {
+      method: HTTPMethod.POST,
+      body: JSON.stringify(body),
+    })
+    const data = body.responseForm === ResponseForm.JSON ? await response.json() : await response.text()
+    if (response.ok) {
+      return onSuccess(data)
+    }
+    return onError(data)
+  } catch (error) {}
+}
+
+export const post = async <T, U>(
+  body: IApiConnectorParams & { body: T },
+  onSuccess: (model: U) => void,
+  onError: (model: IApiErrorMessage) => void,
+): Promise<void> => {
+  try {
+    const response = await fetch("/.netlify/functions/api-connector", {
+      method: HTTPMethod.POST,
       body: JSON.stringify(body),
     })
     const data = await response.json()
     if (response.ok) {
-      return success(data)
+      return onSuccess(data)
     }
-    return failed(data)
+    if (Object.values(apiErrorMessageConfig).includes(data.apiErrorMessage)) {
+      return onError(data)
+    }
   } catch (error) {}
 }  
 \end{codeInput}
 
-This is a lot to take in at first, but the complexity here will abstract away a lot of effort when we write code in our components. The generic types \codeword{T} and \codeword{U} respectively allow for a  type signature of something like this: 
+This is a lot to take in at first, but the complexity here will abstract away a lot of effort when we write code in our components. In the \codeword{get} function, we allow for a return type of . The \codeword{post} function, is a bit more complex, where the generic types \codeword{T} and \codeword{U} respectively allow for a call signature of something like this: 
 
 \begin{codeInput}{typescript}{pseudo code}{Pseudo code for typing the call to the post function from ApiHelpers.}
 post<InputType, OutputType>()
 \end{codeInput}
 
-so it will be clear in our components calling it what the required input and expected output types are.
+so it will be clear in our components calling the \codeword{post} what the required input and expected output types are.
 
 I've utilized two helper interfaces here. One is \codeword{IApiConnectorParams}, which is made in a union via the \codeword{\&} operator,with the generic type \codeword{T}. The \codeword{IApiConnectorParams} interface is defined as:
 
 \begin{codeInput}{typescript}{IApiConnectorParams.ts}{The contents of IApiConnectorParams.ts.}
+import HTTPMethod from "../enums/HTTPMethod";
+import ResponseForm from "../enums/ResponseForm";
+
 export default interface IApiConnectorParams {
   endpoint: string;
+  method: HTTPMethod;
+  responseForm: ResponseForm;
 }
 \end{codeInput}
 
-This union type will enforce that we always send an endpoint parameter to the this endpoint. For now, like \codeword{IApiConnectorParams}, interface \codeword{IApiError} includes only a single parameter as well:
+Where \codeword{HTTPMethod} and \codeword{ResponseForm} are two helper enums which prevent us from hard coding anything in our API calls:
+
+\begin{codeInput}{typescript}{HTTPMethod.ts}{The contents of enum HTTPMethod.}
+enum HTTPMethod {
+  GET = 'GET',
+  POST = 'POST'
+}
+
+export default HTTPMethod
+\end{codeInput}
+
+\begin{codeInput}{typescript}{ResponseForm.ts}{The contents of enum ResponseForm.}
+enum ResponseForm {
+  JSON = 'JSON',
+  TEXT = 'TEXT'
+}
+
+export default ResponseForm
+\end{codeInput}
+
+Enum \codeword{ResponseForm} is complete, since \codeword{json} and \codeword{text} functions are the only ways to parse a response with the \codeword{fetch} API. \codeword{HTTPMethod} is fine for now, but we may need to extend it later with methods like PUT, DELETE, or PATCH, for example. It will be waiting for us then.
+
+In the \codeword{post} function, creating a union with \codeword{IApiConnectorParams} and generic type \codeword{T} and will enforce that we always send the endpoint, method, and responseForm parameters to the netlify \codeword{api-connector} function. We'll then use these parameter to construct the call to our .NET endpoint. Additionally, why is it that I define the union requiring key \codeword{body} with type \codeword{T}? Recall that this interface is made in a union with the \codeword{IApiConnectorParams}, which holds the \codeword{endpoint} parameter for our .NET API. Wrapping the actual parameters for our API this way will make the call in our serverless function cleaner, as we'll see shortly - we'll end up forwarding the entire contents of the \codeword{data} object into the \codeword{body} of the .NET call.
+
+The other helper interface used in \codeword{ApiHelpers} is \codeword{IApiErrorMessage}, which includes only a single parameter:
 
 \begin{codeInput}{typescript}{IApiConnectorParams.ts}{The contents of IApiConnectorParams.ts.}
 import ApiErrorMessage from "../enums/ApiErrorMessage";
@@ -2026,35 +2158,37 @@ export default interface IApiErrorMessage {
 }
 \end{codeInput}
 
-Where ApiErrorMEssage is an enum signifying what error the API has returned:
+Where \codeword{ApiErrorMessage} is an enum signifying IDs of what error the API has returned:
 
 \begin{codeInput}{typescript}{ApiErrorMessage.ts}{The contents of enum ApiErrorMessage.ts.}
 enum ApiErrorMessage {
-    GENERATOR_ERROR = 'GENERATOR_ERROR'
+    UNKNOWN_ERROR = 'UNKNOWN_ERROR'
 }
 
 export default ApiErrorMessage
 \end{codeInput}
 
-Finally, I define callbacks \codeword{onSuccess} and \codeword{onError}, so we can write complex side effect code without cluttering the API call itself. 
+For now, we haven't written our backend yet, so we don't know of any specific API error message IDs. I've only included a catch-all ID of \codeword{UNKNOWN\_ERROR}.
 
-For now, the \codeword{post} method is actually incomplete, as we have left the catch block empty. We'll get to that shortly after adding some messaging and toast functionality to our app. Let's look a little bit further into the enum \codeword{ApiErrorMessage}.
+Finally, with both functions, I define two callbacks, \codeword{onSuccess} and \codeword{onError}, so we can write complex side effect code without cluttering the API call code. 
+
+For now, the two methods are actually incomplete, as we have left both catch blocks in both functions empty. We'll get to that shortly after adding some messaging and toast functionality to our app. In the next section, we'll look a little bit further into the enum \codeword{ApiErrorMessage}.
 
 \section{Recipe: Robust API Error Message Handling}
 
 We expect, in the case of a non-200 level API response, the API to return an \codeword{ApiErrorMessage}.
 
-So far, \codeword{ApiErrorMessage} includes the single message key `GENERATOR\_ERROR', as a catch all, since we haven't written the logic behind our API endpoint yet. Note that while a solid start to a clean messaging system, this enum is only half the battle: we can't just show the string `GENERATOR\_ERROR' to the customer. We need to have a human readable message associated to each value in enum \codeword{ApiErrorMessage}. To do that, we'll create a message configuration to store these human readable messages. Create a new folder called \codeword{config/}. Then create the file \codeword{ApiErrorMessages.ts}, and add the following:
+So far, \codeword{ApiErrorMessage} includes the single message key `UNKNOWN\_ERROR', as a catch all, since we haven't written the logic behind our API endpoint yet. Note that while this is a solid start to a clean messaging system, this enum is only half the battle: we can't just show the string `UNKNOWN\_ERROR' to the customer. We need to have a human readable message associated to each value in enum \codeword{ApiErrorMessage}. To do that, we'll create a message configuration to store these human readable messages. Create a new folder called \codeword{config/}. Then create the file \codeword{ApiErrorMessagesConfig.ts}, and add the following:
 
-\begin{codeInput}{typescript}{ApiErrorMessages.ts}{The contents of the type ApiErrorMessages.ts.}
+\begin{codeInput}{typescript}{ApiErrorMessagesConfig.ts}{The contents of the type ApiErrorMessages.ts.}
 import ApiErrorMessage from "../enums/ApiErrorMessage";
 
-export const apiErrorMessages = {
-    [ApiErrorMessage.GENERATOR_ERROR]: 'Error generating Redux code!',
+export const apiErrorMessagesConfig = {
+    [ApiErrorMessage.UNKNOWN_ERROR]: 'Unknown error with the API. Please try again.',
 }
 \end{codeInput}
 
-This will work fine, but \codeword{apiErrorMessages} currently has no strict typing associated with it; to TypeScript, it's just an object. For now this may appear to be harmless, but as the application grows with a variety of API message types, we will need to make sure we don't incorrectly typo any key names, and more importantly, that we're not \textit{forgetting to include any message IDs}. To accomplish these requirements, we will define a new type to associate to our configuration variable \codeword{apiErrorMessageConfig}. Create a new folder \codeword{types/}, and add this type:
+This will work fine, but \codeword{apiErrorMessagesConfig} currently has no strict typing associated with it; to TypeScript, it's just an object. For now this may appear to be harmless, but as the application grows with a variety of API error message IDs, we will need to make sure we don't incorrectly typo any key names, and more importantly, that we're not \textit{forgetting to include any message IDs}. To accomplish these requirements, we will define a new type to associate to our configuration variable \codeword{apiErrorMessageConfig}. Create a new folder \codeword{types/}, and add this type:
 
 \begin{codeInput}{typescript}{ApiErrorMessageConfigEntries.ts}{The contents of the type ApiErrorMessageConfigEntries.ts.}
 import ApiErrorMessage from "../enums/ApiErrorMessage";
@@ -2071,19 +2205,155 @@ import ApiErrorMessage from "../enums/ApiErrorMessage";
 import { ApiErrorMessageConfigEntries } from "../types/ApiErrorMessageConfigEntries";
 
 export const apiErrorMessageConfig: ApiErrorMessageConfigEntries = {
-    [ApiErrorMessage.GENERATOR_ERROR]: 'Error generating code!',
+    [ApiErrorMessage.UNKNOWN_ERROR]: 'Unknown error with the API. Please try again.',
 }
 \end{codeInput}
 
 \begin{highlightBox}{Why is ApiErrorMessageConfigEntries a Type and Not an Interface?}{yellow}{\warning}
-We are unable to use the TypeScript \codeword{key in} syntax for interfaces. Since we explicitly want our keys to be the keys of \codeword{ApiErrorMessage} enum, we must use a type. Not only will this type help us select the values from the \codeword{ApiErrorMessage} enum, it will also remind us when a value is missing, since we want \textit{each} key \codeword{in} the \textit{ApiErrorMessage} enum!
+We are unable to use the TypeScript \codeword{key in} syntax in interfaces. Since we explicitly want our keys to be the keys of \codeword{ApiErrorMessage} enum, we must use a type. Not only will this type help us select the values from the \codeword{ApiErrorMessage} enum, it will also remind us when a value is missing, since this type will require \textit{each} \codeword{key in} the \textit{ApiErrorMessage} enum!
 \end{highlightBox}
 
 \minisec{Why All the Trouble?}
 
 This seems like a lot of trouble to go through just for some simple messaging functionality. However, this method forces us to collect all message strings into a single file, making things like translations and localization much easier later on. It also makes any code which uses these messages cleaner. We won't have any hardcoded message strings anywhere else in our app except for our config files. We can also later easily extend these types to include perhaps a slice of the app, or endpoint that certain messages are associated with, to keep the configs even shorter and more maintainable.
 
-\section{Setting Up a Contract-Based API Call}\label{contract-based-api}
+\section{Recipe: Toast Helper Functions}
+
+Following the inclusion of our \codeword{ApiHelpers} functions, we saw the need for side effects to inform the customer if anything goes wrong. A typical pattern is to include an animated feedback that appears on screen. It is up to you to have these appear directly on the site, for example, right near the button after it is clicked, or in a floating div somewhere else on the page. I typically use the floating pattern of. Just as we did with an API connector, we'll create a file \codeword{ToastHelpers} inside the \codeword{helpers/} directory with a variety of helper functions which can create these toasts.
+
+\minisec{Getting Started}
+
+First we need to install the \codeword{react-toastify} library via \codeword{npm}:
+
+\begin{codeInput}{bash}{terminal}{Installing react-toastify via npm.}
+npm install react-toastify
+\end{codeInput}
+
+We should also immediately include the default styles for the library in \codeword{gatsby-browser.js}:
+
+\begin{codeInput}{javascript}{gatsby-browser.js}{Adding the default react-toastify styles to gatsby-browser.js.}
+require('react-toastify/dist/ReactToastify.css')
+\end{codeInput}
+
+We also need to include the required \codeword{ToastContainer} component. We can add that to our \codeword{Layout} component, so toasts will be available to show on any page we make with Gatsby:
+
+\begin{codeInput}{jsx}{Layout.tsx}{Adding the ToastContainer component to Layout.tsx.}
+...
+return (
+  <>
+    ...
+    <ToastContainer />
+  </>
+)
+\end{codeInput}
+
+Add a new file {ToastHelpers.tsx} to the \codeword{helpers/} folder, and add this:
+
+\begin{codeInput}{jsx}{ToastHelpers.ts}{ToastHelpers\, so far with a single function `showSimple'}
+import {
+  toast,
+  ToastPosition,
+} from "react-toastify"
+
+export const showSimple = (
+  message: string,
+  position: ToastPosition = "top-center"
+): void => {
+  toast(message, { position })
+}  
+\end{codeInput}
+
+\codeword{showSimpleToast} function is nothing more than a small wrapper which accept a string as the toast's message, and an optional position defaulting to the top-center of the page. This helper function helps us cleanly call up a toast wherever we may need it in our app. We can now add a few calls to \codeword{showSimpleToast} by replacing the two message placeholder \codeword{console.log} calls in \codeword{ActionButtons.tsx}:
+
+\begin{codeInput}{jsx}{ActionButtons.tsx}{ToastHelpers\, so far with a single function `showSimple'}
+const generate = async (typeScriptProperties: Array<ITypeScriptProperty>) => {
+  await post<IGenerateOptions, IGenerated>(
+    {
+      endpoint: "/CodeGenerator",
+      data: {
+        stateCode: code
+      }
+    },
+    generated => {
+      dispatch(
+        codeGenerated({
+          editorID: EditorID.TRY_IT_RESULTS,
+          files: generated.files
+        })
+      )
+    },
+    apiError => {
+      showSimpleToast(apiErrorMessageConfig[apiError.apiErrorMessage]) // added
+    }
+  )
+}
+\end{codeInput}
+
+Here we leverage all the scaffolding effort we made for our messaging system - needing only the enum key value to reference what message we want to show. In the case of \codeword{onError} callback from \codeword{post}, this is an \codeword{apiErrorMessage}, as it will originate from the API.
+
+\section{Styling Toasts to Match the Application Styles}
+
+If we were to see one of these toasts right now, we would see the timing bar takes on a rainbow gradient. This is neat, but a little too flashy for our application. Let's style the toasts so that the time indicator bar takes on the Redux purple color we've already been using throughout our app. Create a new Sass partial file \codeword{\_toasts.scss} under the \codeword{styles/} folder, and add this single rule:
+
+\codeFromFile{scss}{\_toasts.scss}{The custom styling for the app's toasts.}{./snippets/_toasts.scss}
+
+don't forget to include this partial into the global styles file, \codeword{styles.scss}:
+
+\begin{codeInput}{diff}{styles.scss}{Adding the \_toasts.scss partial to styles.scss.}
+@import "variables";
+@import "../../node_modules/bootstrap/scss/bootstrap";
++ @import "toasts.scss";
+\end{codeInput}
+
+\section{Setting Up an API GET Request}
+
+Before creating a more complex POST call with our API helper functions and the `Generate!' button, let's work through a simpler example with the \codeword{get} function we wrote. 
+
+As we will see in the API section of the book, the very first endpoint we will build in our .NET API will be a 'Root' controller, which will be a GET endpoint, and return just a string with the API version information. We can scaffold that call and set the version text in the footer component. We can use an on mount \codeword{useEffect} hook to call the API and then set a stateful variable, ultimately displaying it in the footer. Altogether, \codeword{Footer.tsx} becomes:
+
+\begin{codeInput}{jsx}{Footer.tsx}{Footer.tsx\, now with a call to what will be our `Root' .NET API endpoint.}
+import * as React from "react"
+import { useState } from "react"
+import { useEffect } from "react"
+import HTTPMethod from "../../enums/HTTPMethod"
+import ResponseForm from "../../enums/ResponseForm"
+import { get } from "../../helpers/APIHelpers"
+
+export function Footer() {
+  const [apiVersion, setApiVersion] = useState<string>("")
+
+  const fetchApiVersion = async () => {
+    await get<string>(
+      {
+        endpoint: "/",
+        method: HTTPMethod.GET,
+        responseForm: ResponseForm.TEXT,
+      },
+      apiVersion => setApiVersion(apiVersion),
+      apiErrorMessage => setApiVersion("API Version Unknown"),
+    )
+  }
+
+  // on mount, get API version from .NET API
+  useEffect(() => {
+    fetchApiVersion()
+  }, [])
+
+  return (
+    <footer className="fixed-bottom bg-primary text-light text-center text-lg-start">
+      © {new Date().getFullYear()}{" "}
+      <a className="link-light" href="https://fullstackcraft.com">
+        Full Stack Craft
+      </a>{" - "}
+      {apiVersion}
+    </footer>
+  )
+}  
+\end{codeInput}
+
+This call in the footer will be the first full stack check we make once we write our `root' endpoint for the .NET API!
+
+\section{Setting Up a Contract-Based API POST Request}\label{contract-based-api}
 
 As we saw in our \codeword{post} API helper function, the calls to our API accept a generic type and return a generic type. In this section, we'll be setting up an interface that matches what we will build in our .NET API, so that on both the frontend and backend, we can expect what shapes of data will be receiving and sending. 
 
@@ -2099,22 +2369,18 @@ Let's create a new file, \codeword{IGenerateOptions.ts} under the \codeword{src/
 import ITypeScriptProperty from "./ITypeScriptProperty";
 
 export default interface IGenerateOptions {
-  data: {
-    stateCode: string
-  }
+  stateCode: string
 }
 \end{codeInput}
-
-Why do I wrap the \codeword{stateCode} property in an object with key \codeword{data}? Recall that this interface is made in a union with the \codeword{IApiConnectorParams}, which holds the \codeword{endpoint} parameter for our .NET API. Wrapping the actual parameters for our API this way will make the call in our serverless function cleaner, as we'll see shortly - we'll end up forwarding the entire contents of the \codeword{data} object into the \codeword{body} of the .NET call.
 
 For now, this \codeword{stateCode} string should be all we need (for the free and public version of the generator!) to generate the code for a Redux boilerplate codebase. Because generating and doctoring Redux code is the whole point of our SaaS product, the generation step must be done on our server.
 
 It is now time to define the expected type that should be returned from our API. We expect the generator endpoint to return nothing more than an array of files. Each file should have a label, and the code contents of that file. In fact, this looks like something which we already have in our application: the first two properties of interface {IEditorSettings}: \codeword{fileLabel} and \codeword{code}! let us redefine the existing \codeword{IEditorSettings} interface to accommodate this new contract. Create a new interface under \codeword{interfaces/} called \codeword{IFile.ts}, and move both \codeword{fileLabel} and \codeword{code} from \codeword{IEditorSetting.ts} to \codeword{IFile.ts}:
 
 \begin{codeInput}{jsx}{IFile.ts}{The new interface IFile.}
-export default interface IFile {
-  name: string
-  type: string
+export default interface IFile { 
+  fileLabel: string
+  code: string
 }
 \end{codeInput}
 
@@ -2132,36 +2398,31 @@ export default interface IEditorSetting extends IFile {
 
 We are now ready to create the return type interface for the \codeword{/CodeGenerator} endpoint. Under \codeword{interfaces/}, create a new file \codeword{IGenerated.ts}: 
 
-\begin{codeInput}{jsx}{IEditorSetting.ts}{The refactored code within IEditorSettings.ts}
+\begin{codeInput}{jsx}{IGenerated.ts}{The interface IGenerated.}
 import IFile from "./IFile";
 
-export default interface IEditorSetting extends IFile {
-  isActive: boolean
-}  
+export default interface IGenerated {
+    files: Array<IFile>
+}
 \end{codeInput}
 
 With the API contracts (interfaces) done, we can \textit{finally} craft the call to \codeword{post} in \codeword{TryItButton.tsx}. We can hard code the most of settings for \codeword{IGenerateOptions}, since this button is for the free and public version of the endpoint, and the user won't have access to any of the more advanced options.
 
-\begin{codeInput}{jsx}{TryItButton.ts}{The TryItButtons\, with a draft of the post call.}
+\begin{codeInput}{jsx}{TryItButton.ts}{The ActionButtons\, with a draft of the post call.}
 // TODO: uh oh - how to get at the current value of variable 'code' here? That's buried in an adjacent component!
 const onClickGenerate = async () => {
   await post<IGenerateOptions, IGenerated>(
+    {
+      endpoint: "/CodeGenerator",
+      body: {
+        stateCode: code // Uh oh! 'code' is not defined :(
+      },
+    },
     generated => {
-      dispatch(
-        codeGenerated({
-          editorID: EditorID.TRY_IT_RESULTS,
-          files: generated.files,
-        })
-      )
+      console.log(generated)
     },
     apiError => {
       console.log(apiError)
-    },
-    {
-      endpoint: "/CodeGenerator",
-      data: {
-        stateCode: code // Uh oh! 'code' is not defined :(
-      },
     }
   )
 }
@@ -2169,7 +2430,7 @@ const onClickGenerate = async () => {
 
 We've run into a new issue. We don't immediately have access to the string value of what code is in our editor! Getting at it in a traditional React way would involve a series of parent-to-child callbacks, and then back again, which is not readable or maintainable. It's time we introduce Redux into the app, and build a slice of state specifically for storing the state of the various code editors that will exist around the app.
 
-\section{Adding Redux}
+\section{Adding Redux to the Application}
 
 We saw in the previous section that when we went to add the call to our \codeword{onClickGenerate} function we didn't have immediate access to the current value of what the code was in the editor. To do this in a clean and maintainable way, we will add Redux to the frontend. (I know, I know, using Redux in a developer tool built \textit{for} Redux is a bit meta, but it won't be too bad to understand \wink). 
 
@@ -2242,7 +2503,7 @@ export const useAppDispatch = () => useDispatch<AppDispatch>()
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 \end{codeInput}
 
-This another recommended pattern also derived from the \link{TypeScript Quick Start documentation from Redux Toolkit}{https://redux-toolkit.js.org/tutorials/typescript}. We can use these typed Redux hooks throughout our application, instead of the standard \codeword{useSelector} and \codeword{useDispatch} Redux hooks. Then, no matter how many slices of state we add, we can expect them to be typed properly whenever we call these hooks across our app.
+This is another recommended pattern also derived from the \link{TypeScript Quick Start documentation from Redux Toolkit}{https://redux-toolkit.js.org/tutorials/typescript}. We can use these typed Redux hooks throughout our application, instead of the standard \codeword{useSelector} and \codeword{useDispatch} Redux hooks. Then, no matter how many slices of state we add, they will be properly typed whenever we use these hooks across our app.
 
 \begin{highlightBox}{The hooks Folder}{blue}{\information}
 I typically add all custom hooks into a \codeword{hooks} folder. While the typed Redux hooks are the first hooks we have seen so far, we will be revisiting the \codeword{hooks/} folder many times throughout this book.
@@ -2254,13 +2515,13 @@ Add a new folder called \codeword{store/} under the \codeword{src/} folder. Then
 
 \begin{codeInput}{typescript}{editorsSlice.ts}{The 'editors' slice of the Redux state\, editorsSlice.ts}
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import Editor from "../../enums/Editor"
+import EditorID from "../../enums/EditorID"
 import IEditorSetting from "../../interfaces/IEditorSettings"
 import { updateArray } from "../../utils/updateArray"
 
 interface EditorsState {
   editors: {
-    [Editor: string]: {
+    [EditorID: string]: {
       editorTitle: string
       editorSettings: Array<IEditorSetting>
     }
@@ -2316,7 +2577,7 @@ export interface MyState {
 }
 
 export const editorsSlice = createSlice({
-  name: "tryItWidget",
+  name: "SideBySideEditors",
   initialState,
   reducers: {
     codeEdited: (
@@ -2327,11 +2588,7 @@ export const editorsSlice = createSlice({
       }>
     ) => {
       const { editor, code } = action.payload
-      state.editors[editor].editorSettings = updateArray<
-        IEditorSetting,
-        "isActive",
-        "code"
-      >({
+      state.editors[editor].editorSettings = updateArray({
         array: state.editors[editor].editorSettings,
         testKey: "isActive",
         testValue: true,
@@ -2344,11 +2601,7 @@ export const editorsSlice = createSlice({
       action: PayloadAction<{ editor: Editor; fileLabel: string }>
     ) => {
       const { editor, fileLabel } = action.payload
-      state.editors[editor].editorSettings = updateArray<
-        IEditorSetting,
-        "fileLabel",
-        "isActive"
-      >({
+      state.editors[editor].editorSettings = updateArray({
         array: state.editors[editor].editorSettings,
         testKey: "fileLabel",
         testValue: fileLabel,
@@ -2362,27 +2615,37 @@ export const editorsSlice = createSlice({
 
 export const { codeEdited, tabClicked } = editorsSlice.actions
 
-export default editorsSlice.reducer  
+export default editorsSlice.reducer
 \end{codeInput}
 
-I've moved most of the \codeword{editorSettings} update logic into the reducer action logic - but note we're still leveraging our utility function, \codeword{updateArray}, within the redux-toolkit form of the reducer. I also renamed the names \codeword{onChangeCode} and \codeword{onChangeTab} actions to \codeword{codeEdited} and \codeword{tabClicked}, respectively, as \link{Redux recommends making actions have the most meaningful names as possible}{https://redux.js.org/style-guide/style-guide\#write-meaningful-action-names}, and avoid generic names. We can also remove the state variable from \codeword{EditorWidget}. The initial state and props can also be eliminated from \codeword{EditorWidget} component. These changes ultimately results in the \codeword{EditorWidget} and \codeword{TryItWidget} being much cleaner and easier to read. Most of the complexity was really in the initial props of the editors, now refactored to be in the Redux initial state.
+Where enum \codeword{EditorID} is:
 
-After refactoring, the \codeword{TryItWidget} component now looks like this:
+\begin{codeInput}{typescript}{EditorID.ts}{The enum EditorID.}
+enum EditorID {
+  TRY_IT_STATE = 'try-it-state',
+  TRY_IT_RESULTS = 'try-it-results',
+  APP = 'app'
+}
 
-\begin{codeInput}{jsx}{TryItWidget.tsx}{The TryItWidget component\, after refactoring the frontend application to use Redux}
+export default EditorID
+\end{codeInput}
+
+I've moved most of the \codeword{editorSettings} update logic into the reducer action logic - but note we're still leveraging our utility function, \codeword{updateArray}, within the redux-toolkit form of the reducer. I also renamed the names \codeword{onChangeCode} and \codeword{onChangeTab} actions to \codeword{codeEdited} and \codeword{tabClicked}, respectively, as \link{Redux recommends making actions have the most meaningful names as possible}{https://redux.js.org/style-guide/style-guide\#write-meaningful-action-names}, and avoid generic names. We can also remove the state variable from \codeword{EditorWidget}. The initial state and props can also be eliminated from \codeword{EditorWidget} component. These changes ultimately results in the \codeword{EditorWidget} and \codeword{SideBySideEditors} being much cleaner and easier to read. Most of the complexity was really in the initial props of the editors, now refactored to be in the Redux initial state.
+
+After refactoring, the \codeword{SideBySideEditors} component now looks like this:
+
+\begin{codeInput}{jsx}{SideBySideEditors.tsx}{The SideBySideEditors component\, after refactoring the frontend application to use Redux}
 import * as React from "react"
 import Editor from "../../../enums/Editor"
 import { EditorWidget } from "./EditorWidget"
-import { TryItButtons } from "./TryItButtons"
 
-export function TryItWidget() {
+export function SideBySideEditors() {
   return (
     <div className="container text-center">
       <div className="d-flex flex-wrap justify-content-center">
         <EditorWidget editor={Editor.TRY_IT_STATE} />
         <EditorWidget editor={Editor.TRY_IT_RESULTS} />
       </div>
-      <TryItButtons />
     </div>
   )
 }
@@ -2394,9 +2657,9 @@ likewise, the \codeword{EditorWidget} component has also become much cleaner:
 
 \section{Completing the API Call Setup}
 
-Returning to \codeword{TryItButtons.tsx}, we can finally complete the call by adding that missing \codeword{code} variable. Adding a \codeword{useSelector} hook, we can get at the current value of the editor's code within the \codeword{EditorWidget} component: 
+Returning to \codeword{ActionButtons.tsx}, we can finally complete the call by adding that missing \codeword{code} variable. Adding a \codeword{useSelector} hook, we can get at the current value of the editor's code within the \codeword{EditorWidget} component: 
 
-\begin{codeInput}{jsx}{TryItWidget.tsx}{The TryItWidget component\, adding a useSelector hook to get at the state editor's current code value.}
+\begin{codeInput}{jsx}{SideBySideEditors.tsx}{The SideBySideEditors component\, adding a useSelector hook to get at the state editor's current code value.}
 const code = useAppSelector(
   state => state.editors.editors[Editor.TRY_IT_STATE].editorSettings[0].code
 )
@@ -2404,129 +2667,28 @@ const code = useAppSelector(
 
 We can then submit the processed code (thanks to the \codeword{parseTypeScript} function we wrote), along with the hardcoded values, to the \codeword{post} function from ApiHelpers!
 
-\section{Recipe: Toast Helper Functions}
+\section{Creating a New Action to Set Code Returned by API}
 
-Following the inclusion of our \codeword{ApiHelpers} functions, we saw the need for side effects to inform the customer. A typical pattern is to include an animated feedback that appears on screen. It is up to you to have these appear directly on the site, for example, right near the button after it is clicked, or in a floating div somewhere else on the page. I typically use the floating pattern of. Just as we did with an API connector, we'll create a file \codeword{ToastHelpers} inside the \codeword{helpers/} directory with a variety of helper functions which can create these toasts.
+There's one placeholder \codeword{console.log} still left in \codeword{ActionButtons} component. We need to actually set the generated code into our editors, not just log it to the console!
 
-\minisec{Getting Started}
-
-First we need to install the \codeword{react-toastify} library via \codeword{npm}:
-
-\begin{codeInput}{bash}{terminal}{Installing react-toastify via npm.}
-npm install react-toastify
-\end{codeInput}
-
-We should also immediately include the default styles for the library in \codeword{gatsby-rowser.js}:
-
-\begin{codeInput}{javascript}{gatsby-browser.js}{Adding the default react-toastify styles to gatsby-browser.js.}
-require('react-toastify/dist/ReactToastify.css')
-\end{codeInput}
-
-We also need to include the required \codeword{ToastContainer} component. We can add that to our \codeword{Layout} compenent, so toasts will be available to show on any page we make with Gatsby:
-
-\begin{codeInput}{jsx}{Layout.tsx}{Adding the ToastContainer component to Layout.tsx.}
-...
-return (
-  <>
-    ...
-    <ToastContainer />
-    ...
-  </>
-)
-\end{codeInput}
-
-Add a new file {ToastHelpers.tsx} to the \codeword{helpers/} folder, and add this:
-
-\begin{codeInput}{jsx}{ToastHelpers.ts}{ToastHelpers\, so far with a single function `showSimple'}
-import {
-  toast,
-  ToastPosition,
-} from "react-toastify"
-
-export const showSimple = (
-  message: string,
-  position: ToastPosition = "top-center"
-): void => {
-  toast(message, { position })
-}  
-\end{codeInput}
-
-\codeword{showSimpleToast} function is nothing more than a small wrapper which accept a string as the toast's message, and an optional position defaulting to the top-center of the page. This helper function helps us cleanly call up a toast wherever we may need it in our app. We can now add a few calls to \codeword{showSimpleToast} by replacing the two message placeholder \codeword{console.log} calls in \codeword{TryItButtons.tsx}:
-
-\begin{codeInput}{jsx}{TryItButtons.tsx}{ToastHelpers\, so far with a single function `showSimple'}
-const generate = async (typeScriptProperties: Array<ITypeScriptProperty>) => {
-  await post<IGenerateOptions, IGenerated>(
-    generated => {
-      dispatch(
-        codeGenerated({
-          editorID: EditorID.TRY_IT_RESULTS,
-          files: generated.files
-        })
-      )
-    },
-    apiError => {
-      // added
-      if (
-        Object.values(apiErrorMessageConfig).includes(
-          apiError.apiErrorMessage
-        )
-      ) {
-        showSimpleToast(apiErrorMessageConfig[apiError.apiErrorMessage])
-      } else {
-        showSimpleToast(apiErrorMessageConfig[ApiErrorMessage.UNKNOWN_ERROR])
-      }
-    },
-    {
-      endpoint: "/CodeGenerator",
-      data: {
-        typeScriptProperties,
-        useReduxToolkit: false,
-        useTypeScript: true,
-        singleFile: false,
-      }
-    }
-  )
-}
-\end{codeInput}
-
-Here we leverage all the scaffolding effort we made for our messaging system - using only the enum key values to reference what message we want to show. In the case of \codeword{onError} callback from \codeword{post}, this is an \codeword{apiErrorMessage}, as it will originate from the API.
-
-\section{Styling Toasts to Match the Application Styles}
-
-If we were to see one of these toasts right now, we would see the timing bar takes on a rainbow gradient. This is neat, but a little too flashy for our application. Let's style the toasts so that the time indicator bar takes on the Redux purple color we've already been using throughout our app. Create a new Sass partial file \codeword{\_toasts.scss} under the \codeword{styles/} folder, and add this single rule:
-
-\codeFromFile{scss}{\_toasts.scss}{The custom styling for the app's toasts.}{./snippets/_toasts.scss}
-
-don't forget to include this partial into the global styles file, \codeword{styles.scss}:
-
-\begin{codeInput}{diff}{styles.scss}{Adding the \_toasts.scss partial to styles.scss.}
-@import "variables";
-@import "../../node_modules/bootstrap/scss/bootstrap";
-+ @import "toasts.scss";
-\end{codeInput}
-
-\section{New Action to Set Code Returned by API}
-
-There's one placeholder \codeword{console.log} still left in \codeword{TryItButtons} component. We need to actually set the generated code into our editors, not just log it to the console! 
-
-\minisec{Add a New Action to Editors Slice of State}
+\minisec{Creating the Redux Action}
 
 We will get started by define a new action to actually set the code in the editor once it is returned by the API. Go into \codeword{editorsSlice.ts} and add the following action, \codeword{codeGenerated}:
 
 \begin{codeInput}{typescript}{editorsSlice.ts}{editorsSlice.ts\, with the new event `codeGenerated'}
 codeGenerated: (
   state,
-  action: PayloadAction<{ editor: Editor; files: Array<IFile> }>
+  action: PayloadAction<{ editorID: EditorID; files: Array<IFile> }>
 ) => {
-  const { editor, files } = action.payload
-  state.editors[editor].editorSettings = files.map(file => {
-    const existingFile = state.editors[editor].editorSettings.find(
-      editorSetting => editorSetting.fileLabel === file.fileLabel
+  const { editorID, files } = action.payload
+  state.editors[editorID].editorSettings = state.editors[editorID].editorSettings.map(editorSetting => {
+    const match = files.find(
+      file => file.fileLabel === editorSetting.fileLabel
     )
-    return {
-      ...file,
-      isActive: existingFile ? existingFile.isActive : false,
+    if (match) {
+      return Object.assign(editorSetting, match)
     }
+    return editorSetting
   })
 }
 ...
@@ -2535,11 +2697,11 @@ export const { codeEdited, tabClicked, codeGenerated } = editorsSlice.actions
 
 Here, we merge the returned files with the existing \codeword{isActive} property for all the files. This will update the code in each of the tabs without resulting in unexpected changes in which tab is open. In the unexpected case where we can't find the previous \codeword{isActive}, we set \codeword{isActive} to false. Also don't forget to add \codeword{codeGenerated} to the actions export!
 
-\minisec{Add Event to TryItButtons}
+\minisec{Add Event to ActionButtons}
 
-We can now call \codeword{dispatch} on our \codeword{codeGenerated} action in \codeword{TryItButtons}:
+We can now call \codeword{dispatch} on our \codeword{codeGenerated} action in \codeword{ActionButtons}:
 
-\begin{codeInput}{typescript}{TryItButtons.tsx}{Adding the dispatch to the new action codeGenerated\, as the onSuccess callback for the API post function.}
+\begin{codeInput}{typescript}{ActionButtons.tsx}{Adding the dispatch to the new action codeGenerated\, as the onSuccess callback for the API post function.}
 generated => {
   dispatch(
     codeGenerated({
@@ -2550,11 +2712,44 @@ generated => {
 }
 \end{codeInput}
 
-We can use \codeword{Editor.TRY\_IT\_RESULTS} explicitely here, since we expect this TryItButtons to only be used with this editor.
+We can use \codeword{Editor.TRY\_IT\_RESULTS} explicitely here, since we expect this ActionButtons to only be used with this editor.
 
-Rejoice! That should \textit{finally} just about do it for it for \codeword{TryItButtons}. Whew. 
+\section{Merging Arrays the TypeScript Way}
 
-\section{Add Netlify Functions with TypeScript}
+Just as we did for the \codeword{updateArray} function, we can  do the same for our \codeword{codeGenerated} function. Really what we are doing in the \codeword{codeGenerated} action is merging the new values of each of the returned \codeword{files} into the existing values of \codeword{editorSettings} in our Redux state, matching based on the \codeword{fileLabel} property. We can craft another generic function to handle this merging:
+
+\begin{codeInput}{typescript}{editorsSlice.ts}{Refactoring the codeGenerated action in editorsSlice.ts.}
+export const mergeArrays = <T, U extends T>(params: {
+  mergeArray: Array<T>
+  existingArray: Array<U>
+  matchKey: keyof T
+}): Array<U> => {
+  const { mergeArray, existingArray, matchKey } = params
+  return existingArray.map(existingItem => {
+    const match = mergeArray.find(
+      mergeItem => mergeItem[matchKey] === existingItem[matchKey]
+    )
+    if (match) {
+      return Object.assign(existingItem, match)
+    }
+    return existingItem
+  })
+}  
+\end{codeInput}
+
+We can then refactor the \codeword{codeGenerated} function in \codeword{editorsSlice} to look like this:
+
+\begin{codeInput}{typescript}{editorsSlice.ts}{Refactoring the codeGenerated action in editorsSlice.ts.}
+state.editors[editorID].editorSettings = mergeArrays({
+  mergeArray: files,
+  existingArray: state.editors[editorID].editorSettings,
+  matchKey: "fileLabel"
+})
+\end{codeInput}
+
+Rejoice! That should \textit{finally} just about do it for it for \codeword{ActionButtons}. Whew. 
+
+\section{Adding Netlify Functions with TypeScript}
 
 In the last section, we saw that our API call to \codeword{/CodeGenerator} is ready to go. But there's a small problem right now: the Netlify function at the URL \codeword{./netlify/functions/api-connector} that we are trying to call doesn't exist yet! In this section, we'll build our first Netlify function, complete with TypeScript builds so we can write our serverless functions to use TypeScript as well.
 
@@ -2583,13 +2778,12 @@ Go through the prompts and fill them out as you best see fit. For example, my re
     "url": "git+https://princefishthrower@bitbucket.org/princefishthrower/reduxplate.com.git"
   },
   "keywords": [
-    "developer",
-    "tool",
+    "developer-tool",
     "redux",
     "redux-toolkit",
     "react-redux",
     "saas",
-    "product"
+    "saas-product",
   ],
   "author": "Chris Frewin",
   "license": "MIT",
@@ -2619,7 +2813,7 @@ Create a \codeword{tsconfig.json} file in the root of the \codeword{functions/} 
 
 In this \codeword{tsconfig.json} file, we can see that all files in the subfolder \codeword{src/} will be compiled to \codeword{dist/}.
 
-\minisec{Define a build command}
+\minisec{Define a build Command}
 
 Within our newly created \codeword{package.json}, remove the "test" script (don't worry, we will be adding tests later), and add a new "build" script, which is just "tsc". The TypeScript compiler will take care of the rest, following the rules we defined in our \codeword{tsconfig.json}.
 
@@ -2663,12 +2857,17 @@ We'll also be using the \codeword{node-fetch} package, which brings the \codewor
 npm install node-fetch
 \end{codeInput}
 
-Now we can write the connector function:
+We should also explicitely define a TypeScript version as a dev dependency so we know with each build exactly what TypeScript version is being used to build our functions:
+
+\begin{codeInput}{bash}{terminal}{Installing typescript as a dev dependency in our functions folder.}
+npm install --save-dev typescript
+\end{codeInput}
+
+Now we can write the \codeword{api-connector} function:
 
 \begin{codeInput}{typescript}{api-connector.ts}{The complete source of our api-connector Serverless function.}
 import { Handler } from "@netlify/functions"
 import { Event } from "@netlify/functions/src/function/event"
-import fetch from 'node-fetch'
 
 const handler: Handler = async (event: Event) => {
   if (event.body === null) {
@@ -2677,35 +2876,33 @@ const handler: Handler = async (event: Event) => {
       body: JSON.stringify({ apiErrorMessage: "UNSPECIFIED_BODY" }),
     }
   }
-  const { endpoint, data } = JSON.parse(event.body)
-
+  const { endpoint, method, responseForm, body } = JSON.parse(event.body)
   try {
     const response = await fetch(
       `${process.env.REDUX_PLATE_API_URL}${endpoint}`,
       {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data),
+        method,
+        body: JSON.stringify(body),
       }
     )
-    const json = await response.json()
+    const data =
+      responseForm === "JSON" ? await response.json() : await response.text()
+    const bodyRes = responseForm === "JSON" ? JSON.stringify(data) : data
     if (response.ok) {
       return {
         statusCode: 200,
-        body: JSON.stringify(json),
+        body: bodyRes,
       }
     }
     return {
       statusCode: response.status,
-      body: JSON.stringify(json),
+      body: bodyRes,
     }
   } catch (error) {
-    // unknown error occurred, return 500 with UNKNOWN_ERROR message
+    // TODO: do something error.message (log)
     return {
       statusCode: 500,
-      body: JSON.stringify({ apiErrorMessage: error.message }),
+      body: JSON.stringify({ apiErrorMessage: "DOTNET_FUNCTION_ERROR" }),
     }
   }
 }
@@ -2713,23 +2910,87 @@ const handler: Handler = async (event: Event) => {
 export { handler }  
 \end{codeInput}
 
-As long as we continue to define our client-side API functions in a contract based way as we saw in \ref{contract-based-api}, this \codeword{api-connector} serverless function will work for all calls we need to make to our .NET API. We always expect both a \codeword{endpoint} and \codeword{data} parameter in the calls to, and likewise, we expect that our .NET API returns JSON of the specified type, or in the case of error with a the \codeword{ApiErrorMessage} type. (In the case of errors at the Netlify serverless layer, we provide this \codeword{apiErrorMessage} explicitly.)
-
-\minisec{Create the first build}
-
-We need to compile this function now to it's JavaScript version, since we defined in \codeword{netlify.toml} the functions path to be \codeword{functions/dist}. \textbf{Note that you should do this every time after modifying any of your serverless functions.}
+As long as we continue to define our client-side API functions in a contract based way as we saw in \ref{contract-based-api}, this \codeword{api-connector} serverless function will work for \textit{any} type of call we need to make to our .NET API. We always expect that \codeword{endpoint}, \codeword{method}, \codeword{responseForm}, and \codeword{data} parameters to be sent with our call to \codeword{api-connector}. Likewise, in the reverse direction, we expect that our .NET API returns JSON of the specified type, or at the very least, in the case of error, with a the shape of \codeword{IApiErrorMessage}. (In the case of errors at the Netlify serverless layer, we provide this \codeword{apiErrorMessage} explicitly.)
 
 \minisec{Defining the Environment Variable REDUX\_PLATE\_API\_URL}
 
-You may have noticed in \codeword{api-connector.ts} the usage of an environment variable \codeword{REDUX\_PLATE\_API\_URL} - this has to be an environment variable so we can set it to various environments as we test our serverless functions - whether we are in the development, staging, or production environments. For our local development environment, the .NET API will be available at both an HTTP and HTTPS endpoint, \codeword{http://localhost:5000} and \codeword{https://localhost:5001} respectively, by default. Because netlify will complain about the endpoint at \codeword{https://localhost:5001} because of it's self signed certificate, we must use the \codeword{http://localhost:5000} endpoint. For those of us on UNIX or UNIX-like systems, that is as easy as adding the following to your shell's profile file. I use \codeword{zsh} as my shell, and so I can add teh following to my \codeword{.zprofile}:
+You may have noticed in \codeword{api-connector.ts} the usage of an environment variable \codeword{REDUX\_PLATE\_API\_URL} - this has to be an environment variable so we can set it to various environments as we test our serverless functions - whether we are in the development, staging, or production environments. For our local development environment, the .NET API will be available at both an HTTP and HTTPS endpoint, \codeword{http://localhost:5000} and \codeword{https://localhost:5001} respectively, by default. Because Netlify will complain about the endpoint at \codeword{https://localhost:5001} because of it's self-signed certificate, we must use the \codeword{http://localhost:5000} endpoint. For those of us on UNIX or UNIX-like systems, creating environment variable \codeword{REDUX\_PLATE\_API\_URL} is as easy as adding the following to your shell's profile file. I use \codeword{zsh} as my shell, and so I can add the following to my \codeword{.zprofile}:
 
 \begin{codeInput}{bash}{.zprofile}{Adding the REDUX\_PLATE\_API\_URL to .zprofile.}
 export REDUX_PLATE_API_URL='http://localhost:5000'
 \end{codeInput}
 
-Remember to source your profile or save the changes, and restart the development process by stopping the \codeword{ntl} process and reissuing it with \codeword{ntl dev}.
+Remember to source your profile or save the changes, and restart the development process to ensure your environment is up to date, by stopping the \codeword{ntl} process and restarting it with \codeword{ntl dev}.
 
-This is enough for now, but will be adding the \codeword{REDUX\_PLATE\_API\_URL} variable to the netlify UI later in the book when we connect our production API.
+\minisec{Create the First Build of the Serverless Functions}
+
+We need to compile this function to it's JavaScript version, since we defined in \codeword{netlify.toml} the functions path to be \codeword{functions/dist}. \textbf{Note that you will need to do this every time after modifying any of your serverless functions.} Ensuring you are under the \codeword{functions/} folder, we can create the first build by issuing the command right in the terminal:
+
+\begin{codeInput}{bash}{terminal}{Issuing the first build of the serverless functions.}
+npm run build
+\end{codeInput}
+
+\minisec{Adding files folder to gitignore.}
+
+We should add the \codeword{dist/} and \codeword{node}, as these are files that shouldn't clutter our version control. Add the following tot he botttom of the .gitignore file:
+
+\begin{codeInput}{bash}{.gitignore}{Adding paths to ignore within functions folder.}
+# function files
+functions/dist
+functions/node_modules
+\end{codeInput}
+
+\minisec{Clean Up the API Connector Function}
+
+Instead of hardcoding the API error values, we should share the \codeword{ApiErrorMessage} with our serverless function, so that we can define both the \codeword{UNSPECIFIED\_BODY} and \codeword{DOTNET\_API\_ERROR}. First, add those two new values to the \codeword{ApiErrorMessage} enum:
+
+\begin{codeInput}{typescript}{ApiErrorMessage.ts}{Adding two new values to enum ApiErrorMessage.}
+...
+UNSPECIFIED_BODY = 'UNSPECIFIED_BODY',
+DOTNET_API_ERROR = 'DOTNET_API_ERROR'
+...
+\end{codeInput}
+
+We can now add human readable versions of these messages to the \codeword{ApiErrorMessageConfig}:
+
+\begin{codeInput}{typescript}{ApiErrorMessageConfig.ts}{Adding human readable versions of the two new API error messages.}
+...
+[ApiErrorMessage.UNSPECIFIED_BODY]: "Invalid call to Netlify serverless function. 'body' is required.",
+[ApiErrorMessage.DOTNET_API_ERROR]: 'Unknown error with the .NET API. Please try again.'
+...
+\end{codeInput}
+
+and finally import this enum into our serverless function:
+
+\begin{codeInput}{typescript}{api-connector.ts}{Importing enum ApiErrorMessage into api-connector.ts.}
+...
+import ApiErrorMessage from '../../src/enums/ApiErrorMessage'
+...
+\end{codeInput}
+
+Now, because we are importing an enum from outside the project, the TypeScript compiler is putting our function artifacts in a new \codeword{functions/dist/functions/src}, so we need to update \codeword{netlify.toml} to refelct that:
+
+\begin{codeInput}{toml}{netlify.toml}{Updating netlify.toml to reflect the new functions artifact path.}
+[build]
+  ...
+  functions = "functions/dist/functions/src"
+  
+[dev]
+  ...
+  functions = "functions/dist/functions/src"
+\end{codeInput}
+
+Finally, we should update our \codeword{ActionButtons} to actually show a toast on the error instead of doing \codeword{console.log}:
+
+\begin{codeInput}{typescript}{ActionButtons.tsx}{Using the showSimpleToast function to show the error message from our serverless function.}
+apiError => {
+  showSimpleToast(apiErrorMessageConfig[apiError.apiErrorMessage])
+}
+\end{codeInput}
+
+Great, we now see a more specific error messaging relating to our .NET API in the client, as expected:
+
+\standardfigure{\textwidth}{frontend/new-toast-message}{The new toast explaining that the error is at the .NET API level.}
 
 \minisec{Chapter Review}
 
@@ -2738,21 +2999,23 @@ For our serverless functions we've:
 \begin{arrows}
 \item Installed the @netlify/functions type library 
 \item Built a robust api-connector function
+\item Created an environment variable REDUX\_PLATE\_API\_URL within our development environment
+\item Shared the \codeword{ApiErrorMessage} enum between the frontend and serverless functions, modifying the \codeword{functions} path accordingly in our \codeword{netlify.toml} file
 \end{arrows}
 
 \section{Building an App Page}
 
-We've nearly gotten to an MVP stage with our client. There is one small aspect that we should finish before diving in to the backend to build the \codeword{/CodeGenerator} endpoint, and that is to ensure an actual page exists when we click the `Try Full App' button on our homepage. We've coded it in using a Gatsby \codeword{Link} component to \codeword{/app}, but that page actually doesn't exist. We should at least fill it out with a basic `Coming Soon' banner for our MVP, which is much better to show our potential customers than an unsightly 404 page.
+We've nearly gotten to an MVP stage with our frontend. There is one small aspect that we should finish before diving in to the backend to build the \codeword{/CodeGenerator} endpoint, and that is to ensure an actual page exists when we click the `Try Full App' button on our homepage. We've coded it in using a Gatsby \codeword{Link} component to \codeword{/app}, but that page actually doesn't exist. We should at least fill it out with a basic `Coming Soon' banner for our MVP, which is much better to show our potential customers than an unsightly 404 page.
 
 \minisec{Utilizing Gatsby to Build Static Pages}
 
-So far, you may be questioning why I chose to use the Gatsby framework for building the client. We haven't really used any of its features yet, aside from a few Gatsby plugins, GraphQL imports and a \codeword{StaticImage} component, which we anyway removed, opting for our fancy logo SVG. In this section, we're finally going to use a powerful feature of Gatsby to build a new static page under the path \codeword{/app}. The Gatsby core automatically turns any React component found in \codeword{src/pages} into it's correspondingly named static page, as stated \link{by the official Gatsby docs}{https://www.gatsbyjs.com/docs/recipes/pages-layouts/}.
+So far, you may be questioning why I chose to use the Gatsby framework for building the frontend. We haven't really used any of its features yet, aside from a few Gatsby plugins, GraphQL imports and a \codeword{StaticImage} component, which we anyway removed, opting for our fancy logo SVG. In this section, we're finally going to use a powerful feature of Gatsby to build a new static page under the path \codeword{/app}. The Gatsby core automatically turns any React component found in \codeword{src/pages} into it's correspondingly named static page, as stated \link{by the official Gatsby docs}{https://www.gatsbyjs.com/docs/recipes/pages-layouts/}.
 
 \minisec{Getting Started}
 
 We'll get started by creating an \codeword{app.tsx} file under the \codeword{src/pages/} folder. Note that this is very different from what you might see in \codeword{create-react-app}, where an \codeword{App.tsx} is the root component of a single page application. This \textit{lowercase} \codeword{app.tsx} will be a page created at reduxplate.com/app.
 
-Following the pattern from the \codeword{index.tsx} page, we will keep the \codeword{app.tsx} file as minimal as possible, adding only the \codeword{<Seo/>} component, and abstracting the actual content of the page into the components folder, where we will make another folder under \codeword{src/components/pages/} called \codeword{app/}. Within this folder create a capitalized \codeword{App.tsx}. For now, we can leave just a simple placeholder render:
+Following the pattern from the \codeword{index.tsx} page, we will keep the \codeword{app.tsx} file as minimalistic as possible, adding only the \codeword{<Seo/>} component, and abstracting the actual content of the page into the components folder, where we will make another folder under \codeword{src/components/pages/} called \codeword{app/}. Within this folder create a capitalized \codeword{App.tsx}. For now, we can leave just a simple placeholder render:
 
 \begin{codeInput}{jsx}{App.tsx}{The contents of an initial App.tsx}
 import * as React from "react"
@@ -2772,7 +3035,7 @@ import Seo from "../components/Seo"
 
 const AppPage = () => (
   <Layout>
-    <Seo title="ReduxPlate - App"/>
+    <Seo title="ReduxPlate App"/>
     <App/>
   </Layout>
 )
@@ -2787,7 +3050,7 @@ Now when we click the `Try Full App' button on our homepage, we'll get an nearly
 As a nice capstone to the reaching the end of our frontend MVP, we're going to add a Mailchimp signup form on the page at \codeword{/app} we just built. This will be a minimalistic way to collect interest in the product. 
 
 \begin{highlightBox}{Traction and Sign Ups}{yellow}{\warning}
-I'm a very large proponent of releasing an MVP as soon as possible, and getting feedback or ideas on it as soon as possible. When starting a new SaaS product, you'll never know \textit{exactly} what niche your end product will fill, or be able to predict what customers will say about your application, or what ideas they will have and what direction it will fall into. One thing is universal however: \textbf{if after releasing your MVP to the world, you don't see any traction or interest in your product's MVP, it's time to add the SaaS product to your portfolio and move on to the next one}. This can hurt - beleive me, I've had to do it more than once. However, if this is the unfortunate case, think about the totality of what was really lost: with what we have done so far in the book, and the steps we'll need to make a few API endpoints (in the next section of the book), I would geuess an advanced developer would only spend a total of 6-8 hours, or about one working day, building out a full stack MVP. (To be fair, the ideation and conceptual scaffolding could take much longer, this I concede.) In any case, it's yet another full stack iteration - and certainly you learn something new each time. So don't regret a flopped launch - rinse and repeat!
+I'm a very large proponent of releasing an MVP as soon as possible, and getting feedback or ideas on it as soon as possible. When starting a new SaaS product, you'll never know \textit{exactly} what niche your end product will fill, or be able to predict what customers will say about your application, or what ideas they will have and what direction it will fall into. One thing is universal however: \textbf{if after releasing your MVP to the world, you don't see any traction or interest in your product's MVP, it's time to add the SaaS product to your portfolio and move on to the next one}. This can hurt - beleive me, I've had to do it more than once. However, if this is the unfortunate case, think about the totality of what was really lost: with what we have done so far in the book, and the steps we'll need to make a few API endpoints (in the next section of the book), I would geuess an advanced developer would only spend a total of 6-8 hours, or about one working day, building out a full stack MVP. (To be fair, the ideation and conceptual scaffolding could take much longer, this I concede.) In any case, it's yet another full stack iteration - and certainly you learn something new each time. So don't regret a flopped launch - use this book to rinse and repeat!
 \end{highlightBox}
 
 \minisec{Create an Account or Sign In to Mailchimp}
@@ -2807,7 +3070,7 @@ I find Mailchimp's UI to be a bit confusing to say the least. If you need find t
 
 \minisec{Building a Signup Component}
 
-Under the \codeword{components/utils/} folder, create a new file \codeword{SignUpWidget.tsx}. 
+Under the \codeword{components/widgets/} folder, create a new file \codeword{SignUpWidget.tsx}. 
 I've made things easy, and provide the following component which only needs to accept a \codeword{formActionURL} and \codeword{formValidationValue} props:
 
 \begin{codeInput}{jsx}{SignUpWidget.tsx}{The complete contents of SignUpWidget.tsx.}
@@ -2942,69 +3205,29 @@ We can now maintain the values of the search parameter config itself. Create a n
 
 \begin{codeInput}{typescript}{SearchParamConfig.ts}{The contents of SearchParamConfig.ts}
 import AppMessage from "../enums/AppMessage"
-import URLSearchParamKeys from "../enums/URLSearchParamKey"
-import URLSearchParamValues from "../enums/URLSearchParamValue"
+import URLSearchParamKey from "../enums/URLSearchParamKey"
+import URLSearchParamValue from "../enums/URLSearchParamValue"
 import { showSimpleToast } from "../helpers/ToastHelpers"
 import { SearchParamConfigEntry } from "../types/SearchParamConfigEntry"
 import { appMessageConfig } from "./AppMessageConfig"
 
 export const searchParamConfig: Array<SearchParamConfigEntry> = [
   {
-    key: URLSearchParamKeys.FROM,
-    value: URLSearchParamValues.MAILCHIMP_SUBSCRIPTION_SUCCESSFUL,
+    key: URLSearchParamKey.FROM,
+    value: URLSearchParamValue.MAILCHIMP_SUBSCRIPTION_SUCCESSFUL,
     action: () =>
-      showSimpleToast(
-        appMessageConfig[AppMessage.MAILCHIMP_SUBSCRIPTION_SUCCESSFUL]
-      ),
+      showSimpleToast("You've successfully subscribed to receive an email alert when the full ReduxPlate application is released! Thanks!"),
   },
 ]  
 \end{codeInput}
 
-Again, a lot of work, but these types and patterns will save us so much time later when it comes to internationalizing our app.
+This type of configuration should abstract a large amount of the complexity away from our code. We can now try and write a function that will check all values in our \codeword{searchParamConfig}, and call the \codeword{action} function if a key / value match is found. I called it 
 
-\minisec{Adding App Messages to the Client}
-
-To prevent hardcoding of message strings, just as with the API error messages, I've done the same now for the frontend - as seen by my reference to \codeword{appMessageConfig[AppMessage.MAILCHIMP\_SUBSCRIPTION\_SUCCESSFUL]} in \codeword{SearchParamConfig.ts}
-
-To do this you'll need to add three new files, just as we did for the API Error messages: an enum, a config type, and the configuration itself. Since we've walked through this process already with the API error messages, I will simply provide the source files here in quick succession.
-
-First the enum to hold the message keys for the app messages, \codeword{AppMessage}:
-
-\begin{codeInput}{typescript}{AppMessage.ts}{The contents of AppMessage.ts}
-enum AppMessage {
-  MAILCHIMP_SUBSCRIPTION_SUCCESSFUL = 'MAILCHIMP_SUBSCRIPTION_SUCCESSFUL',
-}
-
-export default AppMessage
-\end{codeInput}
-
-Then the config entry type,  \codeword{AppMessageConfigEntry}, which uses the \codeword{key in} keywords from TypeScript so that no messages are forgotten to be maintained:
-
-\begin{codeInput}{typescript}{AppMessageConfigEntry.ts}{The contents of AppMessageConfigEntry.ts}
-import AppMessage from "../enums/AppMessage";
-
-export type AppMessageConfig = {
-    [key in AppMessage]: string
-}
-\end{codeInput}
-
-And finally, the config itself, \codeword{AppMessageConfig}:
-
-\begin{codeInput}{typescript}{AppMessageConfig.ts}{The contents of AppMessageConfig.ts}
-enum AppMessage {
-  MAILCHIMP_SUBSCRIPTION_SUCCESSFUL = 'MAILCHIMP_SUBSCRIPTION_SUCCESSFUL',
-}
-
-export default AppMessage
-\end{codeInput}
-
-This configuration should abstract a large amount of the complexity away from our code. We can now try and write a function that will check all values in our \codeword{searchParamConfig}, and call the \codeword{action} function if a key / value match is found. I called it 
-
-\begin{codeInput}{typescript}{URLSearchParramHelpers.ts}{The contents of URLSearchParramHelpers.ts}
+\begin{codeInput}{typescript}{URLSearchParamHelpers.ts}{The contents of URLSearchParamHelpers.ts}
 import { searchParamConfig } from "../config/SearchParamConfig"
 import { isSearchParamValid } from "./WindowHelpers"
 
-export const runSearchParamLogic = () => {
+export const runSearchParamChecks = () => {
   searchParamConfig.forEach(config => {
     if (isSearchParamValid(config.key, config.value)) {
       config.action()
@@ -3015,7 +3238,7 @@ export const runSearchParamLogic = () => {
 
 Where \codeword{isSearchParamValid} is a helper function, which we have yet to create. Create a new file \codeword{WindowHelpers.ts} under \codeword{helpers/}, and add the following:
 
-\begin{codeInput}{typescript}{URLSearchParramHelpers.ts}{The beginnings of WindowHelpers.ts}
+\begin{codeInput}{typescript}{URLSearchParamHelpers.ts}{The beginnings of WindowHelpers.ts}
 export const isSearchParamValid = () => {
   const fromValue = getSearchParamByKey(URLSearchParamKey.FROM)
   return fromValue && Object.values(URLSearchParamValue).includes(fromValue as URLSearchParamValue) ? true : false
@@ -3024,33 +3247,85 @@ export const isSearchParamValid = () => {
 
 \codeword{WindowHelpers.ts} will house all functions which need to access the \codeword{window} object. Unfortunately, because Gatsby is a server side rendered framework, we always need to check. Any functions that need to do that will be written in \codeword{WindowHelpers.ts}.
 
-Let's return to looking at \codeword{runSearchParamLogic}. \codeword{runSearchParamLogic} is a check to see if there exists a configured key and value properties in the window's search parameters, and if there is a match, we run the function defined by the \codeword{action} parameter in the respective configuration entry. In our case so far, this is the \codeword{showMailchimpSuccessToast} function, which displays a toast telling the customer their signup was successful.
+Let's return to looking at \codeword{runSearchParamChecks}. \codeword{runSearchParamChecks} is a check to see if there exists a configured key and value properties in the window's search parameters, and if there is a match, we run the function defined by the \codeword{action} parameter in the respective configuration entry. In our case so far, this is the \codeword{showMailchimpSuccessToast} function, which displays a toast telling the customer their signup was successful.
 
 \minisec{Clearing Search Parameters}
 
-As a final micro-optimization, after the \codeword{forEach} runs in \codeword{runSearchParamLogic}, we can add a cleanup function which removes the search parameter, to prevent confusing behaviour if the customer was to refresh their browser for example. Like the \codeword{isSearchParamValid} valid function, we will once again need to access the \codeword{window} object to do this, so this should live in our helper file \codeword{WindowHelpers.ts}:
+As a micro-optimization, after the \codeword{forEach} runs in \codeword{runSearchParamChecks}, we can add a cleanup function which removes the search parameter, to prevent confusing behaviour if the customer was to refresh their browser for example. Like the \codeword{isSearchParamValid} valid function, we will once again need to access the \codeword{window} object to do this, so this should live in our helper file \codeword{WindowHelpers.ts}:
 
-\codeFromFile{typescript}{WindowHelpers.ts}{Adding the clearSearchParams function to WindowHelpers.ts}{./snippets/clearSearchParams.ts}
+\begin{codeInput}{typescript}{WindowHelpers.ts}{The new function clearSearchParams in WindowHelpers.ts}
+export const clearSearchParams = (): void => {
+    if (typeof window !== "undefined") {
+        window.history.replaceState("", "", window.location.pathname)
+    }
+}
+\end{codeInput}
 
-\minisec{Calling runSearchParamLogic from the Layout Component}
+\minisec{Calling runSearchParamChecks from the Layout Component}
 
 The search parameter logic should be run as soon as any page on our application mounts. The best place for this is an on mount hook right in the \codeword{Layout} component, \codeword{Layout.tsx}:
 
 \begin{codeInput}{jsx}{Layout.tsx}{Add a useEffect hook to Layout.tsx}
 ...
 useEffect(() => {
-  runSearchParamLogic();
+  runSearchParamChecks();
 }, [])
+...
+\end{codeInput}
+
+\minisec{Adding App Messages to the Client}
+
+You may have noticed in the new \codeword{SearchParamConfig} we just created, we have hardcoded the toast message in the \codeword{action} function. It's time to follow the same messaging system pattern we used with \codeword{ApiErrorMessage}, but with a new enum \codeword{AppMessage}.
+
+You'll need to add three new files, just as we did for the API error messages: an enum, a config type, and the configuration itself. Since we've walked through this process already with the API error messages, I will simply provide the source files here in quick succession.
+
+First the enum to hold the message keys for the app messages, \codeword{AppMessage}:
+
+\begin{codeInput}{typescript}{AppMessage.ts}{The contents of enum AppMessage}
+enum AppMessage {
+  MAILCHIMP_SUBSCRIPTION_SUCCESSFUL = 'MAILCHIMP_SUBSCRIPTION_SUCCESSFUL',
+}
+
+export default AppMessage
+\end{codeInput}
+
+Then the config entry type,  \codeword{AppMessageConfigEntries}, which uses the \codeword{key in} keywords from TypeScript so that no messages are forgotten to be maintained:
+
+\begin{codeInput}{typescript}{AppMessageConfigEntries.ts}{The contents of type AppMessageConfigEntries}
+import AppMessage from "../enums/AppMessage";
+
+export type AppMessageConfigEntries = {
+    [key in AppMessage]: string
+}
+\end{codeInput}
+
+And finally, the config itself, \codeword{AppMessageConfig}:
+
+\begin{codeInput}{typescript}{AppMessageConfig.ts}{The contents of config AppMessageConfig}
+import AppMessage from "../enums/AppMessage";
+import { AppMessageConfigEntries } from "../types/AppMessageConfigEntries";
+
+export const appMessageConfig: AppMessageConfigEntries = {
+    [AppMessage.MAILCHIMP_SUBSCRIPTION_SUCCESSFUL]: "You've successfully subscribed to receive an email alert when the full ReduxPlate application is released! Thanks!"
+}
+\end{codeInput}
+
+Now, we can replace that hardcoded string in \codeword{SearchParamConfig.ts} with the following:
+
+\begin{codeInput}{typescript}{SearchParamConfig.ts}{Replacing the hardcoded message with our configured app message in SearchParamConfig.}
+...
+showSimpleToast("You've successfully subscribed to receive an email alert when the full ReduxPlate application is released! Thanks!") // removed
+showSimpleToast(appMessageConfig[AppMessage.MAILCHIMP\_SUBSCRIPTION\_SUCCESSFUL]) // added
 ...
 \end{codeInput}
 
 That should do it! We should expect to see a confirmation toast to appear on the app page after the user is redirected to our success URL. The search parameter will also be removed after that, so the customer should only see the toast once.
 
 \minisec{Chapter Review}
+
 \begin{arrows}
   \item 
 \end{arrows}
-
 
 \section{Review of the Frontend Implementation}
 
@@ -3072,7 +3347,7 @@ Great work so far! If you've been following along, our landing page has all the 
 Right now, our app \textit{looks} really great when viewed in a browser - it's all responsive as well. But there's one major problem - our product doesn't actually \textit{do} anything yet! \joy Remember those calls to the \codeword{/CodeGenerator} endpoint? Yeah. That endpoint doesn't exist yet - our toast will continually show the `UNKNOWN\_ERROR' message, as it will continually create a 500 error in our Netlify functions layer.
 
 \begin{highlightBox}{Milestone Code \#3}{green}{\greenCheck}
-We've reached another milestone in the book, the completely MVP-ready frontend codebase!
+We've reached the third milestone in the book, the completely MVP-ready frontend codebase, \link{milestone-3-mvp-frontend}{https://github.com/Full-Stack-SaaS-Product-Cookbook/milestone-3-mvp-frontend}!
 \end{highlightBox}
 
 The next step then is to build this \codeword{/CodeGenerator} endpoint on our custom API - and then we'll have a full stack MVP working which we can ship to the world. See you in the next section!
@@ -3153,14 +3428,18 @@ using Microsoft.Extensions.Logging;
 Nice. We're at a super clean standpoint to start writing code for our API.
 
 \begin{highlightBox}{Milestone Code \#4}{green}{\greenCheck}
-We've reached another milestone in the book, the boilerplate backend codebase!
+We've reached another milestone in the book, the .NET API skeleton backend codebase, \link{milestone-4-dotnet-api-skeleton-project}{https://github.com/Full-Stack-SaaS-Product-Cookbook/milestone-4-dotnet-api-skeleton-project}!
 \end{highlightBox}
 
 \section{Setup a Bitbucket Repository for the Backend}
 
 \minisec{Create the Repository}
 
-Just as we used Bitbucket for the frontend, we will do the same for the backend. Sign into Bitbucket and create a new repository. I called my repository \codeword{ReduxPlateApi}, the same as I named the .NET project. Let's set this repository as our origin in the .NET project we just created.
+Just as we used Bitbucket for the frontend, we will do the same for the backend. Sign into Bitbucket and create a new repository. I called my repository \codeword{ReduxPlateApi}, the same as I named the .NET project. Let's now set this repository as our origin in the .NET project we just created.
+
+\begin{highlightBox}{Leverage Bitbucket Projects}{blue}{\information}
+If you want to stay super organized, you can put this repository under the same project as your frontend repository as well. (For me that is project \codeword{ReduxPlate} with repostiroy \codeword{reduxplate.com}). 
+\end{highlightBox}
 
 \minisec{Initialize Git}
 
@@ -3173,7 +3452,7 @@ git init
 Then, we can set the origin to our Bitbucket git url with:
 
 \begin{codeInput}{bash}{terminal}{Initializing git in the .NET project}
-git remote set-url origin https://princefishthrower@bitbucket.org/princefishthrower/reduxplateapi.git
+git remote add origin https://princefishthrower@bitbucket.org/princefishthrower/reduxplateapi.git
 \end{codeInput}
 
 \minisec{Add a .gitignore File}
@@ -3189,18 +3468,24 @@ Now we can create our initial commit:
 \begin{codeInput}{bash}{terminal}{Creating the initial commit for the .NET project.}
 git add .
 git commit -m "initial commit"
-git push
+git push --set-upstream origin master
 \end{codeInput}
+
+\minisec{Optional: Brand the Repository}
+
+Now that we've got two Bitbucket repositories (hopefully organized under the same project), we can add the logo that we created during our frontend build to both repositories, just to keep everything visually similar for our own aid. To do this, navigate to `Repository details' and click on the repository avitar:
+
+\standardfigure{\textwidth}{backend/bitbucket/styling-repository-avatar}{Adding the ReduxPlate logo to the Bitbucket repositories.}
 
 \section{Create a Digital Ocean Droplet}
 
-While our client code lives on Netlify's CDN, our custom .NET API will live on a Digital Ocean `Droplet', which will be nothing more than a Linux Ubuntu instance. Head over to Digital Ocean and create an account if you don't have one already. Once you're logged in, click the `Droplets' tab in the sidebar:
+While our client code lives on Netlify's CDN, our custom .NET API will live on a Digital Ocean `Droplet', which will be nothing more than a Linux Ubuntu instance. Head over to Digital Ocean and create an account if you don't have one already. Once you're logged in, create a new Project. I called mine `ReduxPlate':
 
-\standardfigure{\textwidth/2}{droplet/droplets-tab}{Screenshot of the droplets tab.}
+\standardfigure{\textwidth}{backend/digital-ocean/create-project.png}{Creating a project in the Digital Ocean UI}
 
-In the new page that opens, click the big green `Create Droplet' button:
+In the resulting page that opens, click the big blue `Get Started with a Droplet' button:
 
-\standardfigure{\textwidth}{droplet/new-droplet}{Screenshot of the new droplet button.}
+\standardfigure{\textwidth}{backend/digital-ocean/get-started-with-a-droplet}{Screenshot of the new droplet button.}
 
 On the resulting page, choose the following settings:
 
@@ -3278,11 +3563,15 @@ There are a few things which we'll now need to complete. First, there are two va
 
 \minisec{Adding Repository Variables to the Bitbucket Pipeline}
 
-To add the \codeword{\$SERVER} and \codeword{\$USER} variables so they can be used in your pipeline, head to your project's Bitbucket repository dashboard, and on the sidebar, click the `Repository Settings' tab, then scroll down to the `Pipelines' section of the sidebar and click `Repository variables':
+To add the \codeword{\$SERVER} and \codeword{\$USER} variables so they can be used in your pipeline, head to your project's Bitbucket repository dashboard, and on the sidebar, click the `Repository Settings' tab, then scroll down to the `Pipelines' section of the sidebar and click `Repository variables'. We'll need to activate Pipelines to be able to use the repository variables page:
 
-% \standardfigure{}{}{}
+\standardfigure{\textwidth}{backend/bitbucket/repository-variables-deactivated}{Bitbucket tells us we need to first activate Pipelines to use the repository variables page.}
 
-The resulting page will be two inputs with a name and a value. Let's maintain the two variables we need as follows:
+We can click this link to activate Pipelines:
+
+\standardfigure{\textwidth}{backend/bitbucket/enabled-pipelines}{The switch to activate pipelines.}
+
+We can now head back to the repository variables page. The resulting page will be two inputs with a name and a value. Let's maintain the two variables we need as follows:
 
 \begin{arrows}
   \item Name: \codeword{USER} Value: \codeword{root}
@@ -3295,7 +3584,31 @@ When you are done, your repository variables page should look like this:
 
 Here, note that the variables names \textit{do not} include the \codeword{\dollar} symbol. The dollar symbol is a special character used in the \codeword{bitbucket-pipelines.yml} file to indicate it is a repository variable.
 
-\minisec{Adding Scripts and Scaffolding on the Digital Ocean Droplet}
+\section{Adding an SSH Key in Bitbucket Pipelines}
+
+Click `Create SSH Key'. Bitbucket will generate an SSH key for us, and we can copy the Public key, and bitbucket tells us right away to copy the public key into the \codeword{~/.ssh/authorized\_keys} file on our server:
+
+\standardfigure{\textwidth}{backend/bitbucket/ssh-key-ui}{Copying the public key in the Bitbucket UI.}
+
+To use SCP in our pipeline, we need a valid SSH key. First, you can add the Droplet's IP and click `Fetch' to get it's fingerprint. You can verify this fingerprint on your server and then add it to the Bitbucket UI.
+
+\section{Adding an Access Key in Bitbucket Pipelines}
+
+While we don't need to clone the repository yet as part of our pipeline, we will soon need to in order to do things with our database.
+
+Digital Ocean droplets do not come with a default public private key pair, so we will need to create one:
+
+\begin{codeInput}{bash}{terminal}{Issuing ssh-keygen on the droplet to generate a public private keypair.}
+ssh-keygen
+\end{codeInput}
+
+All the defaults should be fine, that is, no passphrase and the default \codeword{id\_rsa} location is fine. Then, \codeword{cat} out the contents of \codeword{id\_rsa.pub} to the terminal, and copy that public key.
+
+You can then paste it into the Bitbucket UI, and give it a label. I called mine `Droplet':
+
+\standardfigure{\textwidth}{backend/bitbucket/access-key-ui}{Adding the public key to the Bitbucket UI.}
+
+\section{Adding Scripts and Scaffolding on the Digital Ocean Droplet}
 
 Log into your Digital Ocean Droplet via SSH with:
 
@@ -3319,11 +3632,80 @@ touch api_postbuild.sh
 
 Add the following Bash code to \codeword{api\_postbuild.sh}:
 
-\codeFromFile{bash}{api\_postbuild.sh}{The post build shell script api\_postbuild.sh.}{./snippets/initial_api_postbuild.sh}
+\codeFromFile{bash}{api\_postbuild.sh}{The post build shell script api\_postbuild.sh.}{./snippets/api_postbuild_initial.sh}
 
-You'll see here we make an HTTP POST request to a Slack webhook URL defined in the environment as \codeword{REDUX\_PLATE\_SLACK\_WEBHOOK\_URL}. We need to create a Slack bot which will send messages on our behalf when we POST to that URL.
+\section{Create the ReduxPlate System Service}
+
+What is this ReduxPlateApi.service? While still on the Droplet instance, move into the \codeword{/etc/systemd/system/} folder, and create a new file called \codeword{ReduxPlateApi.service}:
+
+\begin{codeInput}{bash}{terminal}{Creating the post build script file on the Droplet.}
+mkdir scripts
+cd /etc/systemd/system
+touch ReduxPlateApi.service
+\end{codeInput}
+
+Add the following to it:
+
+\begin{codeInput}{text}{ReduxPlateApi.service}
+[Unit]
+Description=ReduxPlateApi
+
+[Service]
+WorkingDirectory=/var/www/ReduxPlateApi/
+ExecStart=/usr/bin/dotnet /var/www/ReduxPlateApi/ReduxPlateApi.dll
+Restart=always
+# Restart service after 10 seconds if the dotnet service crashes:
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=ReduxPlateApi
+User=www-data
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+
+[Install]
+WantedBy=multi-user.target
+\end{codeInput}
+
+You then need to enable the service with:
+
+\begin{codeInput}{bash}{terminal}{Creating the post build script file on the Droplet.}
+sudo systemctl enable ReduxPlateApi.service
+\end{codeInput}
+
+\section{Create the ReduxPlateApi folder}
+
+As we saw in the build script, we put the artifacts in the \codeword{/var/www/ReduxPlateApi} folder. We need to ensure this folder exists, or otherwise the SCP command in our pipeline will fail. From the Droplet, issue:
+
+\begin{codeInput}{bash}{terminal}{Creating the ReduxPlateApi folder where the .NET build artifacts will be stored.}
+cd /var/www/
+mkdir ReduxPlateApi
+\end{codeInput}
+
+\section{Install .NET Runtime and SDK on the Droplet}
+
+To install the dotnet SDK and runtime, we first need to add Microsoft's package signing key to our list of trusted keys, as well as add the package repository itself:
+
+\begin{codeInput}{bash}{terminal}{Adding the microsoft package sigining key to our list of trusted keys.}
+wget https://packages.microsoft.com/config/ubuntu/21.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+  sudo dpkg -i packages-microsoft-prod.deb
+\end{codeInput}
+
+We can then install the SDK (which includes the runtime):
+
+\begin{codeInput}{bash}{terminal}{Adding the microsoft package sigining key to our list of trusted keys.}
+sudo apt-get update; \
+  sudo apt-get install -y apt-transport-https && \
+  sudo apt-get update && \
+  sudo apt-get install -y dotnet-sdk-5.0
+\end{codeInput}
+
+Please check \link{the official Microsoft documentation on how to install .NET on Ubuntu}{https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu} for the most up to date installation information.
+
+Our pipeline should be now be ready to run and should work, but how do we know immediately if it is working each time we create a new build? We should make it easy to get feedback when the build is successful. One nice way to do this is to add a Slack bot to send a message each time the build is complete.
 
 \section{Create a Slack Bot and Enable Webhooks}
+
+ We can make an HTTP POST request to a Slack webhook URL defined in the environment as \codeword{REDUX\_PLATE\_SLACK\_WEBHOOK\_URL}. We need to create a Slack bot which will send messages on our behalf when we POST to that URL.
 
 If you don't have a Slack account yet, go ahead and create one, they are free. Then, head to \codeword{https://api.slack.com/apps}, and click the `Create New App' app button:
 
@@ -3339,24 +3721,23 @@ and provide a name. I called my application `ReduxPlate Deploy Bot'. Select your
 
 In the resulting screen, select `Add features and functionality', and then the `Incoming Webhooks' tab:
 
-Activate the incoming webhooks
-
 \standardfigure{\textwidth}{/backend/slack/application-values}{Selecting the `from scratch' option in the Slack API UI.}
 
-Finally, maintain this environment variable in the \codeword{.profile} file located in the root of the Droplet:
+Maintain this environment variable in the \codeword{.profile} file located in the root of the Droplet:
 
-\begin{codeInput}{bash}{.profile}{Adding the Slack webhook URL in .profile}
+\begin{codeInput}{bash}{.profile}{Adding the Slack webhook URL in .profile on your Droplet}
 export REDUX_PLATE_SLACK_WEBHOOK_URL=https://hooks.slack.com/services/ABCDEFG/HIJKLMNOP/qRsTuVwxyz
 \end{codeInput}
 
-\section{Create the ReduxPlateApi folder}
+Finally, we can add a \codeword{curl} line to the \codeword{api\_postbuild.sh} script to post to our webhook URL when the build completes.
 
-As we saw in the build script, we put the artifacts in the \codeword{/var/www/ReduxPlateApi} folder. We need to ensure this folder exists, or otherwise the SCP command in our pipeline will fail. From the Droplet, issue:
+\codeFromFile{bash}{api\_postbuild.sh}{Adding a curl command to POST to the Slack webhook URL.}{./snippets/api_postbuild_with_slack.sh}
 
-\begin{codeInput}{bash}{terminal}{Creating the ReduxPlateApi folder where the .NET build artifacts will be stored.}
-cd /var/www/
-mkdir ReduxPlateApi
-\end{codeInput}
+\minisec{Styling and Branding the Slack Bot}
+
+As an optional fun addition, you can provide an icon and color. Sticking with ReduxPlate's styling, I set the bot to take on the Redux purple color and the logo I created:
+
+\standardfigure{\textwidth}{backend/slack/styling-deploy-bot}{The Slack bot styling settings I chose for the ReduxPlate deploy bot.}
 
 \section{Try Out the Continous Integration Pipeline}
 
@@ -3368,9 +3749,9 @@ git commit -m "Bitbucket pipelines ready to go!"
 git push
 \end{codeInput}
 
-We haven't made any branches other than \codeword{master}, so this commit should fire off the build process right away. Within a few minutes, you should see on your new application emit a message on the Slack channelyou chose, something like this:
+We haven't made any branches other than \codeword{master}, so this commit should fire off the build process right away. Within a few minutes, you should see on your new application emit a message on the Slack channel you chose, something like this:
 
-
+\standardfigure{\textwidth}{backend/slack/deploy-bot-first-message}{Our very first Slack bot messaging shining through with the good news!}
 
 Awesome. Our continuous integration pipeline is working!
 
@@ -3433,11 +3814,170 @@ We immediately see a detailed `Responses' panel appear with the expected respons
 
 As we write more endpoints, this Swagger documentation page will become invaluable. It lists all endpoints, their HTTP method, and even generates example responses, without us even having to do the `Try it out' / `Execute' workflow.
 
+\minisec{Don't Forget to Push}
+
+We should get this working endpoint to our production API! Thanks to our Bitbucket pipeline, we simple need to add everything and push it to master:
+
+\begin{codeInput}{bash}{terminal}{Installing NGINX.}
+git add .
+git commit -m 'new RootController and endpoint'
+git push
+\end{codeInput}
+
+\section{The First Full Stack Look: View the API Response from the Frontend}
+
+While seeing the response from our API in the Swagger dashboard is neat, it would be cooler to see it used in our actual application, right? If you've followed everything in the book so far, when you start up your frontend application, you should now see the API version string you coded in .NET appear in the footer (instead of the default error value `API Version Unknown')! 
+
+\standardfigure{\textwidth/2}{/frontend/footer-with-api-version}{The footer, now showing the api version string from our backend.}
+
+Note the wonders of Netlify here as well: we see our API's response without even having ever shipped our \codeword{api-connector} function to production. Netlify knows to use our local implementation of the \codeword{api-connector} function, which for now, is calling \codeword{http://localhost:5000} via our REDUX\_PLATE\_API\_URL environment variable.
+
+Now it's time to get this API working in a production environment.
+
+\section{Update Netlify DNS Records Through the Netlify UI}
+
+We will now create a subdomain to route our API requests to our Droplet. Head to your Netlify UI and click the green `Netlify DNS' button to get into the Netlify DNS record listing:
+
+\standardfigure{\textwidth}{frontend/netlify/netlify-dns-button}{Where to find the green Netlify DNS button.}
+
+In the resulting screen, click `Add new record' and maintain the following values:
+
+\standardfigure{\textwidth}{frontend/netlify/api-a-name-record}{A Name records for our API subdomain.}
+
+\section{Maintaining the API URL Environment Variable on Netlify}
+
+We're ready to try and call our API endpoint from out frontend site. But, we need to maintain the environment variable \codeword{REDUX\_PLATE\_API\_URL} for the site. In the deploy settings section of your Netlify dashboard, under `Environment Variables', create a new environment variable with the HTTPS API URL \codeword{https://api.reduxplate.com}:
+
+\standardfigure{\textwidth}{frontend/netlify/new-api-url-variable}{The new REDUX\_PLATE\_API\_URL Netlify environment variable.}
+
+We'll then have to trigger another deploy in Netlify, so this environment variable is actually injected into our serverless functions. That can be done under the deploys tab, then heading to the `Trigger deploy' dropdown, and then the `Deploy site':
+
+\standardfigure{\textwidth}{frontend/netlify/trigger-new-deploy}{Triggering a new deploy in the Netlify UI.}
+
+That should be all the DevOps we need on Netlify's side of things to get the production API connected. Let's now head to the Droplet and install NGINX so we can set up our reverse proxy to our .NET API, and generate an SSL certificate for the subdomain.
+
+\section{Install and Configure NGINX}
+
+On the Droplet, first get started by installing NGINX:
+
+\begin{codeInput}{bash}{terminal}{Installing NGINX.}
+sudo apt install nginx
+\end{codeInput}
+
+Once NGINX has been installed, navigate to \codeword{/etc/nginx/sites-available}, and create a new file for your API URL. In my case, that is \codeword{api.reduxplate.com}. Add the following to it:
+
+\begin{codeInput}{text}{api.reduxplate.com}{The initial }
+server {
+  server_name api.reduxplate.com;
+  location / {
+    proxy_pass http://localhost:5000/;
+    proxy_set_header   Host $host;
+    proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header   X-Forwarded-Proto $scheme;
+    proxy_http_version 1.1;
+    proxy_set_header   Connection keep-alive;
+    proxy_set_header   Upgrade $http_upgrade;
+  }
+}
+\end{codeInput}
+
+Save this file, and then symbollically link it to \codeword{sites-enabled} with:
+
+\begin{codeInput}{bash}{terminal}{Symbollically linking the sites-available configuration to the sites-enabled folder.}
+sudo ln -s /etc/nginx/sites-available/api.reduxplate.com /etc/nginx/sites-enabled/
+\end{codeInput}
+
+you can then check your configuration to make sure there are no errors:
+
+\begin{codeInput}{bash}{terminal}{Checking the NGINX configuration.}
+sudo nginx -t
+\end{codeInput}
+
+Restart NGINX to load the new configuration:
+
+\begin{codeInput}{bash}{terminal}{Restarting NGINX.}
+sudo systemctl restart nginx
+\end{codeInput}
+
+We'll then have to enable NGINX on the firewall - the defualt tool on Ubuntu is Uncomplicated Firewall, or \codeword{ufw}. We'll be accepting both HTTP and HTTPS traffic, so we can enable the `full' option. We should also make sure that ssh connections are available as well, so we can continue to access our Droplet via SSH:
+
+\begin{codeInput}{bash}{terminal}{Opening the firewall to HTTP and HTTPS traffic to NGINX\, as well as SSH.}
+sudo ufw allow 'Nginx Full'
+sudo ufw allow ssh
+\end{codeInput}
+
+Finally, enable the Uncomplicated Firewall tool:
+
+\begin{codeInput}{bash}{terminal}{Enabling the Uncomplicated Firewall tool.}
+sudo ufw enable
+\end{codeInput}
+
+\section{Installing Certbot and Retrieving an HTTPS Certificate}
+
+While our .NET API will be running locally on the server at an HTTP endpoint, the calls between our serverless functions and API will be over HTTPS. We'll install certbot according to their official instructions with NGINX and Ubuntu. First, we need to install a package called \codeword{snapd}:
+
+\begin{codeInput}{bash}{terminal}{Installing and / or updating snapd.}
+sudo snap install core; sudo snap refresh core
+\end{codeInput}
+
+Now we can install Certbot:
+
+\begin{codeInput}{bash}{terminal}{Installing Certbot.}
+sudo snap install --classic certbot
+\end{codeInput}
+
+And symlink it so we can be sure the CLI commands will work:
+
+\begin{codeInput}{bash}{terminal}{Symbollically linking the Certbot binary.}
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+\end{codeInput}
+
+Certbot is so smart that we should be able to simply pass an NGINX flag, and it will do the rest. Certbot should be able to detect our newly configured \codeword{api.reduxplate.com} site config, do all the challenges, and create the certificates for us. It will even modify the \codeword{api.reduxplate.com} config file, adding HTTPS redirection and the required \codeword{ssl\_certificate} and \codeword{ssl\_certificate\_key} directives! Try it out with:
+
+\begin{codeInput}{bash}{terminal}{Getting certbot to automatically cert our NGINX sites.}
+sudo certbot --nginx
+\end{codeInput}
+
+If you see something like the following:
+
+\begin{codeInput}{bash}{terminal}{Getting certbot to automatically cert our NGINX sites.}
+Requesting a certificate for api.reduxplate.com
+
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/api.reduxplate.com/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/api.reduxplate.com/privkey.pem
+This certificate expires on 2021-08-31.
+These files will be updated when the certificate renews.
+Certbot has set up a scheduled task to automatically renew this certificate in the background.
+
+Deploying certificate
+Successfully deployed certificate for api.reduxplate.com to /etc/nginx/sites-enabled/api.reduxplate.com
+Congratulations! You have successfully enabled HTTPS on https://api.reduxplate.com
+\end{codeInput}
+
+Then you've done it! SSL Certificates have been created for your API subdomain!
+
+The story gets even better: Certbot automatically sets up a cron job to ensure that our HTTPS certificate never expires! We can check how this cron job would run with:
+
+\begin{codeInput}{bash}{terminal}{Symlinking the Certbot binary.}
+sudo certbot renew --dry-run
+\end{codeInput}
+
+\section{Test the API in a Production Environment}
+
+With the DNS records configured, NGINX up and running, the HTTPS certificate created, and the new API environment variable maintained within the Netlify UI, we should be able to open up our frontend application in a browser, and see the actual API version string instead of the fallback `API version unknown' string!
+
 \section{Writing the Generate Endpoint}
 
-Following the same pattern as the previous section, create a new controller called \codeword{CodeGeneratorController}.
+We're now ready to write the first SaaS business functionality of our app: the actual automatic Redux code generation. We'll be using an npm package called \codeword{ts-morph}, which is a developer friendly wrapper the TypeScript Compiler API, to generate the files based on the user provided initial state. For this stage in the product, we will be heavily restricting what is allowed in terms of code generation, since this endpoint will be exposed to all visitors for our site. Since the TypeScript compiler by definition has to run in a JavaScript environment, we'll be create a Node.js projet as a microservice, which we can connect to through our .NET API. 
 
-Just as we did for the client, we need to define two contracts that define the models we expect to recieve and return in this endpoint. Create a folder in the project root called \codeword{Models}. Following the same names as what was defined in the client, but using .NET naming patterns, we'll create corresponding class files \codeword{GeneratorOptions}, \codeword{Generated}, and \codeword{File}:
+I've opted not create an express or similar API directly in the Node.js project, as ultimately all other operations with a future database such as user preferences, settings, code generation history, and more will be handled directly in the .NET layer. For now, it will be cleanest to keep our services following the single responsibility principle.
+
+\minisec{Getting Started}
+
+We'll get started scaffolding the .NET side of things. Following the same pattern as with \codeword{RootController}, create a new controller called \codeword{CodeGeneratorController}.
+
+Just as we did on the frontend side of things, we need to define two contracts that define the models we expect to recieve and return in this endpoint. Create a folder in the project root called \codeword{Models}. Following the same names as what was defined in the client, but using the .NET capitalized naming pattern, we'll create corresponding models \codeword{GeneratorOptions}, \codeword{Generated}, and \codeword{File}:
 
 \begin{codeInput}{csharp}{GeneratorOptions.cs}{The GeneratorOptions model.}
 using System.Collections.Generic;
@@ -3522,9 +4062,9 @@ After answering the prompts, my \codeword{package.json} resulted in the followin
 
 \begin{codeInput}{json}{package.json}{Initial package.json after creating the Node.js microservice.}
 {
-  "name": "redux-plate-code-generator",
+  "name": "reduxplate-code-generator",
   "version": "1.0.0",
-  "description": "Uses the TypeScript compiler API to generate Redux code from state alone.",
+  "description": "Uses the TypeScript compiler API to generate Redux code from the Redux state.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -3534,20 +4074,20 @@ After answering the prompts, my \codeword{package.json} resulted in the followin
     "url": "git+https://princefishthrower@bitbucket.org/princefishthrower/ReduxPlateApi.git"
   },
   "keywords": [
-    "code",
-    "generator",
-    "code",
-    "printer",
+    "code-generator",
+    "code-printer",
     "typescript",
-    "ast",
-    "typescript",
-    "compiler",
+    "typescript-ast",
+    "typescript-compiler",
     "typescript"
   ],
   "author": "Chris Frewin",
   "license": "MIT",
-  "homepage": "https://bitbucket.org/princefishthrower/ReduxPlateApi#readme"
-}
+  "homepage": "https://bitbucket.org/princefishthrower/ReduxPlateApi#readme",
+  "dependencies": {
+    "ts-morph": "^11.0.0"
+  }
+}  
 \end{codeInput}
 
 \minisec{Install the ts-morph package}
@@ -3582,11 +4122,17 @@ There's some initial housekeeping we have to do before writting any code for our
 }
 \end{codeInput}
 
-As we did for the serverless functions, everything in the \codeword{src/} folder will be compiled into the \codeword{dist/} folder. Let's create the \codeword{src/} now, and start writing code!
+As we did for the serverless functions, everything in the \codeword{src/} folder will be compiled into the \codeword{dist/} folder. Let's create the \codeword{src/} now:
+
+\begin{codeInput}{bash}{terminal}{Creating the src folder in our Microservice Node.js project.}
+mkdir src
+\end{codeInput}
+
+Great, we can start writing code!
 
 \minisec{Writing the Generator Service}
 
-Inside the \codeword{src/} folder, create a new folder called \codeword{services}, and create the a file called \codeword{GeneratorService.ts}. This file will hold our main service class to generate code with.
+Inside the \codeword{src/} folder, create a new folder called \codeword{services}, and in that folder, create a file called \codeword{CodeGeneratorService.ts}. This file will hold our main service class to generate code with.
 
 \codeFromFile{typescript}{CodeGeneratorService.ts}{The initial contents of CodeGeneratorService.ts}{./snippets/CodeGeneratorService.ts}
 
@@ -3625,17 +4171,17 @@ export const isLowerCase = (str: string) => {
 
 \minisec{Testing the Code}
 
-To create a way to test all this code, we can create an \codeword{index.ts} file with the following:
+To create a way to test all this code, we can create an \codeword{test.ts} file with the following:
 
-\codeFromFile{typescript}{index.ts}{The contents of our testing script\, index.js}{./snippets/microservice-test-script.js}
+\codeFromFile{typescript}{test.ts}{The contents of our testing script\, test.js}{./snippets/microservice-test-script.js}
 
 Feel free to change the value of the code in \codeword{stateCode} to any valid (or invalid!) TypeScript interface of defining a Redux slice of state. We should add both \codeword{build} and \codeword{develop} scripts to our \codeword{package.json} to both compile and then run the JavaScript emitted version of \codeword{index.ts}:
 
-\begin{codeInput}{json}{package.json}{Adding a build and develop script to package.json}
+\begin{codeInput}{json}{package.json}{Adding a build and test script to package.json}
 ...
 "scripts": {
   "build": "tsc",
-  "develop": "npm run build && node dist/test.js"
+  "test": "npm run build && node dist/test.js"
 },
 ...
 \end{codeInput}
@@ -3695,9 +4241,95 @@ You can start to feel that we are really getting close to our MVP now! \wink We 
 
 Now that our micoservice is running well, let's do some housekeeping to make sure unwanted files are not included in the repository. In the root of the .NET project, add the following lines to your \codeword{.gitignore}:
 
+\begin{codeInput}{text}{.gitignore}{Adding new lines to the .gitignore file in the .NET project.}
+Microservices/redux-plate-code-generator
+\end{codeInput}
 
+\section{Add the Microservice Build Process to the CI / CD Flow}
 
-\minisec{Microservice Review}
+We'll now ensure our Microservice is also freshly built and configured each time we push to master. Because we're using some external tooling like \codeword{Node.js}, this will take a bit more than just modifying our \codeword{bitbucket-pipelines.yml} file. We'll need to do some extra work on the server and also extend our \codeword{api\_postbuild} script.
+
+\minisec{Add Microservice Build and SCP Transfer Steps to Bitbucket Pipeline}
+
+We should first add a steps to our Bitbucket pipeline to ensure that this microservice is properly built each time we push to master. This build step can now be the first step of the pipeline, before the \codeword{dotnet publish} step. What we need to do is install our dependencies with \codeword{Node.js} and then run our build script. In the form of a Bitbucket Pipelines step, that looks like this:
+
+\begin{codeInput}{yaml}{bitbucket-pipelines.yml}{Adding a new step to build the Node.js code generator microservice.}
+- step:
+  name: Install dependencies and build Node.js code generator microservice
+  image: node:14.17.0
+  caches:
+      - node
+  script:
+      - cd Microservices/reduxplate-code-generator && npm install && npm run build
+  artifacts:
+      - Microservices/reduxplate-code-generator/dist/**
+\end{codeInput}
+
+We then need another SCP step to transfer those artifact files to the Microservices directory. Put this step after the .NET SCP step:
+
+\begin{codeInput}{yaml}{bitbucket-pipelines.yml}{Adding a new step to transfer the Node.js artifacts to the server.}
+- step:
+name: Deploy Node.js artifacts using SCP to server
+script:
+    - pipe: 'atlassian/scp-deploy:0.3.3'
+      variables:
+        LOCAL_PATH: 'Microservices/reduxplate-code-generator/dist/**'
+        REMOTE_PATH: '/var/www/ReduxPlateApi/Microservices/reduxplate-code-generator/dist'
+        SERVER: $SERVER
+        USER: $USER
+\end{codeInput}
+
+\minisec{Install TypeScript as a Dev Dependency}
+
+While our own build (\codeword{tsc}) command may be working locally, we need to ensure it will run in the Bitbucket Pipelines environment. We can do that by installing TypeScript as a dev dependency:
+
+\begin{codeInput}{bash}{terminal}{Adding TypeScript as a dev dependency in our microservice.}
+npm install --save-dev typescript
+\end{codeInput}
+
+\minisec{Install nvm on the Production Server}
+
+We'll also need to install a version of Node.js on the server, now that we're going to be using our microservice there. We'll be managing our server's version of Node.js with \codeword{nvm}. Install \codeword{nvm} the recommended way via \codeword{curl}:
+
+\begin{codeInput}{bash}{terminal}{Adding TypeScript as a dev dependency in our microservice.}
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+\end{codeInput}
+
+\codeword{nvm} may tell us to include some lines in the terminal to be able to use \codeword{nvm} immediately. Probably the better check is to exit out of SSH with \codeword{exit}, and then login again. Issue the following to make sure \codeword{nvm} is installed:
+
+\begin{codeInput}{bash}{terminal}{Checking that nvm is installed on the production server.}
+nvm --version
+\end{codeInput}
+
+If you see a version string returned, nvm has installed successfully! (You can also check your \codeword{.bashrc}; you should see some exported variable code placed there by \codeword{nvm}.) 
+
+\minisec{Installing Node.js on the Production Server}
+
+We'll now install our Node version of choice, \codeword{14.17.0}:
+
+\begin{codeInput}{bash}{terminal}{Adding TypeScript as a dev dependency in our microservice.}
+nvm install 14.17.0
+\end{codeInput}
+
+\minisec{Copying the Node.js Binary to the Production API Project Folder}
+
+We now need to ensure that we can access a Node.js binary on our production server. The easiest way to do this is simply copy the node binary to our project's root:
+
+\begin{codeInput}{bash}{terminal}{Adding the Node.js binary to the production API folder.}
+cp /root/.nvm/versions/node/v14.17.0/bin/node /var/www/ReduxPlateApi/
+\end{codeInput}
+
+We'll also need to install \codeword{Node.js} dependencies of our microservice each time we have a new build of the production server. I've decided to do this on the server as apposed to sending it will the build process as it will be much quicker instead of zipping, send, and then unzipping the \codeword{node\_modules/} folder as part of the build process. To do this, we will need to ensure \codeword{nvm}, and thus \codeword{node} and \codeword{npm}, are in our path when running the \codeword{api\_postbuild} script. First, copy the following lines into your \codeword{.profile}, for example, right below the Slack webhook URL you already have in there:
+
+\codeFromFile{bash}{.profile}{Adding nvm to .profile.}{./snippets/.profile-snippet.sh}
+
+Now that we're sure \codeword{npm} will be in our PATH when running this post build script, we'll move into our microservice project root folder and install dependencies. Altogether, this can be done by adding three new commands in our \codeword{postbuild} script:
+
+\codeFromFile{bash}{api\_postbuild.sh}{The post build shell script api\_postbuild.sh now with commands to install packages in the microservices directory.}{./snippets/api_postbuild_with_npm.sh}
+
+That should be all the parts we need to get our microservice working on the production server! We shoud finally be able to see our code generated on \codeword{reduxplate.com}! Give it a try!
+
+\section{Microservice Review}
 
 When complete, the source code organization of our microservice's \codeword{src/} folder should look like this:
 
@@ -3725,7 +4357,7 @@ src
 
 \section{Implementing CodeGeneratorService}
 
-With our microserve written, succesfully compiling to JavaScript, and succesfully creating some Redux code, let's get back to the .NET codebase and implement the \codeword{CodeGeneratorService} class, which will be the class calling our TypeScript service class in the first place!
+Let's now implement the \codeword{CodeGeneratorService} class, which will be the class calling our future microservice.
 
 \minisec{Install the Jering.Javascript.NodeJS Nuget package}
 
@@ -3743,11 +4375,11 @@ To use this in dependency injection across our app, we need to add it to our ser
 services.AddNodeJS();
 \end{codeInput}
 
-Using \codeword{Jering.Javascript.NodeJS}, we can call Node.js code directly from our .NET project. First we will have to get our Node.js function in a format that \codeword{Jering.Javascript.NodeJS} expects, which is the \codeword{module.exports} format, and with a callback function to be called. So far we've been testing our code in \codeword{index.ts}. Move that source code to a new file called \codeword{test.ts}. We should probably update our \codeword{develop} script to reflect that change as well:
+Using \codeword{Jering.Javascript.NodeJS}, we can call Node.js code directly from our .NET project. First we will have to get our Node.js function in a format that \codeword{Jering.Javascript.NodeJS} expects, which is the \codeword{module.exports} format, and with a callback function to be called. So far we've been testing our code in \codeword{index.ts}. Move that source code to a new file called \codeword{test.ts}. We should probably update our \codeword{develop} script to reflect that change as well, renaming it now to \codeword{test}:
 
-\begin{codeInput}{json}{package.json}{Updating the develop script in our microservice's package.json.}
+\begin{codeInput}{json}{package.json}{Renaming the `develop' script to `test' in our microservice's package.json.}
 ...
-"develop": "tsc; node dist/test.js"
+"test": "tsc; node dist/test.js"
 ...
 \end{codeInput}
 
@@ -3812,7 +4444,7 @@ namespace ReduxPlateApi.Services
             }
             catch (Exception exception)
             {
-                throw new Exception(exception.Message.Replace("\n", ""));
+                throw new Exception(exception.Message);
             }
         }
     }
@@ -3825,7 +4457,7 @@ Note here that I am using the built-in \codeword{System.IO.Path} and \codeword{M
 
 With the implementation complete, let's use \codeword{CodeGeneratorService} in \codeword{CodeGeneratorController}. \codeword{CodeGeneratorService} abstracts away all the code generation, and so the complete \codeword{CodeGeneratorController} is as simple as:
 
-\begin{code}{csharp}{CodeGeneratorController.cs}{The completed CodeGeneratorController.}
+\begin{codeInput}{csharp}{CodeGeneratorController.cs}{The completed CodeGeneratorController.}
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -3863,15 +4495,41 @@ namespace ReduxPlateApi.Controllers
         }
     }
 }  
-\end{code}
+\end{codeInput}
+
+ALso note that in order to inject a dependency of type \codeword{ICodeGenerateService}, we will need to properly scope it in our \codeword{Startup.cs} file. Add the following below the \codeword{services.AddNodeJS();} line we added before:
+
+\begin{codeInput}{csharp}{Startup.cs}{Adding the proper scoping between interface ICodeGeneratorService and implementation CodeGeneratorService.}
+services.AddScoped<ICodeGeneratorService, CodeGeneratorService>();
+\end{codeInput}
 
 We return the expected \codeword{Generated} model if all goes well, and return an \codeword{ApiErrorMessage} model with the \codeword{Message} property set to the exception message - which \textit{should} be one of the enum values from \codeword{ApiErrorMessage} enum from our TypeScript microservice. Even if something far worse happens on the server side and this error message is empty, null, undefined, or something else entirely, we still have the fallback unknown error on the \codeword{switch} statement on the frontend.
 
-\section{Recap}
+\section{Add Specific Node.js Version to the PATH Variable}
 
-So far so good. Currently, your project structure (omitting the contents of Microservices) should look like this:
+Since we're employing a Node.js microservice, we should explicitely define a Node.js version in the path. Visual Studio is famously prone for mysteriously forgetting or confusing what is in the PATH variable, so we will set it manually. For Mac OS, we can right click the \textit{Project} (note - this should be the second node in the file view, the first one is technically the \textit{Solution}). Then click `Options' in the menu:
 
-\begin{code}{bash}{terminal}{Current .NET project structure.}
+\standardfigure{\textwidth/2}{/backend/project-options}{Selecting Options in the project context menu.}
+
+In the resulting window, head to Run > Configurations > Default, and in the `Environment Variables' table, add an entry for `PATH':
+
+\standardfigure{\textwidth}{/backend/project-environment-variables}{Adding an explicit PATH environment variable to a specific version of Node.js.}
+
+since I use Node Version Manager, or \codeword{nvm} for short, the path to the binary folder was \codeword{/Users/chris/.nvm/versions/node/v14.17.0/bin/}. Ensure you save this value by explicitly pressing enter once you've pasted it in the text field, and finally click `OK'.
+
+\section{Calling the new CodeGenerator endpoint from the Frontend}
+
+We should be ready to handle the hardcoded 'free' version of the request we create on the frontend. Let's start the .NET API! As soon as the project is done building, we should now see in the Swagger dashboard both the initial root endpoint (at `/') we wrote, and the new endpoint we've just finished, at `/CodeGeneator'. Note as well that this is a POST endpoint, which shows up in Swagger as green as apposed to GET's blue. You can test the endpoint in the Swagger page to check that the endpoint is working. But it's going to be a lot more fun to test right from the frontend, right? Let's give it a go!
+
+Fire up your frontend as well, and hammer that `Generate!' button! Within moments, you should see syntax error free TypeScript code filled into your three TypeScript files! We've done it!
+
+\section{Backend Recap}
+ 
+That's it! With just two endpoints written for our .NET API, a `root' endpoint and the `CodeGenerator' endpoint, we've reached yet another milestone in the book! The MVP is free to release to the world! Rejoice!
+
+Currently, the .NET project's structure (omitting the contents of Microservices) should look like this:
+
+\begin{codeInput}{bash}{terminal}{Current .NET project structure.}
 .
 ├── Controllers
 │   ├── CodeGeneratorController.cs
@@ -3895,37 +4553,58 @@ So far so good. Currently, your project structure (omitting the contents of Micr
 ├── Startup.cs
 ├── appsettings.Development.json
 └── appsettings.json
-\end{code}
+\end{codeInput}
 
-We should be ready to handle the hardcoded 'free' version of the request we create on the client side. Let's start the .NET API! As soon as the project is done building, we should now see in the Swagger dashboard both the initial root endpoint (at `/') we wrote, and the new endpoint we've just finished, at `/CodeGeneator'. Note as well that this is a POST endpoint, which shows up in Swagger as green as apposed to GET's blue. You can test the endpoint in the Swagger page to check that the endpoint is working. But it's going to be a lot more fun to test right from the client, right? Let's give it a go!
+As a review, we've done the following for our .NET API:
 
-\section{Calling the new Generate endpoint from the Client}.
+\begin{arrows}
+  \item Created a `Root' controller which can be called at the API root, which returns just a string with the API's version.
+  \item Created a 'CodeGenerator` controller, which in turn accesses a Code Generator Service class, which in turn calls a microservice. Such a switch of languages and frameworks is required, as we need to run TypeScript's Compiler API natively to generate the code
+  \item Created a Node.js microservice
+  \item Incorporated the microservice 
+\end{arrows}
 
-
+\begin{highlightBox}{Milestone Code \#5}{green}{\greenCheck}
+We've reached the fifth milestone in the book, the completely MVP-ready backend codebase, \codeword{milestone-5-mvp-backend}{https://github.com/Full-Stack-SaaS-Product-Cookbook/milestone-5-mvp-backend}!
+\end{highlightBox}
 
 \chapter{Building a Staging (or Testing) Environment}
 
-So far we've focused on building out the frontend and custom backend API for ReduxPlate. We write code in our \codeword{develop} git branch, but every time we merge to the \codeword{master} branch in either our frontend or backend repositories, the continuous integration process is fired off and shipped to our live SaaS product immediately. Our continuos integration tool for the frontend is Netlify, and with the backend it is Bitbucket pipelines. That's been great so far for prototyping our MVP, but it's fairly risky once we start having customers.
+So far we've focused on building out the frontend and custom backend API for ReduxPlate. We write code in our \codeword{develop} git branch, but every time we merge to the \codeword{master} branch in either our frontend or backend repositories, the continuous integration process is fired off and shipped to our live SaaS product immediately. Our continuos integration tool for the frontend is Netlify, and with the backend it is Bitbucket Pipelines. That's been great so far for prototyping our MVP, but it's fairly risky once we start having paying customers - we don't want to be shipping new features to production that are not throughouly tested in a staging environment.
 
-In this section of the book, we'll get into building out what is known as a staging environment. With all of the tooling available in netlify on the frontend side, and .NET on the backend side, the challenge is not too great, but there will be some important considerations and distinctions which we'll look at in detail.
+In this section of the book, we'll get into building out what is known as a staging environment. With all of the tooling available in Netlify on the frontend, and .NET on the backend, the challenge is not too great, but there will be some important considerations and distinctions which we'll look at in detail in this section of the book.
 
 \section{The Essential need for a Testing Environment}
 
-A staging environment is important, because it mimics your live product almost exactly. As we'll see in this section, in comparison to your live product, the staging version of your product will differ only in small configuration changes. Perhaps the exact quality of what certain API endpoints return may differ, but other than that, your staging site is essentially a production-like, risk-free playground where you can test new features, or catch bugs before they ship to production.
+A staging environment is important, because it mimics your live product almost exactly. As we'll see in this section, in comparison to your live product, the staging version of your product will differ only by small configuration changes. Perhaps the exact contents of what certain API endpoints return may differ, but other than that, your staging site is essentially a production-like, risk-free playground where you can test new features, or catch bugs before they ship to production. As it is a git based workflow, your frontend and backend code bases in the staging environment one or more commit behind the production branch.
 
 \section{Staging CI / CD for the Frontend}
 
-We'll get the client side of things out of the way first. Again, Netlify's powers come to the rescue and setting up a staging version of the frontend is absolute peanuts. 
+We'll get the client side of things out of the way first. Again, Netlify's amazing powers come to the rescue and setting up a staging version of the frontend is absolute peanuts. 
 
 \section{Create a Staging Branch for the Frontend}
 
-To get started, we'll branch off our develop branch into a new:
+To get started, we'll branch off our develop branch into a new staging branch. Ensure you are on your frontend repository's \codeword{develop} branch, and then issue the following:
+
+\begin{codeInput}{bash}{terminal}{Creating a staging branch}
+git checkout -b staging
+\end{codeInput}
 
 \section{Configure Netlify to Build According to the Staging Branch}
 
-On Netlify, head to your product's DNS.
+On Netlify, head to your site's Deploys section, then click the button with the gear icon `Deploy settings'. Scroll a bit down to `Deploy contexts', and click `Edit settings'. Choose `Let me add inidividual branches', and type in `staging':
 
-The staging site is up and running! We've got the correct staging environment variables up, builds are firing when we merge to staging; all is well. But if we open a console while looking - we can see . We're getting a bunch of 404 errors when we try to call the staging API endpoint we defined at staging.api.reduxplate.com. Let's switch gears into backend mode and rectify this issue.
+\standardfigure{\textwidth}{frontend/netlify/staging-deploy-context}{Maintaining values for the staging deploy context.}
+
+After doing this, we should also 
+
+The staging site is up and running! We've got the correct staging environment variables up, and builds are firing when we merge to staging. All is well. 
+
+\section{Configure Dynamic Environment Variables}
+
+\section{Recap}
+
+If we open a console after opening up a browser tab to our brand new \codeword{staging.reduxplate.com} - we can see once again our API is busted. We're getting a bunch of 404 errors when we try to call the staging API endpoint, \codeword{staging.api.reduxplate.com} we defined at staging.api.reduxplate.com. Let's switch gears into backend mode and rectify this issue.
 
 \section{Staging CI / CD for the Backend}
 
@@ -3935,17 +4614,54 @@ Our .NET application will unfortunately be a bit more involved than what it took
 
 As we did with the frontend, branch of of the development repository for the backend:
 
-\minisec{Staging Environment Recap}
+\begin{codeInput}{bash}{terminal}{Creating a staging branch}
+git checkout -b staging
+\end{codeInput}
 
-Perfect. We've successfully built out a staging environment from layers as deep as the database, all the way to the frontend. Tools like Bitbucket Pipelines and Netlify's branch builds made this a relatively painless task as well, since we already had the production environments working.
+We can't commit this right away as we did with the frontend repository. We need to add a bit of scaffolding for our staging deploy process to work. First, with \codeword{bitbucket-pipelines.yml}, copy all the existing steps for the production build, and paste them into a new branch directive labeled \codeword{staging}. Make the following changes to the steps:
+
+\begin{arrows}
+\item In the second step, change the \codeword{EnvironmentName} to \codeword{Staging}
+\item In the third step, change the \codeword{deployment} directive to \codeword{staging}. 
+\item In the fourth step, change the name of the script \codeword{api\_postbuild.sh} to \codeword{staging\_api\_postbuild.sh}
+\end{arrows}
+
+In the end, the \codeword{staging} part of \codeword{bitbucket-pipelines.yml} should look like this:
+
+\begin{codeInput}{bash}{terminal}{Creating a build process for the staging branch}
+CHANGE
+\end{codeInput}
+
+Typically, I include my \codeword{staging} pipeline above the \codeword{master} branch pipeline.
+
+\section{Adding Staging API URL to Netlify}
+
+Just as we did for \codeword{api.reduxplate.com}, we'll have to do the same for \codeword{staging.api.reduxplate.com}. Head into your Netlify site and go to domain settings. Here, maintain a new \codeword{A} record, still pointing to our Droplet's IP \codeword{123.456.789.0}, but this time from \codeword{staging.api.reduxplate.com}.
+
+\section{Adding a Staging API Postbuild script}
+
+As you may have noticed in the \codeword{bitbucket-pipelines.yml} file for staging, we need a seperate staging script, \codeword{staging\_api\_postbuild.sh}. SSH into your server and create the new \codeword{scripts/} folder:
+
+\begin{codeInput}{bash}{terminal}{Creating a build process for the staging branch}
+cd scripts/
+touch staging_api_postbuild.sh
+\end{codeInput}
+
+Add this to it:
+
+
+
+\section{Staging Environment Recap}
+
+Perfect. We've successfully built out a staging environment from frontend to backend. Tools like Bitbucket Pipelines and Netlify's branch deploys made this a relatively painless task as well, since we already had the production environments working.
 
 \begin{highlightBox}{Milestone Code \#6}{green}{\greenCheck}
-We've reached the 6th milestone in the book, the completion of our CI and CD process for the backend and frontend! Because this section included efforts on both the frontend and backend, it will include two milestone repositories for the frontend and backend respectively, \codeword{frontend-full-ci-cd-complete} and \codeword{frontend-full-ci-cd-complete}.
+We've reached the sixth milestone in the book, the completion of our CI and CD process for the backend and frontend! Because this section included efforts on both the frontend and backend, it will include two milestone repositories for the frontend and backend respectively, \codeword{milestone-6-frontend-staging-ci-cid} and \codeword{milestone-6-backend-staging-ci-cd}.
 \end{highlightBox}
 
 \chapter{Building Full Stack Testing Suite}
 
-Admiteddly, as a solo developer, they often take a backseat. But in the long run they save time, and with a few , we can integrate them into both our backend and frontend CI and CD.
+Admiteddly, as a solo developer, tests often take a backseat. I typically rely more on clean code composition. But as apps grow, this become a porrer and poorer excuse. Tests in the long run save time, and by leveraging a few powerful libraries, we can integrate a testing framework into both our backend and frontend CI and CD.
 
 \section{Frontend - Installing Cypress}
 
@@ -3955,21 +4671,247 @@ For the frontend, we will be using Cypress as our testing library.
 
 For the frontend, we will be using xUnit as our testing library.
 
-
-
-
 \chapter{The Frontend - Advanced Implementation}
 \dictum[E.F. Schumacher, 1973]{Any intelligent fool can make things bigger, more complex, and more violent. It takes a touch of genius—and a lot of courage to move in the opposite direction.}
 
-The remainder of the frontend implementation that will be discussed in this book will including handling user authenticationa and authorization, adding stripe and a Fauna database to handle user data, building out features of the \codeword{/app} page, and other various advanced features around the app.
+The remainder of the frontend implementation that will be discussed in this book will including handling user authenticationa and authorization with Netlify Identity, adding Stripe as an initial payments system, and adding a Fauna database to store the connection between Netlify and Stripe systems. We'll also build out features of the \codeword{/app} page, and other various advanced features around the app.
+
+\section{Building a Warning}
+
+Within days of launching my MVP, I was contacted by a Redux maintainer about the Redux patterns reflected on the homepage, that is, the generation style of \codeword{types.ts}, \codeword{reducers.ts}, and \codeword{actions.ts} file. I agreed there could be a disclaimer added to the homepage, so I decided to add a small red asterisk that was clickable and would bring up a warning message.
+
+\minisec{Update EditorSettings Type to support ReactNode}
+
+We'll modify the typing of the EditorTitle as a \codeword{ReactNode} instead of just the primitive \codeword{string} type. This way we can create a component which includes a clickable element that will bring up our disclaimer.
+
+\minisec{Create a New ToastHelper Function}
+
+Let's first define another way of bringing up a toast, \codeword{showComplexToast}. This new toast helper function will accept a \codeword{ReactNode} as it's content, and it also won't dissapear immediately. This will be the function we'll use to show our deprecation disclaimer:
+
+\begin{codeInput}{typescript}{ToastHelpers.ts}{The new showComplexToast function within ToastHelpers.}
+export const showComplexToast = (content: ReactNode, position: ToastPosition = "top-center", autoClose: number | false = false) => {
+    toast(content, { position, autoClose })
+}
+\end{codeInput}
+
+\minisec{Create a New Title Component}
+
+Let's now refactor the "Generated Code" string to a full React component, where we can add our clickable disclaimer. Add the following to \codeword{GeneratedCodeTitleWithWarning}:
+
+\codeFromFile{jsx}{GeneratedCodeTitleWithWarning.tsx}{The contents of GeneratedCodeTitleWithWarning.tsx}{./snippets/GeneratedCodeTitleWithWarning.tsx}
+
+This component keeps the same underlined text as before, but now with a red asterisk that is clickable and triggers a call to our new \codeword{showComplexToast} function, with some detailed information. With that component written, we'll need to remember to add it to our slice of state, \codeword{editorsSlice.tsx}, in the initial state object:
+
+\begin{codeInput}{jsx}{editorsSlice.tsx}{The new showComplexToast function within ToastHelpers.}
+...
+[EditorID.TRY_IT_RESULTS]: {
+  editorTitle: <GeneratedCodeTitleWithWarning />,
+...
+\end{codeInput}
+
+Now that we are use a React component in our initial state, this file should technically become a \codeword{.tsx} file.
+
+That should do the trick for our small MVP homepage!
 
 \section{Building the App Page}
 
-So far on the page at \codeword{/app}, we've only created a title with a signup form to build interest from our VIP staged product. The MVP stage is over: it's time to build out our app page with it's full feature set.
+So far on the page at \codeword{/app}, we've only created a signup form to build interest from our MVP staged product. The MVP stage is over: it's time to build out our app page with it's full feature set.
+
+\minisec{Installing Font Awesome}
+
+Every good SaaS app needs some nice icons right? Fontawesome will do the trick for us. Install all the libraries with:
+
+\begin{codeInput}{bash}{terminal}{Installing all the packages for Font Awesome.}
+npm install @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
+\end{codeInput}
+
+\minisec{Building the Sidebar Component}
+
+We'll first start to build a sidebar component which will include navigation to all future features of ReduxPlate's capabilities. Luckily, Bootstrap 5 provides extensive code snippet samples for us to explore on their \link{examples page}{https://getbootstrap.com/docs/5.0/examples/\#snippets}. They have a nice example of an account widget, which we'll keep the markup for but comment out. Otherwise, we only have a single icon for our sidebar so far, which is the editor. Create a new component under the \codeword{components/pages/app/} folder called \codeword{Sidebar.tsx} and add the following:
+
+\begin{codeInput}{jsx}{Sidebar.tsx}{The initial contents of Sidebar.tsx.}
+import { faCode } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import * as React from "react"
+
+export function Sidebar() {
+  return (
+    <div
+      className="d-flex flex-column flex-shrink-0 bg-light"
+      style={{ width: "4.5rem" }}
+    >
+      <ul className="nav nav-pills nav-flush flex-column mb-auto text-center">
+        <li className="nav-item">
+          <span className="nav-link active py-3">
+            <FontAwesomeIcon icon={faCode} />
+          </span>
+        </li>
+      </ul>
+      {/* TODO: Account Widget: */}
+      {/* <div class="dropdown border-top">
+      <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="mdo" width="24" height="24" class="rounded-circle">
+      </a>
+      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div> */}
+    </div>
+  )
+}  
+\end{codeInput}
+
+\minisec{Replace email signup with EditorWidget}
+
+We can now remove our mailchimp with an editor
+
+\minisec{Update Editor Slice of State With App Editor}
+
+We need to now add our app editor the slice of state
+
+\minisec{Reuse Generate Button for App Page}
+
+The generate button is currently coupled with the \codeword{ActionButtons} component. Let's pop it out into it's own component, including the state selector, dispatch, and fetch logic. While we're refactoring, we'll include a required prop to this component which is the \codeword{EditorID} enum for the editor we want to take the code from. Create a new file \codeword{GenerateButtonWidget.tsx} under the \codeword{widgets/} folder and add the following:
+
+\begin{codeInput}{jsx}{ActionButtons.tsx}{The contents of GenerateButtonWidget.tsx}
+import * as React from "react"
+import { apiErrorMessageConfig } from "../../config/ApiErrorMessageConfig"
+import EditorID from "../../enums/EditorID"
+import HTTPMethod from "../../enums/HTTPMethod"
+import ResponseForm from "../../enums/ResponseForm"
+import { post } from "../../helpers/ApiHelpers"
+import { showSimpleToast } from "../../helpers/ToastHelpers"
+import { useAppSelector, useAppDispatch } from "../../hooks/redux-hooks"
+import IGenerated from "../../interfaces/IGenerated"
+import IGenerateOptions from "../../interfaces/IGenerateOptions"
+import { codeGenerated } from "../../store/editors/editorsSlice"
+
+export interface IGenerateButtonWidgetProps {
+  editorId: EditorID
+}
+
+export function GenerateButtonWidget(props: IGenerateButtonWidgetProps) {
+  const { editorId } = props
+
+  const code = useAppSelector(
+    state => state.editors.editors[editorId].editorSettings[0].code
+  )
+  const dispatch = useAppDispatch()
+
+  const onClickGenerate = async () => {
+    await post<IGenerateOptions, IGenerated>(
+      {
+        endpoint: "/CodeGenerator",
+        method: HTTPMethod.POST,
+        responseForm: ResponseForm.JSON,
+        body: {
+          stateCode: code,
+        },
+      },
+      generated => {
+        dispatch(
+          codeGenerated({
+            editorID: EditorID.TRY_IT_RESULTS,
+            files: generated.files,
+          })
+        )
+      },
+      apiError => {
+        showSimpleToast(apiErrorMessageConfig[apiError.apiErrorMessage])
+      }
+    )
+  }
+
+  return (
+    <button onClick={onClickGenerate} className="btn btn-outline-primary m-3">
+      Generate!
+    </button>
+  )
+}  
+\end{codeInput}
+
+
+Don't forget to now use \codeword{GenerateButtonWidget} in ActionButtons as well! Abstracting all logic into GenerateButtonWidget cleans up \codeword{ActionButtons} quite nicely:
+
+\begin{codeInput}{jsx}{ActionButtons.tsx}{ActionButtons.tsx refactored to use the new GenerateButtonWidget component.}
+import { Link } from 'gatsby';
+import * as React from 'react';
+import EditorID from '../../../enums/EditorID';
+import { GenerateButtonWidget } from '../../widgets/GenerateButtonWidget';
+
+export function ActionButtons() {
+  return (
+    <div className="d-flex justify-content-center mb-4">
+      <GenerateButtonWidget editorId={EditorID.TRY_IT_STATE}/>
+      <Link to="/app" className="btn btn-primary m-3">Try Full App</Link>
+    </div>
+  );
+}
+\end{codeInput}
+
+
+\minisec{Add Editor Page to Header}
+
+\section{Build a Download Button}
+
+Before building complex, we should also . this could be useful for a variety of reasons.
+
+To get started, first install the JSZip package. This package is supported in all major browsers, as well as in the Node.js environment:
+
+
+\begin{codeInput}{bash}{terminal}{Installing the JSZip and FileSaver packages.}
+npm install jszip file-saver 
+\end{codeInput}
+
+We'll also need the types for \codeword{file-saver}:
+
+\begin{codeInput}{bash}{terminal}{Installing the JSZip and FileSaver packages.}
+npm i --save-dev @types/file-saver
+\end{codeInput}
+
+\section{Adding Code Sync Functionality}
+
+We should allow customers to include their codebases from a variety of git providers, including GitHub and Bitbucket for starters.
+
+We'll start by creating a new tab in the sidebar component, leveraging Font Awesome's git icon:
+
+\minisec{Create a GitHub OAuth Application}
+
+To create a GitHub OAuth application, log into github and click your user in the top right and go to `Settings'. Then click the `Developer settings' tab on the lefthand side, and then click `OAuth Apps'. Finally, click the button `New OAuth App'. Maintain the following values:
+
+\standardfigure{\textwidth}{frontend/oauth/github}{Maintaining values for our new GitHub OAuth application.}
+
+Note the pattern of \codeword{/.netlify/functions/oauth/github} for the callback function - we'll be writing that next!
+
+\minisec{Create a Serverless OAuth Endpoint}
+
+We need to then validate what GitHub returns to us. This has to be done in a server environment as we need to use our client secret to verify who we are.
+
+\section{Adding Project Functionality}
+
+We should also allow customers to create multiple 'projects' where they may want to generate various shapes of state.
+
+\section{Adding New Slice of State Generator}
+
+\section{Adding File Add Functionality}
+
+\begin{codeInput}{jsx}{EditorWidget.tsx}{Adding the 'plus' tab to the editor widget.}
+<li className="nav-item" onClick={() => onClickPlus()}>
+  <button className="nav-link active"><FontAwesomeIcon icon={faPlus}/></button>
+</li>
+\end{codeInput}
 
 \section{Extending the Code Generator API Contract}
 
-Currently, the interface used to call the \codeword{CodeGenerator} endpoint, \codeword{IGenerateOptions}, has only a single property \codeword{stateCode}.
+Currently, the interface used to call the \codeword{CodeGenerator} endpoint, \codeword{IGenerateOptions}, has only a single property \codeword{stateCode}. We will begin adding options.
+
+\section{Leverage Builder Pattern for CodeGeneratorService}
+
+We want to keep the microservice which uses the code generator relatively simple: instantiating the constructor with a few settings, and call getSourceFiles. This is a perfect use case for the builder pattern in OOP design. using hte builder pattern, we can construct rich various versions of our code generator service class without the client needing to know anything about the implementation - they need only pass the options for the class itself.
 
 \section{Add Netlify Identity as the Authentication and Authorization Platform}
 
@@ -4023,8 +4965,8 @@ In the last section, the need arose to . It's easiest to assign a stripe ID as s
 
 ReduxPlate has a rich set of features for Premium subscribers. We should showcase that right on the homepage with a pricing component, which will tease some of the features. It will also summarize the .
 
-\begin{highlightBox}{Milestone Code \#5}{green}{\greenCheck}
-We've reached the nth milestone in the book, the advanced implementation Part I: frontend! This milestone code includes the full working code, \codeword{advanced-implementation-part-i}
+\begin{highlightBox}{Milestone Code \#7}{green}{\greenCheck}
+We've reached the seventh milestone in the book, the advanced implementation of the frontend, \codeword{mileston-7-advanced-frontend}!
 \end{highlightBox}
 
 \section{Dynamically Setting Animations}
@@ -4059,7 +5001,7 @@ export const useShouldAnimate = (): boolean => {
 Via location, it returns a boolean if the visitor is on the homepage or not.
 
 \begin{highlightBox}{Milestone Code \#8}{green}{\greenCheck}
-We've reached the 6th milestone in the book, the advanced implementation Part II: frontend completed! This milestone code includes the full working code, \codeword{advanced-implementation-part-ii}
+We've reached the eigth milestone in the book, the advanced implementation Part II: frontend completed! This milestone code includes the full working code, \codeword{advanced-implementation-part-ii}
 \end{highlightBox}
 
 \chapter{The Backend - Advanced Implementation}
@@ -4071,7 +5013,7 @@ As we have seen from the advanced frontend section, there are a few advanced tas
 \section{Building the ReduxDoc Endpoint}
 
 \begin{highlightBox}{Milestone Code \#9}{green}{\greenCheck}
-We've reached the 6th milestone in the book, the advanced implementation Part II: frontend completed! This milestone code includes the full working code, \codeword{advanced-implementation-part-ii}
+We've reached the ninth milestone in the book, the advanced implementation Part II: frontend completed! This milestone code includes the full working code, \codeword{advanced-implementation-part-ii}
 \end{highlightBox}
 
 \minisec{What's Next?}
